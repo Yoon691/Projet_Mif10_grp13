@@ -20,7 +20,7 @@ test :
         - cd sportify && mvn test 
 
 
-#deploy : 
+deploy : 
     #stage : deploy
     #before_script:
      #   - . setup-mvn-proxy.sh && echo "$CI_SSH_KEY" > ci_private_key.pem && chmod 400 ci_private_key.pem
@@ -28,4 +28,4 @@ test :
      #   - cd sportify && mvn package 
       #  - pwd
        # - ls -l
-        #- scp -v -o StrictHostKeyChecking=no -i ci_private_key.pem /builds/p1809163/projet_mif10_grp13/target/xxx.war gitlabci@192.168.74.211:/opt/tomcat/webapps/v1.war
+        #- scp -v -o StrictHostKeyChecking=no -i ci_private_key.pem /builds/p1711842/projet_mif10_grp13/target/xxx.war gitlabci@192.168.74.211:/opt/tomcat/webapps/v1.war
