@@ -15,18 +15,23 @@
 	<div id="landing-header" class="landing-header">
 		<div class="header-icon">
 		</div>
-		<div class="connexion-button">
-		</div>
+		<a href="connexion.jsp">
+			<button class="connexion-button">
+				<p>Connexion</p>
+			</button>
+		</a>
 	</div>
 	
 	<div class="landing-home">
-		<div class="bg-img"></div>
+		<div id="bg-img" class="bg-img"></div>
 		<div class="home-text">
 			SPORTIFY
 		</div>
-		<button class="home-button">
-			<p style="margin-top: -8px; margin-left: 12px;">Join us !</p>
-		</button>
+		<a href="connexion.jsp">
+			<button class="home-button">
+				<p style="margin-top: -8px; margin-left: 12px;">Join us !</p>
+			</button>
+		</a>
 	</div>
 	
 	<div class="landing-content">
@@ -54,10 +59,16 @@
 
 <script type="text/javascript">
 	window.onscroll = function () {
+		console.log(document.documentElement.scrollTop);
 		if (document.documentElement.scrollTop > 100) {
 			document.getElementById("landing-header").style.transform = "translateY(-70px)"; 
 		} else {
 			document.getElementById("landing-header").style.transform = "translateY(0px)";
+		}
+		if (document.documentElement.scrollTop > 550) {
+			document.getElementById("bg-img").style.filter = "brightness(50%)"; 
+		} else {
+			document.getElementById("bg-img").style.filter = "brightness(80%)";
 		}
 	}
 </script>

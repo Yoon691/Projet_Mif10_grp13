@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+@font-face {
+ font-family: "Roboto-Light";
+ src: url("fonts/Roboto-Light.ttf") format("truetype");
+}
+
 .landing-page {
 	width: 100%;
     overflow: hidden;
@@ -14,6 +19,18 @@
 	transition: all 0.3s ease-in-out;
 }
 
+.connexion-button {
+	color: white;
+	border: none;
+	background: none;
+    font-family: Roboto-Light;
+    width: max-content;
+    margin-right: 3vw;
+    float: right;
+    margin-top: 2vh;
+	cursor: pointer;
+}
+
 .landing-home {
 	position: relative;
 	height: 100vh;
@@ -26,6 +43,8 @@
 	background: no-repeat center center url("../img/landing-background.jpg");
 	background-size: cover;
 	filter: brightness(80%);
+	transition: all 0.5s ease-in-out;
+	
 }
 
 .home-text {
@@ -34,6 +53,20 @@
     color: #FDC500;
     font-size: 7rem;
     font-weight: 700;
+    -webkit-animation: animTitle 0.8s ease-in-out;
+}
+
+@-webkit-keyframes animTitle {
+from {
+	opacity: 0%;
+	-webkit-filter: blur(10px);
+	transform: translateY(46vh);
+	}
+to {
+	opacity: 100%;
+	-webkit-filter: blur(0px);
+	transform: translateY(36vh);
+	}
 }
 
 .home-button {
@@ -45,10 +78,11 @@
     width: 18vw;
     height: 7vh;
     font-size: 3rem;
-    margin-left: 50vw;
-    transform: translate3d(-50%, 36vh, 0px);
+    margin-left: 41vw;
+    transform: translateY(36vh);
     cursor: pointer;
     overflow: hidden;
+    -webkit-animation: animTitle 1.2s ease-in-out;
 }
 
 .landing-content {
@@ -73,6 +107,7 @@
 	margin-left: 50px;
 	font-size: x-large;
     text-align: justify;
+    overflow: hidden;
 }
 
 .information-illustration {
