@@ -36,7 +36,8 @@
 	
 	<div class="landing-content">
 		<div class="soon-news">
-			<%-- <%@ include file="components/soonNews.jsp" %> --%>
+			<%@ include file="composants/soonNews.jsp" %>
+			<%-- <jsp:include page="composants/soonNews.jsp"/> --%>
 		</div>
 		<div class="landing-information">
 			<div class="information-text">
@@ -65,8 +66,10 @@
 		} else {
 			document.getElementById("landing-header").style.transform = "translateY(0px)";
 		}
-		if (document.documentElement.scrollTop > 550) {
-			document.getElementById("bg-img").style.filter = "brightness(50%)"; 
+		if (document.documentElement.scrollTop > 300) {
+			document.getElementById("bg-img").style.filter = "brightness(60%)";
+		} else if (document.documentElement.scrollTop > 550) {
+			document.getElementById("bg-img").style.filter = "brightness(40%)"; 
 		} else {
 			document.getElementById("bg-img").style.filter = "brightness(80%)";
 		}
