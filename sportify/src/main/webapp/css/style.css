@@ -145,8 +145,17 @@ to {
 }
 
 
-
-
-
-
 /* =============== \SOON NEWS SECTION ================= */
+
+
+
+@media screen and (max-height: 700px) { 
+
+    body{
+    line-height: 1;
+    }
+
+    .landing-information {
+    font-size: large;
+    }
+}

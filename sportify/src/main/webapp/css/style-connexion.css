@@ -10,7 +10,7 @@ body {
 
 .cadre-authentification {
   position: absolute;
-  top: 45%;
+  top: 45vh;
   left: 50%;
   width: 500px;
   padding: 40px;
@@ -74,19 +74,28 @@ body {
   transition: .5s;
   margin-top: 30px;
   letter-spacing: 4px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
-.cadre-connexion form a {
+/* .cadre-connexion form a {
 	 margin-left: 124px;
+	 margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .cadre-inscription-club form a {
 	 margin-left: 84.5px;
+	 margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .cadre-inscription-adh form a {
 	 margin-left: 125px;
-}
+	 margin-left: 50%;
+    transform: translateX(-50%);
+} */
 
 .cadre-authentification a:hover {
   background: #FDC500;
@@ -178,6 +187,7 @@ body {
   }
 }
 
+
 /*=================FIN DU CSS DES CADRES DE CONNEXION ===================*/
 
 .connexion-title {
@@ -222,5 +232,74 @@ body {
     top: 90vh;
     margin-left: 50vw;
     transform: translateX(-50%);
+}
+
+
+
+/* =================== RESPONSIVE ====================== */
+
+@media screen and (max-height: 700px) {
+	.cadre-connexion .inscrire {
+		display : block;
+		margin-top: 15px;
+	}
+	
+	.cadre-connexion h2 {
+		margin: 0 0 20px;
+	}
+	
+	.cadre-connexion form a {
+		margin-top: 0;
+	}	
+}
+
+@media screen and (max-height : 890px) {
+	.cadre-inscription-adh .inscrire,
+	.cadre-inscription-club .inscrire {
+		display : block;
+		margin-top: 15px;
+	}
+}
+
+@media screen and (max-height : 830px) {
+	.cadre-inscription-adh h2,
+	.cadre-inscription-club h2 {
+		margin: 0 0 20px;
+	}
+	
+	.cadre-inscription-adh form a,
+	.cadre-inscription-club form a {
+		margin-top: 0;
+	}
+}
+
+@media screen and (max-height : 780px) {
+	.form-adh {
+		display: grid;
+		column-gap: 30px;
+	}
+	
+	.form-adh .user-box:nth-of-type(2) {
+  		grid-column: 2;
+	}
+	
+	.cadre-inscription-adh {
+		width: 750px;
+	}
+}
+
+@media screen and (max-height : 770px) {
+	.form-club {
+		display: grid;
+		column-gap: 30px;
+	}
+	
+	.form-club .user-box:nth-of-type(2) {
+  		grid-column: 2;
+	}
+	
+	.cadre-inscription-club {
+		width: 750px;
+	}
 }
 

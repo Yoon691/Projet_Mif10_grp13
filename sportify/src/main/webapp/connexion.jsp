@@ -39,29 +39,31 @@
 	<div id="c-i-a" class="cadre-authentification cadre-inscription-adh" style="left:-50%;">
 		<h2>Inscription adhérent</h2>
 		<form>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Nom</label>
-			</div>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Prénom</label>
-			</div>
-			<div class="user-box">
-				<input type="password" name="" required="">
-				<label>Mot de passe</label>
-			</div>
-			<div class="user-box">
-				<input type="email" name="" required="">
-				<label>Email</label>
-			</div>
-			<div class="user-box">
-				<input type="tel" name="" required="">
-				<label>n° téléphone</label>
-			</div>
-			<div class="user-box">
-				<input type="date" name="" required="">
-				<label>Date de naissance</label>
+			<div class="form-adh">
+				<div class="user-box">
+					<input type="text" name="" required="">
+					<label>Nom</label>
+				</div>
+				<div class="user-box">
+					<input type="text" name="" required="">
+					<label>Prénom</label>
+				</div>
+				<div class="user-box">
+					<input type="password" name="" required="">
+					<label>Mot de passe</label>
+				</div>
+				<div class="user-box">
+					<input type="email" name="" required="">
+					<label>Email</label>
+				</div>
+				<div class="user-box">
+					<input type="tel" name="" required="">
+					<label>n° téléphone</label>
+				</div>
+				<div class="user-box">
+					<input type="date" name="" required="">
+					<label>Date de naissance</label>
+				</div>
 			</div>
 			<a href="#">
 				<span></span>
@@ -81,25 +83,27 @@
 	<div id="c-i-c" class="cadre-authentification cadre-inscription-club" style="left:-50%;">
 		<h2>Inscription Club</h2>
 		<form>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Nom du club</label>
-			</div>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Email</label>
-			</div>
-			<div class="user-box">
-				<input type="text" name="" required="">
-				<label>Nom responsable</label>
-			</div>
-			<div class="user-box">
-				<input type="password" name="" required="">
-				<label>Mot de passe</label>
-			</div>
-			<div class="user-box">
-				<input type="number" name="" required="">
-				<label>Capacité (nb adhérent max)</label>
+			<div class="form-club">
+				<div class="user-box">
+					<input type="text" name="" required="">
+					<label>Nom du club</label>
+				</div>
+				<div class="user-box">
+					<input type="text" name="" required="">
+					<label>Email</label>
+				</div>
+				<div class="user-box">
+					<input type="text" name="" required="">
+					<label>Nom responsable</label>
+				</div>
+				<div class="user-box">
+					<input type="password" name="" required="">
+					<label>Mot de passe</label>
+				</div>
+				<div class="user-box">
+					<input type="number" name="" required="">
+					<label>Capacité (nb adhérent max)</label>
+				</div>
 			</div>
 			<a href="#">
 				<span></span>

@@ -10,9 +10,12 @@
 			<h2>Prochaines Actualités :</h2>
 		</div>
 		
-		<c:forEach var="name"  items="${requestScope['ListName']}" >
+		<div class="content-sn">
+			
+		</div>
+		<%-- <c:forEach var="name"  items="${requestScope['ListName']}" >
 	          <option value="${ListName.nom}"> ${ListName.nom} </option>
-		</c:forEach>
+		</c:forEach> --%>
 		
 	</div>
 	
