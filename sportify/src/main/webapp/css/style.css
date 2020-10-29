@@ -27,8 +27,17 @@
     width: max-content;
     margin-right: 3vw;
     float: right;
-    margin-top: 2vh;
+    margin-top: 20px;
 	cursor: pointer;
+}
+
+.connexion-button:hover {
+	opacity: 80%;
+}
+
+.connexion-button:focus,
+.home-button:focus {
+	outline-style: none;
 }
 
 .landing-home {
@@ -49,40 +58,82 @@
 
 .home-text {
 	text-align: center;
-    transform: translateY(36vh);
+	position: absolute;
+	top: 32%;
+	width: 32vw;
+	margin-left: 34vw;
     color: #FDC500;
-    font-size: 7rem;
+    font-size: 12vh; /* previously 7rem;*/
     font-weight: 700;
+    animation-delay: 1s;
     -webkit-animation: animTitle 0.8s ease-in-out;
+    user-select: none;
 }
 
 @-webkit-keyframes animTitle {
 from {
 	opacity: 0%;
 	-webkit-filter: blur(10px);
-	transform: translateY(46vh);
+	top: 50%;
 	}
 to {
 	opacity: 100%;
 	-webkit-filter: blur(0px);
-	transform: translateY(36vh);
+	top: 32%;
+	}
+}
+
+@-webkit-keyframes animButton {
+from {
+	opacity: 0%;
+	-webkit-filter: blur(10px);
+	top: 69%;
+	}
+to {
+	opacity: 80%;
+	-webkit-filter: blur(0px);
+	top: 51%;
 	}
 }
 
 .home-button {
+	position: absolute;
+	top: 51%;
 	background-color: #FDC500;
     color: white;
-    opacity: 90%;
+    opacity: 80%;
     border-radius: 18px;
     border: none;
     width: 18vw;
     height: 7vh;
     font-size: 3rem;
     margin-left: 41vw;
-    transform: translateY(36vh);
     cursor: pointer;
     overflow: hidden;
-    -webkit-animation: animTitle 1.2s ease-in-out;
+    animation-delay: 1s;
+    -webkit-animation: animButton 1.2s ease-in-out;
+    transition: all .5s;
+	transition-timing-function: cubic-bezier(.2, 3, .4, 1);
+}
+
+.home-button:hover {
+	transform : scale(1.1, 1.1);
+	opacity: 100%;	
+}
+
+.join-us {
+	margin-top: -8px;
+    margin-left: 12px;
+}
+
+@media screen and (max-height: 800px) {
+	.join-us {
+		margin-top: 0px;
+		margin-left: 8px
+	}
+	.home-button {
+		height: 10vh;
+	}
 }
 
 .landing-content {
@@ -110,6 +161,15 @@ to {
     overflow: hidden;
 }
 
+.landing-paragraphe {
+	transform: translateX(50vw);
+	transition: all .5s cubic-bezier(.75,-0.5,0,1.25);
+}
+
+.show-paragraphe {
+	transform: translateX(0);
+}
+
 .information-illustration {
 	max-width: 100%;
 }
@@ -118,6 +178,9 @@ to {
 	background-color: #282828;
 	width: 100vw;
 	height: 60px;
+	color: white;
+    text-align: center;
+    padding-top: 20px;
 }
 
 /* =============== SOON NEWS SECTION ================= */
