@@ -1,57 +1,84 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+
 public class Inscrit {
-    private String nom;
-    private String prenom;
-    private String mail;
-    private String tel;
-    private Date naissance;
 
-    public Inscrit(String nom, String mail) {
-        this.nom = nom;
-        this.mail = mail;
-    }
-    public String getPrenom() {
-        return prenom;
-    }
+    private String emailInscrit;
+    private Long clubId;
+    private String nomInscrit;
+    private String telInscrit;
+    private String password;
+    private Date naissanceInscrit;
+    private Date dateInscription;
 
-    public String getMail() {
-        return mail;
-    }
-
-    public String getTel() {
-        return tel;
+    public Inscrit(String emailInscrit, Long clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
+        this.emailInscrit = emailInscrit;
+        this.clubId = clubId;
+        this.nomInscrit = nomInscrit;
+        this.telInscrit = telInscrit;
+        this.password = password;
+        this.naissanceInscrit = naissanceInscrit;
+        this.dateInscription = dateInscription;
     }
 
-    public Date getNaissance() {
-        return naissance;
+    public String getEmailInscrit() {
+        return emailInscrit;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public Long getClubId() {
+        return clubId;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public String getNomInscrit() {
+        return nomInscrit;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public String getTelInscrit() {
+        return telInscrit;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public String getPassword() {
+        return password;
     }
 
-    public void setNaissance(Date naissance) {
-        this.naissance = naissance;
+    public Date getNaissanceInscrit() {
+        return naissanceInscrit;
     }
 
+    public Date getDateInscription() {
+        return dateInscription;
+    }
 
+    public void setEmailInscrit(String emailInscrit) {
+        this.emailInscrit = emailInscrit;
+    }
 
-    public String getNom() {
-        return nom;
+    public void setClubId(Long clubId) {
+        this.clubId = clubId;
+    }
+
+    public void setNomInscrit(String nomInscrit) {
+        this.nomInscrit = nomInscrit;
+    }
+
+    public void setTelInscrit(String telInscrit) {
+        this.telInscrit = telInscrit;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setNaissanceInscrit(Date naissanceInscrit) {
+        this.naissanceInscrit = naissanceInscrit;
+    }
+
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
     }
 }

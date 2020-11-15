@@ -4,14 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Admin {
+    private Long adminId;
+    private String nomAdmin;
 
-    private List<Club> listeClub = new ArrayList<>();
-
-    public void ajouterClub(Club club){
-        //TODO
+    public void setAdminId(Long adminId) {
+        this.adminId = adminId;
     }
 
-    public void supprimerClub(Club club){
-        //TODO
+    public void setNomAdmin(String nomAdmin) {
+        this.nomAdmin = nomAdmin;
+    }
+
+    public Long getAdminId() {
+        return adminId;
+    }
+
+    public String getNomAdmin() {
+        return nomAdmin;
     }
 }

@@ -5,84 +5,58 @@ import java.util.Date;
 import java.util.List;
 
 public class Club {
-    private int clubId;
-    private String nom;
-    private String mail;
-    private List<Inscrit> listeMembre = new ArrayList<>();
-    private Inscrit coach;
+    private Long clubId;
+    private String nomClub;
+    private String emailClub;
+    private String passwordClub;
+    private String nomResponsable;
     private int nbMaxAdherent;
 
-    public Club(int clubId, String nom, Inscrit coach, int nbMaxAdherent) {
-        this.clubId = clubId;
-        this.nom = nom;
-        this.coach = coach;
-        this.nbMaxAdherent = nbMaxAdherent;
-    }
-    public int getClubId() {
+    public Long getClubId() {
         return clubId;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomClub() {
+        return nomClub;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmailClub() {
+        return emailClub;
     }
 
-    public List<Inscrit> getListeMembre() {
-        return listeMembre;
+    public String getPasswordClub() {
+        return passwordClub;
     }
 
-    public Inscrit getCoach() {
-        return coach;
-    }
-
-    public void setClubId(int clubId) {
-        this.clubId = clubId;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setListeMembre(List<Inscrit> listeMembre) {
-        this.listeMembre = listeMembre;
-    }
-
-    public void setCoach(Inscrit coach) {
-        this.coach = coach;
-    }
-
-    public void setNbMaxAdherent(int nbMaxAdherent) {
-        this.nbMaxAdherent = nbMaxAdherent;
+    public String getNomResponsable() {
+        return nomResponsable;
     }
 
     public int getNbMaxAdherent() {
         return nbMaxAdherent;
     }
 
-    public void reserver (Date date, int duree) {
-        //TODO
+    public void setClubId(Long clubId) {
+        this.clubId = clubId;
     }
 
-    public boolean accepterAdherent() {
-        //TODO
-        return true;
+    public void setNomClub(String nomClub) {
+        this.nomClub = nomClub;
     }
 
-    public void ajouterAdherent(Inscrit inscrit) {
-        //TODO
+    public void setEmailClub(String emailClub) {
+        this.emailClub = emailClub;
     }
 
-    public void supprimerAdhérent(Inscrit inscrit) {
-        //TODO
+    public void setPasswordClub(String passwordClub) {
+        this.passwordClub = passwordClub;
     }
 
+    public void setNomResponsable(String nomResponsable) {
+        this.nomResponsable = nomResponsable;
+    }
 
-
+    public void setNbMaxAdherent(int nbMaxAdherent) {
+        this.nbMaxAdherent = nbMaxAdherent;
+    }
 }
