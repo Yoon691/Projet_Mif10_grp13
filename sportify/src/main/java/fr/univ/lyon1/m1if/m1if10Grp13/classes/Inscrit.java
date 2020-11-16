@@ -19,8 +19,10 @@ public class Inscrit {
     private String password;
     private Date naissanceinscrit;
     private Date dateinscription;
+    
+ 
 
-    public Inscrit(String emailInscrit, Long clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
+	public Inscrit(String emailInscrit, Long clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
         this.emailInscrit = emailInscrit;
         this.clubId = clubId;
         this.nominscrit = nomInscrit;
