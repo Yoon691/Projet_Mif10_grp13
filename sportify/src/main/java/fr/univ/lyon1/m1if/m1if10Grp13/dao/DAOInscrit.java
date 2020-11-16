@@ -1,7 +1,9 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
@@ -10,14 +12,18 @@ import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 public class DAOInscrit implements DAOCrud{
     @PersistenceContext( unitName = "pu-sportify" )
     private EntityManager       entitymanager;
+    
 
 	@Override
 	public void creer(Object objet) throws DAOException {
+	    EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Eclipselink_JPA" );
+	    entitymanager = emfactory.createEntityManager( );
 		Inscrit inscrit = null;
 		if (objet instanceof Inscrit) {
 			inscrit = (Inscrit) objet;
 		}
         try {
+        	System.out.println("EM is" + entitymanager);
         	// Lancement d'une transaction
         	entitymanager.getTransaction( ).begin( );     
         	
@@ -66,7 +72,6 @@ public class DAOInscrit implements DAOCrud{
 		}
 		try {
 		      entitymanager.getTransaction( ).begin( );
-		      
 		      Inscrit inscrit = entitymanager.find( Inscrit.class, email );
 		      entitymanager.remove( inscrit );
 		      entitymanager.getTransaction( ).commit( );

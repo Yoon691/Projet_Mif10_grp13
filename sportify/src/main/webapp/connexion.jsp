@@ -65,13 +65,13 @@
 					<label>Date de naissance</label>
 				</div>
 			</div>
-			<a href="#" type="submit">
+			<input type="submit">
 				<span></span>
 				<span></span>
 				<span></span>
 				<span></span>
 				S'inscrire
-			</a>
+			</input>
 		</form>
 		<div class="inscrire">
 			<a class="aff-connexion">Connexion</a>

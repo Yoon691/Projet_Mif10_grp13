@@ -60,6 +60,7 @@ public class UserInscription extends HttpServlet {
 		// check if email and password are not null
 		if(emailInscrit != null && password != null){
 			inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+			System.out.println(inscrit);
 			daoInscrit.creer(inscrit);
 		}
 		
