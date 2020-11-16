@@ -6,9 +6,9 @@
             <!--property name="hibernate.connection.driver_class" value="org.h2.Driver" /-->
             <!--property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/gdw-db" /-->
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/sportify" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/sportify" />
             <property name="hibernate.connection.user" value="grp13" />
-            <property name="hibernate.connection.password" value="mif010" />
+            <property name="hibernate.connection.password" value="p2020623" />
             <!-- Utiliser le fichier microblog.sql pour créer les tables -->
             <property name="hibernate.hbm2ddl.auto" value="validate" />
         </properties>

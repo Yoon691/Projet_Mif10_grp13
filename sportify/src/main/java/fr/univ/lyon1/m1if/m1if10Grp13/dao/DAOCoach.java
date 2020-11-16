@@ -3,11 +3,6 @@ package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 public class DAOCoach implements DAOCrud{
-	private DAOFactory daoFactory;
-	
-	DAOCoach(DAOFactory daoFactory) {
-		this.daoFactory = daoFactory;
-	}
 
 	@Override
 	public void creer(Object objet) throws DAOException {
