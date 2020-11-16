@@ -1,6 +1,11 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 public class ReservationTerrain {
+
 	private int terrainId;
 	private int creneauId;
 	private int clubId;

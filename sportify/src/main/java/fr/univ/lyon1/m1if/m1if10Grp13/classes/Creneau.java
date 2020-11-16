@@ -1,8 +1,12 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 public class Creneau {
+	@Id
 	private int creneauID;
 	private Date dateCreneau;
 	private Date heureCreneau;
