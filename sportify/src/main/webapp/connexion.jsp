@@ -12,16 +12,16 @@
 	
 	<div id="c-c" class="cadre-authentification cadre-connexion">
 		<h2>Connexion</h2>
-		<form>
+		<form method="POST" action="UserLogin">
 			<div class="user-box">
-				<input type="text" name="" required="">
+				<input type="text" name="email" required="">
 				<label>Email</label>
 			</div>
 			<div class="user-box">
-				<input type="password" name="" required="">
+				<input type="password" name="password" required="">
 				<label>Mot de passe</label>
 			</div>
-			<a href="#">
+			<a href="#" type="submit">
 				<span></span>
 				<span></span>
 				<span></span>
@@ -35,37 +35,37 @@
 			<a class="aff-inscr-club">Inscription Club</a>
 		</div>
 	</div>
-	
+
 	<div id="c-i-a" class="cadre-authentification cadre-inscription-adh" style="left:-50%;">
 		<h2>Inscription adhérent</h2>
-		<form>
+		<form method="POST" action="UserInscription">
 			<div class="form-adh">
 				<div class="user-box">
-					<input type="text" name="" required="">
+					<input type="text" name="nomInscrit" required="">
 					<label>Nom</label>
 				</div>
 				<div class="user-box">
-					<input type="text" name="" required="">
+					<input type="text" name="prenomInscrit" required="">
 					<label>Prénom</label>
 				</div>
 				<div class="user-box">
-					<input type="password" name="" required="">
+					<input type="password" name="password" required="">
 					<label>Mot de passe</label>
 				</div>
 				<div class="user-box">
-					<input type="email" name="" required="">
+					<input type="email" name="emailInscrit" required="">
 					<label>Email</label>
 				</div>
 				<div class="user-box">
-					<input type="tel" name="" required="">
+					<input type="tel" name="telInscrit" required="">
 					<label>n° téléphone</label>
 				</div>
 				<div class="user-box">
-					<input type="date" name="" required="">
+					<input type="date" name="naissanceInscrit" required="">
 					<label>Date de naissance</label>
 				</div>
 			</div>
-			<a href="#">
+			<a href="#" type="submit">
 				<span></span>
 				<span></span>
 				<span></span>
