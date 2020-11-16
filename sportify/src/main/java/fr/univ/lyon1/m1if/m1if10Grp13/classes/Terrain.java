@@ -1,6 +1,7 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.LazyToOne;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +12,10 @@ import javax.persistence.Table;
 public class Terrain {
 	@Id
 	@Column(name = "terrainid")
-	private int terrainId;
+	private Long terrainId;
 	private boolean dispo;
-	public Terrain(int terrainId, boolean dispo) {
+
+	public Terrain(Long terrainId, boolean dispo) {
 		this.terrainId = terrainId;
 		this.dispo = dispo;
 	}
@@ -22,10 +24,10 @@ public class Terrain {
 
 	}
 
-	public int getTerrainId() {
+	public Long getTerrainId() {
 		return terrainId;
 	}
-	public void setTerrainId(int terrainId) {
+	public void setTerrainId(Long terrainId) {
 		this.terrainId = terrainId;
 	}
 	public boolean isDispo() {
