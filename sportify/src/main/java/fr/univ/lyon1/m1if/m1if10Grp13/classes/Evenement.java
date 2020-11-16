@@ -1,18 +1,29 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-
+@Entity
+@Table(name="evenements")
 public class Evenement {
+    @Id
+    @Column(name = "evenementid")
     private  int evenenementId;
     private String description;
-    private Date dateDebut;
-    private Date dateFin;
+    private Date datedebut;
+    private Date datefin;
 
     public Evenement(int evenenementId, String description, Date dateDebut, Date dateFin) {
         this.evenenementId = evenenementId;
         this.description = description;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+        this.datedebut = dateDebut;
+        this.datefin = dateFin;
+    }
+
+    public Evenement() {
+
     }
 
     public int getEvenenementId() {
@@ -32,18 +43,18 @@ public class Evenement {
     }
 
     public Date getDateDebut() {
-        return dateDebut;
+        return datedebut;
     }
 
     public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
+        this.datedebut = dateDebut;
     }
 
     public Date getDateFin() {
-        return dateFin;
+        return datefin;
     }
 
     public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
+        this.datefin = dateFin;
     }
 }

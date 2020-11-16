@@ -1,26 +1,37 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.print.attribute.standard.MediaSize;
+import java.util.Date;
 
+@Entity
+@Table(name = "creneau")
 public class Creneau {
 	@Id
+	@Column(name = "creneauid")
 	private int creneauID;
-	private Date dateCreneau;
-	private Date heureCreneau;
+	private Date datecreneau;
+	private Date heurecreneau;
 	private Date duree;
-	
-	
-	
+
+
+
+
+
 	public Creneau(int creneauID, Date dateCreneau, Date heureCreneau, Date duree) {
 		this.creneauID = creneauID;
-		this.dateCreneau = dateCreneau;
-		this.heureCreneau = heureCreneau;
+		this.datecreneau = dateCreneau;
+		this.heurecreneau = heureCreneau;
 		this.duree = duree;
 	}
-	
+
+	public Creneau() {
+
+	}
+
+
 	public int getCreneauID() {
 		return creneauID;
 	}
@@ -28,16 +39,16 @@ public class Creneau {
 		this.creneauID = creneauID;
 	}
 	public Date getDateCreneau() {
-		return dateCreneau;
+		return datecreneau;
 	}
 	public void setDateCreneau(Date dateCreneau) {
-		this.dateCreneau = dateCreneau;
+		this.datecreneau = dateCreneau;
 	}
 	public Date getHeureCreneau() {
-		return heureCreneau;
+		return heurecreneau;
 	}
 	public void setHeureCreneau(Date heureCreneau) {
-		this.heureCreneau = heureCreneau;
+		this.heurecreneau = heureCreneau;
 	}
 	public Date getDuree() {
 		return duree;
@@ -45,6 +56,6 @@ public class Creneau {
 	public void setDuree(Date duree) {
 		this.duree = duree;
 	}
-	
+
 
 }

@@ -1,18 +1,31 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-
+@Entity
+@Table(name = "gestion_admin_club")
 public class GestionAdminClub {
+    @Id
+    @Column(name = "clubid")
     private int clubId;
+    @Id
+    @Column(name = "adminid")
     private int adminId;
-    private Date dateGestion;
+    private Date dategestion;
     private AdminOperation operation;
 
     public GestionAdminClub(int clubId, int adminId, Date dateGestion, AdminOperation operation) {
         this.clubId = clubId;
         this.adminId = adminId;
-        this.dateGestion = dateGestion;
+        this.dategestion = dateGestion;
         this.operation = operation;
+    }
+
+    public GestionAdminClub() {
+
     }
 
     public int getClubId() {
@@ -32,11 +45,11 @@ public class GestionAdminClub {
     }
 
     public Date getDateGestion() {
-        return dateGestion;
+        return dategestion;
     }
 
     public void setDateGestion(Date dateGestion) {
-        this.dateGestion = dateGestion;
+        this.dategestion = dateGestion;
     }
 
     public AdminOperation getOperation() {
