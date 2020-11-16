@@ -10,4 +10,44 @@
         version="3.0">
 
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ClubLogin</servlet-name>
+  	<display-name>ClubLogin</display-name>
+  	<description></description>
+  	<servlet-class>fr.univ.lyon1.m1if.m1if10Grp13.servlets.ClubLogin</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ClubInscription</servlet-name>
+  	<display-name>ClubInscription</display-name>
+  	<description></description>
+  	<servlet-class>fr.univ.lyon1.m1if.m1if10Grp13.servlets.ClubInscription</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserLogin</servlet-name>
+  	<display-name>UserLogin</display-name>
+  	<description></description>
+  	<servlet-class>fr.univ.lyon1.m1if.m1if10Grp13.servlets.UserLogin</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserInscription</servlet-name>
+  	<display-name>UserInscription</display-name>
+  	<description></description>
+  	<servlet-class>fr.univ.lyon1.m1if.m1if10Grp13.servlets.UserInscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ClubLogin</servlet-name>
+  	<url-pattern>/ClubLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ClubInscription</servlet-name>
+  	<url-pattern>/ClubInscription</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserLogin</servlet-name>
+  	<url-pattern>/UserLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserInscription</servlet-name>
+  	<url-pattern>/UserInscription</url-pattern>
+  </servlet-mapping>
 </web-app>
