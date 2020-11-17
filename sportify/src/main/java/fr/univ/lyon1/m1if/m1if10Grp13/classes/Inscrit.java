@@ -10,13 +10,22 @@ public class Inscrit {
     @Id
     @Column(name = "emailinscrit")
     private String emailInscrit;
-    @ManyToOne
-    @JoinColumn( name = "clubid" )
+    
+    @ManyToOne @JoinColumn(name="clubId")
     private Club club;
+    @Column(name="nomInscrit")
     private String nominscrit;
+    
+    @Column(name="telInscrit")
     private String telinscrit;
+    
+    @Column(name="password")
     private String password;
+    
+    @Column(name="naissanceInscrit")
     private Date naissanceinscrit;
+    
+    @Column(name="dateInscription")
     private Date dateinscription;
     
  

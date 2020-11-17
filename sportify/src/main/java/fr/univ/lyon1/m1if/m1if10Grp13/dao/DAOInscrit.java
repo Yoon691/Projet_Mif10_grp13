@@ -62,7 +62,7 @@ public class DAOInscrit implements DAOCrud{
         } catch ( NoResultException e ) {
             System.out.println("User not found");
         } catch ( Exception e ) {
-            throw new DAOException( e );
+        	System.out.println("User not found");
         }
 		return inscrit;
 	}
