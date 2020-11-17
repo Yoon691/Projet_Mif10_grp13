@@ -1,19 +1,17 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @ Table(name = "inscrit")
 public class Inscrit {
     @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column(name = "emailinscrit")
     private String emailInscrit;
-    @Column(name = "clubid")
-    private Long clubId;
+    @JoinColumn( name = "clubid" )
+    private Club club;
     private String nominscrit;
     private String telinscrit;
     private String password;

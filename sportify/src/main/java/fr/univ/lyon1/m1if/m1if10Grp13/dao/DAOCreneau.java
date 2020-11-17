@@ -31,9 +31,9 @@ public class DAOCreneau implements DAOCrud{
 		}
 		
 	}
-
 	@Override
 	public Object afficher(Object object) throws DAOException {
+
 		Creneau creneau ;
 		Long creneauID = null;
 		if (object instanceof Creneau) {
