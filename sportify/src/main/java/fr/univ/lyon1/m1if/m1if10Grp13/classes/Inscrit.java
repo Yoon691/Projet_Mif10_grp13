@@ -1,28 +1,29 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@ Table(name = "inscrit")
+@Table(name = "inscrit")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Inscrit {
     @Id
     @Column(name = "emailinscrit")
     private String emailInscrit;
-    @Column(name = "clubid")
-    private Long clubId;
+    @ManyToOne
+    @JoinColumn( name = "clubid" )
+    private Club club;
     private String nominscrit;
     private String telinscrit;
     private String password;
     private Date naissanceinscrit;
     private Date dateinscription;
+    
+ 
 
-    public Inscrit(String emailInscrit, Long clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
+	public Inscrit(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
         this.emailInscrit = emailInscrit;
-        this.clubId = clubId;
+        this.club = club;
         this.nominscrit = nomInscrit;
         this.telinscrit = telInscrit;
         this.password = password;
@@ -39,7 +40,8 @@ public class Inscrit {
     }
 
     public Long getClubId() {
-        return clubId;
+        return club.getClubId();
+
     }
 
     public String getNomInscrit() {
@@ -66,8 +68,8 @@ public class Inscrit {
         this.emailInscrit = emailInscrit;
     }
 
-    public void setClubId(Long clubId) {
-        this.clubId = clubId;
+    public void setclub(Club club) {
+        this.club = club;
     }
 
     public void setNomInscrit(String nomInscrit) {

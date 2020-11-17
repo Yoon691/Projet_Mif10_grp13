@@ -1,16 +1,12 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
     <persistence-unit name="pu-sportify" transaction-type="RESOURCE_LOCAL">
-
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <!--property name="hibernate.connection.driver_class" value="org.h2.Driver" /-->
-            <!--property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/gdw-db" /-->
+        	<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/sportify" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/sportify" />
             <property name="hibernate.connection.user" value="grp13" />
-            <property name="hibernate.connection.password" value="mif010" />
-            <!-- Utiliser le fichier microblog.sql pour créer les tables -->
-            <property name="hibernate.hbm2ddl.auto" value="validate" />
+            <property name="hibernate.connection.password" value="p1809163"/>
         </properties>
     </persistence-unit>
 </persistence>

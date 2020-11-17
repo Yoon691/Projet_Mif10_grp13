@@ -11,7 +11,7 @@ import java.util.Date;
 public class Creneau {
 	@Id
 	@Column(name = "creneauid")
-	private int creneauID;
+	private Long creneauID;
 	private Date datecreneau;
 	private Date heurecreneau;
 	private Date duree;
@@ -20,7 +20,7 @@ public class Creneau {
 
 
 
-	public Creneau(int creneauID, Date dateCreneau, Date heureCreneau, Date duree) {
+	public Creneau(Long creneauID, Date dateCreneau, Date heureCreneau, Date duree) {
 		this.creneauID = creneauID;
 		this.datecreneau = dateCreneau;
 		this.heurecreneau = heureCreneau;
@@ -32,10 +32,10 @@ public class Creneau {
 	}
 
 
-	public int getCreneauID() {
+	public Long getCreneauID() {
 		return creneauID;
 	}
-	public void setCreneauID(int creneauID) {
+	public void setCreneauID(Long creneauID) {
 		this.creneauID = creneauID;
 	}
 	public Date getDateCreneau() {

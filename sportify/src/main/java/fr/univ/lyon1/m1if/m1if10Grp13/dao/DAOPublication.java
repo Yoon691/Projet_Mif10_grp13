@@ -1,24 +1,60 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Publication;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.swing.plaf.PanelUI;
+
+@Stateless
 public class DAOPublication implements DAOCrud{
-	private DAOFactory daoFactory;
-	
-	DAOPublication(DAOFactory daoFactory) {
-		this.daoFactory = daoFactory;
-	}
+
+	private static final String JPQL_SELECT_PAR_IDPUB = "SELECT p FROM Publication p WHERE p.publicationId=:publicationId";
+	private static final String PARAM_IDPUB           = "publicationId";
+
+	// Injection du manager, qui s'occupe de la connexion avec la BDD
+	@PersistenceContext( unitName = "pu-sportify" )
+	private EntityManager em;
+
 
 	@Override
-	public void creer(Object objet) throws DAOException {
-		// TODO Auto-generated method stub
-		
+	public void creer(Object object) throws DAOException {
+		Publication publication = null;
+		if (object instanceof Publication)
+			publication	= (Publication) object;
+
+		try {
+
+			em.persist( publication );
+		} catch ( Exception e ) {
+			throw new DAOException( e );
+		}
 	}
 
 	@Override
 	public Object afficher(Object object) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		Publication publication ;
+		Long publicationId = null;
+		if (object instanceof Publication) {
+			publication = (Publication) object;
+		}
+		else if(object instanceof Long){
+			publicationId = (Long) object;
+		}
+		Query requete = em.createQuery( JPQL_SELECT_PAR_IDPUB );
+		requete.setParameter( PARAM_IDPUB, publicationId );
+		try {
+			publication = (Publication) requete.getSingleResult();
+		} catch ( NoResultException e ) {
+			return null;
+		} catch ( Exception e ) {
+			throw new DAOException( e );
+		}
+		return publication;
 	}
 
 	@Override

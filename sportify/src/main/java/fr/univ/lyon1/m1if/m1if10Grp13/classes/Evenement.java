@@ -1,5 +1,7 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
+import org.hibernate.annotations.LazyToOne;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,13 +12,13 @@ import java.util.Date;
 public class Evenement {
     @Id
     @Column(name = "evenementid")
-    private  int evenenementId;
+    private Long evenementId;
     private String description;
     private Date datedebut;
     private Date datefin;
 
-    public Evenement(int evenenementId, String description, Date dateDebut, Date dateFin) {
-        this.evenenementId = evenenementId;
+    public Evenement(Long evenenementId, String description, Date dateDebut, Date dateFin) {
+        this.evenementId = evenenementId;
         this.description = description;
         this.datedebut = dateDebut;
         this.datefin = dateFin;
@@ -26,12 +28,12 @@ public class Evenement {
 
     }
 
-    public int getEvenenementId() {
-        return evenenementId;
+    public Long getEvenenementId() {
+        return evenementId;
     }
 
-    public void setEvenenementId(int evenenementId) {
-        this.evenenementId = evenenementId;
+    public void setEvenenementId(Long evenenementId) {
+        this.evenementId = evenenementId;
     }
 
     public String getDescription() {
