@@ -5,7 +5,7 @@
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/sportify" />
             <property name="hibernate.connection.user" value="grp13" />
-            <property name="hibernate.connection.password" value="p2020623" />
+            <property name="hibernate.connection.password" value="p1809163"/>
         </properties>
     </persistence-unit>
 </persistence>

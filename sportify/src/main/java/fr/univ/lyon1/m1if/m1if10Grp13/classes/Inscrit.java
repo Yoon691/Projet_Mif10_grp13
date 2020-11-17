@@ -10,6 +10,7 @@ public class Inscrit {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column(name = "emailinscrit")
     private String emailInscrit;
+    @ManyToOne
     @JoinColumn( name = "clubid" )
     private Club club;
     private String nominscrit;
@@ -39,7 +40,7 @@ public class Inscrit {
     }
 
     public Long getClubId() {
-        return clubId;
+        return club.getClubId();
     }
 
     public String getNomInscrit() {

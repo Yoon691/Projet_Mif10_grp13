@@ -14,7 +14,7 @@ public class Coach extends Inscrit {
     private String id;
     private CoachPost coachPost;
 
-    public Coach(String emailInscrit, Long clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
+    public Coach(String emailInscrit, Club clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
         super(emailInscrit, clubId, nomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
         this.coachPost = coachPost;
     }

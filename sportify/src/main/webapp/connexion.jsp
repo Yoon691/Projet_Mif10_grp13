@@ -82,29 +82,30 @@
 	
 	<div id="c-i-c" class="cadre-authentification cadre-inscription-club" style="left:-50%;">
 		<h2>Inscription Club</h2>
-		<form>
+		<form method="post" action="${pageContext.request.contextPath}/ClubInscription">
 			<div class="form-club">
 				<div class="user-box">
-					<input type="text" name="" required="">
+					<input type="text" name="nomClub" required="">
 					<label>Nom du club</label>
 				</div>
 				<div class="user-box">
-					<input type="text" name="" required="">
+					<input type="text" name="emailClub" required="">
 					<label>Email</label>
 				</div>
 				<div class="user-box">
-					<input type="text" name="" required="">
+					<input type="text" name="nomResponsable" required="">
 					<label>Nom responsable</label>
 				</div>
 				<div class="user-box">
-					<input type="password" name="" required="">
+					<input type="password" name="passClub" required="">
 					<label>Mot de passe</label>
 				</div>
 				<div class="user-box">
-					<input type="number" name="" required="">
+					<input type="number" name="nbMax" required="">
 					<label>Capacité (nb adhérent max)</label>
 				</div>
 			</div>
+			<input type="submit" value="Inscrire le club">
 			<a href="#">
 				<span></span>
 				<span></span>
