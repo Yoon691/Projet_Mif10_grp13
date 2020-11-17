@@ -1,53 +1,64 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 
 @Stateless
-public class DAOClub implements DAOCrud{
-	private static final String JPQL_SELECT_PAR_NOMCLUB = "SELECT c FROM Club c WHERE c.nomclub=:nomclub";
-	private static final String PARAM_NOMCLUB           = "nomclub";
+public class DAOClub implements DAOCrud {
+	@PersistenceContext( unitName = "pu-sportify" )
+	private static EntityManagerFactory factory;
+	private EntityManager entitymanager;
 
-	@PersistenceContext(unitName = "pu-sportify")
-	private EntityManager em;
-	@Override
-	public void creer(Object object) throws DAOException {
-		Club club = null;
-		if (object instanceof Club)
-			club	= (Club) object;
-
-		try {
-
-			em.persist( club );
-		} catch ( Exception e ) {
-			throw new DAOException( e );
-		}
+	public DAOClub() {
+		this.factory = Persistence.createEntityManagerFactory("pu-sportify");
+		this.entitymanager = factory.createEntityManager();
 	}
 
 
 	@Override
-	public Object afficher(Object object) throws DAOException {
-		Club club ;
-		String nomclub = null;
-		if (object instanceof Club) {
-			club = (Club) object;
+	public void creer(Object objet) throws DAOException {
+		System.out.println("Factory is " + factory );
+		Club club = null;
+		if (objet instanceof Club) {
+			club = (Club) objet;
 		}
-		else if(object instanceof String){
-			nomclub = (String) object;
-		}
-		Query requete = em.createQuery( JPQL_SELECT_PAR_NOMCLUB );
-		requete.setParameter( PARAM_NOMCLUB, nomclub );
 		try {
-			club = (Club) requete.getSingleResult();
+			System.out.println("Entity manager is " + entitymanager);
+			entitymanager.persist(club);
+//        	System.out.println("EM is" + entitymanager);
+//        	// Lancement d'une transaction
+//        	entitymanager.getTransaction( ).begin( );
+//
+//        	// Modification de la table
+//            entitymanager.persist( inscrit );
+//
+//            // Mise à jours de la table
+//            entitymanager.getTransaction( ).commit( );
+//
+//            // Femeture de l'objet ntityManager
+//            entitymanager.close( );
+		} catch ( Exception e ) {
+			throw new DAOException( e );
+		}
+
+	}
+
+	@Override
+	public Object afficher(Object object) throws DAOException {
+		String emailClub = null;
+		Club club = null;
+		if (object instanceof String) {
+			emailClub = (String) object;
+		}
+		try {
+			club = (Club) entitymanager.find( Club.class, emailClub );
 		} catch ( NoResultException e ) {
-			return null;
+			System.out.println("User not found");
 		} catch ( Exception e ) {
 			throw new DAOException( e );
 		}
@@ -57,13 +68,27 @@ public class DAOClub implements DAOCrud{
 	@Override
 	public void update(Object object) throws DAOException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public int delete(Object object) throws DAOException {
-		// TODO Auto-generated method stub
+		String emailClub = null;
+		if (object instanceof String) {
+			emailClub = (String) object;
+		}
+		try {
+			entitymanager.getTransaction( ).begin( );
+			Club club = entitymanager.find( Club.class, emailClub );
+			entitymanager.remove( club );
+			entitymanager.getTransaction( ).commit( );
+			entitymanager.close( );
+		}catch (Exception e) {
+			System.out.println("Canno't delete user");
+			return -1;
+		}
 		return 0;
 	}
+
 
 }

@@ -13,9 +13,9 @@ import java.util.Date;
 public class Coach extends Inscrit {
     private CoachPost coachPost;
 
-    public Coach(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
-        super(emailInscrit, club, nomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
-    	this.coachPost = coachPost;
+    public Coach(String emailInscrit, Club clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
+        super(emailInscrit, clubId, nomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+        this.coachPost = coachPost;
     }
 
     public Coach() {

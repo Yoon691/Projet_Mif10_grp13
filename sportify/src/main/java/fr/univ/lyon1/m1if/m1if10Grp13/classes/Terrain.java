@@ -1,7 +1,11 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
+<<<<<<< HEAD
+//import org.hibernate.annotations.Cache;
+=======
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.LazyToOne;
+>>>>>>> 5591a01c74006fdeb3e4aac9cf77c928554d946a
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

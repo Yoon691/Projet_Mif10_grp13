@@ -11,113 +11,15 @@
 	<div class="connexion-title">SPORTIFY</div>
 	
 	<div id="c-c" class="cadre-authentification cadre-connexion">
-		<h2>Connexion</h2>
-		<form method="POST" action="UserLogin">
-			<div class="user-box">
-				<input type="text" name="email" required="">
-				<label>Email</label>
-			</div>
-			<div class="user-box">
-				<input type="password" name="password" required="">
-				<label>Mot de passe</label>
-			</div>
-			<input type="submit">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				Connexion
-			</input>
-		</form>
-		<div class="inscrire">
-			<a class="aff-inscr-adh">Inscription Adhérent</a>
-			-
-			<a class="aff-inscr-club">Inscription Club</a>
-		</div>
+		<%@ include file="composants/authentification/connexionForm.jsp" %>
 	</div>
 
 	<div id="c-i-a" class="cadre-authentification cadre-inscription-adh" style="left:-50%;">
-		<h2>Inscription adhérent</h2>
-		<form method="POST" action="UserInscription">
-			<div class="form-adh">
-				<div class="user-box">
-					<input type="text" name="nomInscrit" required="">
-					<label>Nom</label>
-				</div>
-				<div class="user-box">
-					<input type="text" name="prenomInscrit" required="">
-					<label>Prénom</label>
-				</div>
-				<div class="user-box">
-					<input type="password" name="password" required="">
-					<label>Mot de passe</label>
-				</div>
-				<div class="user-box">
-					<input type="email" name="emailInscrit" required="">
-					<label>Email</label>
-				</div>
-				<div class="user-box">
-					<input type="tel" name="telInscrit" required="">
-					<label>n° téléphone</label>
-				</div>
-				<div class="user-box">
-					<input type="date" name="naissanceInscrit" required="">
-					<label>Date de naissance</label>
-				</div>
-			</div>
-			<input type="submit">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				S'inscrire
-			</input>
-		</form>
-		<div class="inscrire">
-			<a class="aff-connexion">Connexion</a>
-			-
-			<a class="aff-inscr-club">Inscription Club</a>
-		</div>
+		<%@ include file="composants/authentification/inscriptionAdhForm.jsp" %>
 	</div>
 	
 	<div id="c-i-c" class="cadre-authentification cadre-inscription-club" style="left:-50%;">
-		<h2>Inscription Club</h2>
-		<form>
-			<div class="form-club">
-				<div class="user-box">
-					<input type="text" name="" required="">
-					<label>Nom du club</label>
-				</div>
-				<div class="user-box">
-					<input type="text" name="" required="">
-					<label>Email</label>
-				</div>
-				<div class="user-box">
-					<input type="text" name="" required="">
-					<label>Nom responsable</label>
-				</div>
-				<div class="user-box">
-					<input type="password" name="" required="">
-					<label>Mot de passe</label>
-				</div>
-				<div class="user-box">
-					<input type="number" name="" required="">
-					<label>Capacité (nb adhérent max)</label>
-				</div>
-			</div>
-			<a href="#">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				Inscrire le club
-			</a>
-		</form>
-		<div class="inscrire">
-			<a class="aff-connexion">Connexion</a>
-			-
-			<a class="aff-inscr-adh">Inscription Adhérent</a>
-		</div>
+		<%@ include file="composants/authentification/inscriptionClubForm.jsp" %>
 	</div>
 	
 	<div class="connexion-footer">

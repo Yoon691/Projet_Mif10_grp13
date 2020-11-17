@@ -12,25 +12,21 @@
 <body>
 
 <div class="interface">
-	<div id="interface-header" class="interface-header">
-		<h1>SPORTIFY</h1>
+	<div class="interface-header">
+		<div class="header-title">SPORTIFY</div>
 		
-
 	    <a href="index.jsp">
 	    	<button class="deconnexion-button"></button>
 		</a>
-		
 		<button class="setting-button"></button>
-		
 		<button class="identifiant-button"></button>
-
 	</div>
 	
-	<div id="menu-interface" class="menu-interface">
+	<div class="interface-menu">
 		<%@ include file="composants/menu_inscrit.jsp" %>
 	</div>
 	
-	<div id=interface-contenu class="interface-contenu">
+	<div class="interface-contenu">
 	
 	</div>
 </div>

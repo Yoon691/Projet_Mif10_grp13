@@ -48,8 +48,9 @@ public class Inscrit {
         return emailInscrit;
     }
 
-    public Club getclub() {
-        return club;
+    public Long getClubId() {
+        return club.getClubId();
+
     }
 
     public String getNomInscrit() {

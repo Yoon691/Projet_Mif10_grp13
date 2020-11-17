@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 
 <style>
 	.soonNews {
@@ -7,6 +7,7 @@
 		height: 648px;
 		border: solid red 3px;
 		background-color: #F2F2F2;
+		overflow:scroll;
 	}
 
 	.banniere-sn {
@@ -38,25 +39,27 @@
 </style>
 
 <head>
-	<meta charset="utf-8">
+	<%--<meta charset="utf-8">--%>
 </head>
 
 <section>
-
+	<% int nb_elements = 5;%>
 	
 	<div class="soonNews">
 	
 		<div class="banniere-sn">
 			<h2>Prochaines actualités :</h2>
 		</div>
-		
+		<% for(int i =0; i<nb_elements; i++){ %>
 		<div class="content-sn">
-			Hello World Je teste le contenu :) Quand on met un contenu qui est long
+			Hello World :
 		</div>
 
 		<hr class="line">
+		<% } %>
 
-		<div class="content-sn">
+
+		<%--<div class="content-sn">
 			Hello World
 		</div>
 
@@ -64,7 +67,7 @@
 
 		<div class="content-sn">
 			Actualité 3:
-		</div>
+		</div>--%>
 		<%-- <c:forEach var="name"  items="${requestScope['ListName']}" >
 	          <option value="${ListName.nom}"> ${ListName.nom} </option>
 		</c:forEach> --%>

@@ -5,140 +5,148 @@
  src: url("fonts/Roboto-Light.ttf") format("truetype");
 }
 
+@font-face {
+ font-family: "ZillaSlab-Bold";
+ src: url("fonts/ZillaSlab-Bold.ttf") format("truetype");
+}
+
 .interface {
-	width: 100%;
+	width: 100vw;
+	height:100vh;
     overflow: hidden;
 }
 
+/* ============ HEADER ==============*/
+
 .interface-header {
 	position: fixed;
-	z-index: 5;
-	background-color: #373434;
 	width: 82vw;
-	height: 60px;
+	height: 6vh;
+	background-color: #373434;
 	transition: all 0.3s ease-in-out;
 	margin-left: 18vw;
-	padding-right: 20px;
 }
 
-.menu {
-	padding-top: 100px;
+
+.header-title {
+	color: #FDC500;
+	text-align: center;
+	font-family: ZillaSlab-Bold;
+	font-size: 4vh;
+}
+
+.deconnexion-button,
+.setting-button,
+.identifiant-button {
+	position: fixed;
+    right: 0;
+    top: 1vh;
+    padding: 2vh;
+    border: none;
+    cursor: pointer;
+    background-size: cover !important;
+}
+
+.deconnexion-button {
+    margin-right: 2vh;
+    background: url(/img/icone/Quitter.png) no-repeat;
+    background-size: cover;
+}
+
+.setting-button {
+    margin-right: 7vh;
+	background: url(/img/icone/settings.png) no-repeat;
+}
+
+.identifiant-button {
+    margin-right: 12vh;
+	background: url(/img/icone/tete.png) no-repeat;
+}
+
+/* ============ \HEADER ==============*/
+
+/* ============ MENU ==============*/
+
+.interface-menu {
+	padding-top: 6vh;
 	background-color: #282828;
 	width: 18vw;
 	height: 100vh;
 	font-family: Roboto-Light;
-	
-	}
+}
 
-h1 {
-	color: #FDC500;
+.user-info {
 	text-align: center;
+}
+.profil-picture {
+	border-radius: 50%;
+    width: 8vw;
+}
+
+.user-name {
+	color: white;
+	margin-top: 2vh;
+    font-size: 2vw;
+}
+
+.user-club {
+	color: grey;
+    margin-top: -0.5vh;
+}
+
+.btn-list {
+	margin-top: 3vh;
 }
 
 .menu-button {
 	border: none;
-	color: white;
-	text-align: left;
-	border-radius: 10px;
-	height: 40px;
-	padding-left: 60px;
-	width: 50px;
-	margin-left: 10px;
-	float: left;
-	margin-top: 15px;
-	cursor: pointer;
-	width: 15vw;
+    color: white;
+    text-align: left;
+    border-radius: 5px;
+    height: 5vh;
+    padding-left: 60px;
+    margin-left: 5%;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 90%;
 }
 
 .menu-button:hover {
 	background-color: #FDC500; 
 }
 
-.deconnexion-button {
-	border: none;
-	width: 20px;
-	margin-right: 5px;
-	float: right;
-	margin-top: -50px;
-	cursor: pointer;
-	background: url(/img/icone/Quitter.png) no-repeat;
-	padding: 20px;
-	background-size: cover;
-}
-
-.setting-button {
-	border: none;
-    width: max-content;
-    margin-right: 52px;
-    float: right;
-    margin-top: -50px;
-	cursor: pointer;
-	background: url(/img/icone/settings.png) no-repeat;
-	padding: 20px;
-	background-size: cover;
-}
-
-.identifiant-button {
-	border: none;
-	width: 10px;
-	margin-right: 100px;
-	float: right;
-	margin-top: -50px;
-	cursor: pointer;
-	background: url(/img/icone/tete.png) no-repeat;
-	padding: 20px;
-	background-size: cover;
-}
-
 .home-button {
-	
-	
 	background: url(/img/icone/home.png) no-repeat;
-    background-position-x: left;
-    background-position-y: center;
-	background-size: 40px;
-	
-	
+	background-size: 5vh;
 }
 
 .calendrier-button {
-	
-	
 	background: url(/img/icone/calendrier.png) no-repeat;
-    background-position-x: left;
-    background-position-y: center;
-	background-size: 40px;
+	background-size: 5vh;
 }
 
 .club-button {
-	
-	
 	background: url(/img/icone/club.png) no-repeat;
-    background-position-x: left;
-    background-position-y: center;
-	background-size: 40px;
+	background-size: 5vh;
 }
 
-.information-icone {
-	max-width: 15%;
+.profil-button {
+	background: url(/img/icone/tete.png) no-repeat;
+	background-size: 5vh;
 }
 
-.container {
-  position: relative;
-  width: 50%;
+/* ============ \MENU ==============*/
+
+/* ============ CONTENU ==============*/
+
+.interface-contenu {
+	position: fixed;
+    width: 82vw;
+    height: 94vh;
+    top: 6vh;
+    left: 18vw;
 }
 
-.container .btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #555;
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
+/* ============ \CONTENU ==============*/
+
+
