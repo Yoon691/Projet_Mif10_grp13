@@ -19,6 +19,7 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
  */
 @WebServlet(name = "UserLogin", urlPatterns="/UserLogin")
 public class UserLogin extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
 	private DAOInscrit daoInscrit;
 	
@@ -67,7 +68,6 @@ public class UserLogin extends HttpServlet {
 
 			}	
 		}
-		System.out.println("We have a session attribute: " + (Inscrit) session.getAttribute("user"));
 	}
 
 }

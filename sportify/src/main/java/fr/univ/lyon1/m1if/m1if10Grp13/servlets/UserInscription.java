@@ -81,7 +81,7 @@ public class UserInscription extends HttpServlet {
 				this.servletContext.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );		
 			}
 		} catch ( DAOException e) {
-			    this.getServletContext().getRequestDispatcher( "/connexion.jsp" ).forward( request, response );		
+			    this.servletContext.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );		
 				e.printStackTrace();
 		}
 	}

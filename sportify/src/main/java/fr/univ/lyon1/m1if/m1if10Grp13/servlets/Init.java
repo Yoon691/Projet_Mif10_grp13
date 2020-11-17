@@ -15,9 +15,16 @@ import java.io.IOException;
 @WebServlet(name = "Init", urlPatterns="/",loadOnStartup= 1)
 public class Init extends HttpServlet {
 	
-    @Override
+	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ServletContext servletContext;
+
+	@Override
 	public void init(ServletConfig config) throws ServletException {
-    	ServletContext servletContext = config.getServletContext();
+    	this.servletContext = config.getServletContext();
     	DAOInscrit daoInscrit = new DAOInscrit();
     	servletContext.setAttribute("daoInscrit", daoInscrit);
 	}
@@ -27,6 +34,6 @@ public class Init extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("/index.jsp");
+        this.servletContext.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }
