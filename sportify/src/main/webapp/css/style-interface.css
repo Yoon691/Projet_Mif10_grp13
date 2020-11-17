@@ -47,6 +47,11 @@
     background-size: cover !important;
 }
 
+.burger-button {
+    background: url(/img/icone/burger-menu.png) no-repeat;
+    background-size: cover;
+}
+
 .deconnexion-button {
     margin-right: 2vh;
     background: url(/img/icone/Quitter.png) no-repeat;
@@ -104,11 +109,14 @@
     text-align: left;
     border-radius: 5px;
     height: 5vh;
-    padding-left: 60px;
+    font-size: large;
+    padding-left: 80px;
     margin-left: 5%;
     margin-top: 15px;
     cursor: pointer;
     width: 90%;
+    background-size: 5vh !important;
+    background-position: 1vw !important;
 }
 
 .menu-button:hover {
@@ -117,22 +125,18 @@
 
 .home-button {
 	background: url(/img/icone/home.png) no-repeat;
-	background-size: 5vh;
 }
 
 .calendrier-button {
 	background: url(/img/icone/calendrier.png) no-repeat;
-	background-size: 5vh;
 }
 
 .club-button {
 	background: url(/img/icone/club.png) no-repeat;
-	background-size: 5vh;
 }
 
 .profil-button {
 	background: url(/img/icone/tete.png) no-repeat;
-	background-size: 5vh;
 }
 
 /* ============ \MENU ==============*/
