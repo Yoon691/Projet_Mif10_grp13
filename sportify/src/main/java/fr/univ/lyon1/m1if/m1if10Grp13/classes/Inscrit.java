@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@ Table(name = "inscrit")
+@Table(name = "inscrit")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Inscrit {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column(name = "emailinscrit")
     private String emailInscrit;
     @ManyToOne
@@ -41,6 +41,7 @@ public class Inscrit {
 
     public Long getClubId() {
         return club.getClubId();
+
     }
 
     public String getNomInscrit() {
@@ -67,7 +68,7 @@ public class Inscrit {
         this.emailInscrit = emailInscrit;
     }
 
-    public void setClubId(Club club) {
+    public void setclub(Club club) {
         this.club = club;
     }
 

@@ -1,17 +1,16 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 import javax.persistence.Entity;
+import javax.persistence.InheritanceType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.Inheritance;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@IdClass(CoachPost.class)
-@Table(name = "coach")
+@Table(name="coach")
 public class Coach extends Inscrit {
-    @Id
-    private String id;
     private CoachPost coachPost;
 
     public Coach(String emailInscrit, Club clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
@@ -31,12 +30,11 @@ public class Coach extends Inscrit {
         this.coachPost = coachPost;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmailCoach(String emailCoach) {
+        super.setEmailInscrit(emailCoach);
     }
 
-    @Id
-    public String getId() {
-        return id;
+    public String getEmailCOach() {
+        return super.getEmailInscrit();
     }
 }
