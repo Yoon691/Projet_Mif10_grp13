@@ -2,9 +2,10 @@
     <persistence-unit name="pu-sportify" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
+        	<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/sportify" />
-            <property name="hibernate.connection.user" value="grp13" />
+            <property name="hibernate.connection.user" value="sportify" />
             <property name="hibernate.connection.password" value="p2020623" />
         </properties>
     </persistence-unit>
