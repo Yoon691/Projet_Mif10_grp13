@@ -27,11 +27,6 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 public class UserInscription extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
 
-	@EJB
-	private DAOInscrit daoInscrit ;
-
-
-
 	/**
      * @see HttpServlet#HttpServlet()
      */
@@ -52,7 +47,8 @@ public class UserInscription extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		daoInscrit = new DAOInscrit();
+		System.out.println("INside doPost");
+		DAOInscrit daoInscrit = new DAOInscrit();
 		String nomInscrit = request.getParameter("nomInscrit");
 		String prenomInscrit = request.getParameter("prenomInscrit");
 		String password = request.getParameter("password");
@@ -67,24 +63,17 @@ public class UserInscription extends HttpServlet {
 		}  
 		Date dateInscription = new Date();
 		Inscrit inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
-
+		System.out.println("Inscrit créeer");
 		try {
+				System.out.println(daoInscrit);
 				daoInscrit.creer( inscrit );
 		} catch ( DAOException e) {
 				e.printStackTrace();
 		}
-		request.setAttribute( "inscrit", inscrit );
 
 		HttpSession session = request.getSession();
-		Map<Long, Inscrit> inscrits = (HashMap<Long, Inscrit>) session.getAttribute( "inscreits" );
-
-		if ( inscrits == null ) {
-			inscrits = new HashMap<Long, Inscrit>();
-		}
-
-		inscrits.put( inscrit.getClubId(), inscrit);
 		/* Et enfin (ré)enregistrement de la map en session */
-		session.setAttribute( "inscrits", inscrits );
+		session.setAttribute( "inscrits", inscrit );
 
 		this.getServletContext().getRequestDispatcher( "/interface.jsp" ).forward( request, response );
 

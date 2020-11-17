@@ -13,18 +13,24 @@ import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 @Stateless
 public class DAOInscrit implements DAOCrud{
     @PersistenceContext( unitName = "pu-sportify" )
-    private EntityManager       entitymanager;
+    private static EntityManagerFactory factory;
+    private EntityManager entitymanager;
+    
+    public DAOInscrit() {
+    	this.factory = Persistence.createEntityManagerFactory("pu-sportify");
+    	this.entitymanager = factory.createEntityManager();
+    }
     
 
 	@Override
 	public void creer(Object objet) throws DAOException {
-//	    EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "pu-sportify" );
-//	    entitymanager = emfactory.createEntityManager( );
+		System.out.println("Factory is " + factory );
 		Inscrit inscrit = null;
 		if (objet instanceof Inscrit) {
 			inscrit = (Inscrit) objet;
 		}
         try {
+        	System.out.println("Entity manager is " + entitymanager);
         	entitymanager.persist(inscrit);
 //        	System.out.println("EM is" + entitymanager);
 //        	// Lancement d'une transaction

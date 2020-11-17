@@ -20,9 +20,9 @@ public class Inscrit {
     
  
 
-	public Inscrit(String emailInscrit, Long clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
+	public Inscrit(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
         this.emailInscrit = emailInscrit;
-        this.clubId = clubId;
+        this.club = club;
         this.nominscrit = nomInscrit;
         this.telinscrit = telInscrit;
         this.password = password;
@@ -66,8 +66,8 @@ public class Inscrit {
         this.emailInscrit = emailInscrit;
     }
 
-    public void setClubId(Long clubId) {
-        this.clubId = clubId;
+    public void setClubId(Club club) {
+        this.club = club;
     }
 
     public void setNomInscrit(String nomInscrit) {
