@@ -60,9 +60,9 @@ public class ClubInscription extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		/* Et enfin (ré)enregistrement de la map en session */
-		session.setAttribute( "clubss",club );
+		session.setAttribute( "clubs",club );
 
-		request.getRequestDispatcher( "/irnterface.jsp" ).forward( request, response );
+		request.getRequestDispatcher( "/interface.jsp" ).forward( request, response );
 	}
 
 }
