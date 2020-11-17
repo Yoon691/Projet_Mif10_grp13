@@ -146,11 +146,11 @@ to {
 }
 
 .soon-news {
-	background-color: wheat; /* à supprimer */
-	border: solid black 3px; /* à supprimer */
+	/*background-color: wheat; !* à supprimer *!
+	border: solid black 3px; !* à supprimer *!
 	width: 28vw; 
-	/* height: 90%; */
-	margin-right: 50px;
+	!* height: 90%; *!
+	margin-right: 50px;*/
 }
 
 .landing-information {
