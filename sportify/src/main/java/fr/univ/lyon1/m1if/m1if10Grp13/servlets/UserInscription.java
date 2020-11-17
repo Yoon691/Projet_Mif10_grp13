@@ -47,7 +47,6 @@ public class UserInscription extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("INside doPost");
 		DAOInscrit daoInscrit = new DAOInscrit();
 		String nomInscrit = request.getParameter("nomInscrit");
 		String prenomInscrit = request.getParameter("prenomInscrit");
@@ -58,34 +57,30 @@ public class UserInscription extends HttpServlet {
 		try {
 			naissanceInscrit= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
 		Date dateInscription = new Date();
 		Inscrit inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
 		System.out.println("Inscrit créeer");
 		try {
-				System.out.println(daoInscrit);
-				daoInscrit.creer( inscrit );
+			// check if email and password are not null
+			if(emailInscrit != null && password != null){
+				inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+				System.out.println(inscrit);
+				daoInscrit.creer(inscrit);
+				System.out.println("We are showing the man with email: " + emailInscrit);
+				Inscrit inscrit1 = (Inscrit) daoInscrit.afficher(emailInscrit);
+				System.out.println(inscrit1.getNomInscrit() + "  " + inscrit1.getDateInscription());
+			}
 		} catch ( DAOException e) {
+				this.getServletContext().getRequestDispatcher( "/interface.jsp" ).forward( request, response );	
 				e.printStackTrace();
 		}
-
 		HttpSession session = request.getSession();
 		/* Et enfin (ré)enregistrement de la map en session */
 		session.setAttribute( "inscrits", inscrit );
 
-		this.getServletContext().getRequestDispatcher( "/interface.jsp" ).forward( request, response );
-
-		// check if email and password are not null
-//		if(emailInscrit != null && password != null){
-//			inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
-//			System.out.println(inscrit);
-//			daoInscrit.creer(inscrit);
-//		}
-		
-		
-		
+		this.getServletContext().getRequestDispatcher( "/interface.jsp" ).forward( request, response );		
 	}
 
 }
