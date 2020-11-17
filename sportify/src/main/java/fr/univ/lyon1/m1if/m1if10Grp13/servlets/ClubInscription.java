@@ -51,16 +51,16 @@ public class ClubInscription extends HttpServlet {
 		String passwordclub = request.getParameter("passClub");
 		String nomresponsable = request.getParameter("nomResponsable");
 		int nbmaxadherent = Integer.parseInt(request.getParameter("nbMax"));
-		Club club = new Club(nomclub,emaiclub,passwordclub,nomresponsable,nbmaxadherent);
+//		Club club = new Club(nomclub,emaiclub,passwordclub,nomresponsable,nbmaxadherent);
 		try {
-			daoClub.creer( club );
+			daoClub.creer(nomclub,emaiclub,passwordclub,nomresponsable,nbmaxadherent);
 		} catch ( DAOException e) {
 			e.printStackTrace();
 		}
 
 		HttpSession session = request.getSession();
 		/* Et enfin (ré)enregistrement de la map en session */
-		session.setAttribute( "clubs",club );
+//		session.setAttribute( "clubs",club );
 
 		request.getRequestDispatcher( "/interface.jsp" ).forward( request, response );
 	}

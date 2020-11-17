@@ -26,6 +26,7 @@ public class Club {
         this.nomresponsable = nomresponsable;
         this.nbmaxadherent = nbmaxadherent;
     }
+    public Club(){}
 
     public Long getClubId() {
         return clubId;

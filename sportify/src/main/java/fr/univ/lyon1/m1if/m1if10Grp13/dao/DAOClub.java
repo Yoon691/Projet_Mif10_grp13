@@ -12,13 +12,12 @@ import javax.persistence.*;
 public class DAOClub implements DAOCrud {
 	@PersistenceContext( unitName = "pu-sportify" )
 	private static EntityManagerFactory factory;
-	private EntityManager entitymanager;
+	private final EntityManager entitymanager;
 
 	public DAOClub() {
-		this.factory = Persistence.createEntityManagerFactory("pu-sportify");
+		factory = Persistence.createEntityManagerFactory("pu-sportify");
 		this.entitymanager = factory.createEntityManager();
 	}
-
 
 	@Override
 	public void creer(Object objet) throws DAOException {
@@ -56,7 +55,7 @@ public class DAOClub implements DAOCrud {
 			emailClub = (String) object;
 		}
 		try {
-			club = (Club) entitymanager.find( Club.class, emailClub );
+			club = entitymanager.find( Club.class, emailClub );
 		} catch ( NoResultException e ) {
 			System.out.println("User not found");
 		} catch ( Exception e ) {
