@@ -19,7 +19,6 @@ public class Init extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
     	ServletContext servletContext = config.getServletContext();
     	DAOInscrit daoInscrit = new DAOInscrit();
-    	System.out.println(daoInscrit);
     	servletContext.setAttribute("daoInscrit", daoInscrit);
 	}
 

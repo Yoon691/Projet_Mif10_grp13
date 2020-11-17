@@ -11,7 +11,7 @@ public class Inscrit {
     @Column(name = "emailinscrit")
     private String emailInscrit;
     
-    @ManyToOne @JoinColumn(name="club")
+    @ManyToOne @JoinColumn(name="clubId")
     private Club club;
     @Column(name="nomInscrit")
     private String nominscrit;
