@@ -21,13 +21,13 @@
 				<input type="password" name="password" required="">
 				<label>Mot de passe</label>
 			</div>
-			<a href="#" type="submit">
+			<input type="submit">
 				<span></span>
 				<span></span>
 				<span></span>
 				<span></span>
 				Connexion
-			</a>
+			</input>
 		</form>
 		<div class="inscrire">
 			<a class="aff-inscr-adh">Inscription Adhérent</a>
