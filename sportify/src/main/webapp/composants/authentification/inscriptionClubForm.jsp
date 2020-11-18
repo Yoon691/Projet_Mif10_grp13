@@ -1,5 +1,5 @@
 <h2>Inscription Club</h2>
-<form method="post" action="${pageContext.request.contextPath}/ClubInscription">
+<form method="post" action="ClubInscription">
 	<div class="form-club">
 		<div class="user-box">
 			<input type="text" name="nomClub" required="">
