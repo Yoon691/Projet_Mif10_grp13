@@ -5,9 +5,9 @@ import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 public class DAOCoach implements DAOCrud{
 
 	@Override
-	public void creer(Object object) throws DAOException {
+	public boolean creer(Object object) throws DAOException {
 
-		
+		return true;
 	}
 
 	@Override

@@ -20,7 +20,7 @@
 	function showAccueil(){
 		document.getElementById("accueil").style.display="block";
 		document.getElementById("reserver").style.display="none";
-		document.getElementById("membres").style.display="none";
+		document.getElementById("listeclubs").style.display="none";
 		document.getElementById("profil").style.display="none";
 	}
 

@@ -53,7 +53,11 @@ public class ClubInscription extends HttpServlet {
 		int nbmaxadherent = Integer.parseInt(request.getParameter("nbMax"));
 		Club club = new Club(nomclub,emaiclub,passwordclub,nomresponsable,nbmaxadherent);
 		try {
-			daoClub.creer( club );
+			if(daoClub.creer( club )) {
+				System.out.println("Club created");
+			} else {
+				System.out.println("Cannot create club");
+			}
 		} catch ( DAOException e) {
 			e.printStackTrace();
 		}

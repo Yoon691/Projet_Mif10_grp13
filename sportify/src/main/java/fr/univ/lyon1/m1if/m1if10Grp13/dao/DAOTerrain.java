@@ -22,7 +22,7 @@ public class DAOTerrain implements DAOCrud{
 	private EntityManager em;
 
 	@Override
-	public void creer(Object object) throws DAOException {
+	public boolean creer(Object object) throws DAOException {
 		Terrain terrain = null;
 		if (object instanceof Terrain)
 			terrain	= (Terrain) object;
@@ -30,8 +30,9 @@ public class DAOTerrain implements DAOCrud{
 		try {
 
 			em.persist( terrain );
+			return true;
 		} catch ( Exception e ) {
-			throw new DAOException( e );
+			return false;
 		}
 
 

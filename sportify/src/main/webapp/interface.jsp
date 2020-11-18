@@ -35,42 +35,45 @@
 			Accueil
 		</div>
 
+
+	<%-- Réserver --%>
 		<div id="reserver" class="reserver hidden">
 			Reservation
 		</div>
 
+
+	<%--La liste des clubs--%>
 		<div id="listeclubs" class="listeclubs hidden">
 			Liste des clubs
 			<table class="tableau table table-bordered">
 				<tr>
 					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Date d'inscription</th>
-					<th>Numéro</th>
-					<th> Mail </th>
+					<th>Email</th>
+					<th>Responsable</th>
+					<th>Nombre d'adhérants</th>
 					<th> </th>
 				</tr>
 				<%-- --%>
 				<tr>
-					<td>Tonton</td>
-					<td>Floda</td>
-					<td>17/11/2020</td>
-					<td>0650595113</td>
-					<td> UncleFloda@gmail.com</td>
-					<td> <button onclick="retirer()"> X </button></td>
+					<td>Lyon</td>
+					<td>Lyon@gmail.com</td>
+					<td>Aulas</td>
+					<td> 7/12</td>
+					<td> <button onclick="rejoindre()"> Rejoindre </button></td>
 				</tr>
 				<tr>
-					<td>Tonton</td>
-					<td>Jeff</td>
-					<td>17/11/2020</td>
-					<td>0649025614</td>
-					<td> TontonJeff@gmail.com</td>
-					<td> <button onclick="retirer()"> X </button></td>
+					<td>Asvel</td>
+					<td>Parker@gmail.com</td>
+					<td>Parker</td>
+					<td>0/12</td>
+					<td> <button onclick="rejoindre()"> Rejoindre </button></td>
 				</tr>
 
 			</table>
 		</div>
 
+
+	<%--Mon Compte--%>
 		<div id="profil" class="profil hidden">
 			Profil
 		</div>
