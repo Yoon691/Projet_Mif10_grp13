@@ -49,18 +49,18 @@
 
 .deconnexion-button {
     margin-right: 2vh;
-    background: url(/img/icone/Quitter.png) no-repeat;
+    background: url(../img/icone/Quitter.png) no-repeat;
     background-size: cover;
 }
 
 .setting-button {
     margin-right: 7vh;
-	background: url(/img/icone/settings.png) no-repeat;
+	background: url(../img/icone/settings.png) no-repeat;
 }
 
 .identifiant-button {
     margin-right: 12vh;
-	background: url(/img/icone/tete.png) no-repeat;
+	background: url(../img/icone/tete.png) no-repeat;
 }
 
 /* ============ \HEADER ==============*/
@@ -116,22 +116,22 @@
 }
 
 .home-button {
-	background: url(/img/icone/home.png) no-repeat;
+	background: url(../img/icone/home.png) no-repeat;
 	background-size: 5vh;
 }
 
 .calendrier-button {
-	background: url(/img/icone/calendrier.png) no-repeat;
+	background: url(../img/icone/calendrier.png) no-repeat;
 	background-size: 5vh;
 }
 
 .club-button {
-	background: url(/img/icone/club.png) no-repeat;
+	background: url(../img/icone/club.png) no-repeat;
 	background-size: 5vh;
 }
 
 .profil-button {
-	background: url(/img/icone/tete.png) no-repeat;
+	background: url(../img/icone/tete.png) no-repeat;
 	background-size: 5vh;
 }
 
@@ -148,5 +148,44 @@
 }
 
 /* ============ \CONTENU ==============*/
+
+
+/*Tableau des personnes*/
+
+.tableau{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 75%;
+}
+
+.tableau td, th{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+.tableau tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+/* Cacher les éléments*/
+
+.membres.hidden {
+	display: none;
+}
+
+.reserver.hidden {
+	display: none;
+}
+
+.listeclubs.hidden {
+	display: none;
+}
+
+.profil.hidden {
+	display: none;
+}
+
+
 
 
