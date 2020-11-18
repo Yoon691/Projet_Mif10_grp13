@@ -6,7 +6,8 @@ public class DAOGestionAdminClub implements DAOCrud{
 
 
 	@Override
-	public void creer(Object objet) throws DAOException {
+	public boolean creer(Object objet) throws DAOException {
+		return false;
 		// TODO Auto-generated method stub
 		
 	}

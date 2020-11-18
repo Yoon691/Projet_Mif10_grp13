@@ -22,7 +22,7 @@ public class DAOPublication implements DAOCrud{
 
 
 	@Override
-	public void creer(Object object) throws DAOException {
+	public boolean creer(Object object) throws DAOException {
 		Publication publication = null;
 		if (object instanceof Publication)
 			publication	= (Publication) object;
@@ -30,9 +30,11 @@ public class DAOPublication implements DAOCrud{
 		try {
 
 			em.persist( publication );
+			return true;
 		} catch ( Exception e ) {
-			throw new DAOException( e );
+			return false;
 		}
+		
 	}
 
 	@Override

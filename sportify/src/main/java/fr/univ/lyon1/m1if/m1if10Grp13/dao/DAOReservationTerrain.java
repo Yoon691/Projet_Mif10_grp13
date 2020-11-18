@@ -5,7 +5,8 @@ import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 public class DAOReservationTerrain implements DAOCrud{
 
 	@Override
-	public void creer(Object objet) throws DAOException {
+	public boolean creer(Object objet) throws DAOException {
+		return false;
 		// TODO Auto-generated method stub
 		
 	}

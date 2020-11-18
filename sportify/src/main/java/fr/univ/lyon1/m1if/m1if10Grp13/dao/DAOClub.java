@@ -21,7 +21,7 @@ public class DAOClub implements DAOCrud {
 
 
 	@Override
-	public void creer(Object objet) throws DAOException {
+	public boolean creer(Object objet) throws DAOException {
 		System.out.println("Factory is " + factory );
 		Club club = null;
 		if (objet instanceof Club) {
@@ -42,8 +42,9 @@ public class DAOClub implements DAOCrud {
 //
 //            // Femeture de l'objet ntityManager
 //            entitymanager.close( );
+			return true;
 		} catch ( Exception e ) {
-			throw new DAOException( e );
+			return false;
 		}
 
 	}

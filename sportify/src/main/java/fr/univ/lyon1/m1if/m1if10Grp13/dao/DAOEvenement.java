@@ -21,7 +21,7 @@ public class DAOEvenement implements DAOCrud{
 	private EntityManager em;
 
 	@Override
-	public void creer(Object object) throws DAOException {
+	public boolean creer(Object object) throws DAOException {
 		Evenement evenement = null;
 		if (object instanceof Evenement)
 			evenement	= (Evenement) object;
@@ -29,8 +29,9 @@ public class DAOEvenement implements DAOCrud{
 		try {
 
 			em.persist( evenement );
+			return true;
 		} catch ( Exception e ) {
-			throw new DAOException( e );
+			return false;
 		}
 		
 	}
