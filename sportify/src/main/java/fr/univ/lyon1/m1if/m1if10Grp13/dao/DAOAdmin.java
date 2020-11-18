@@ -20,16 +20,16 @@ public class DAOAdmin implements DAOCrud{
 
 
 	@Override
-	public void creer( Object object ) throws DAOException {
+	public boolean creer( Object object ) throws DAOException {
 		Admin admin = null;
 		if (object instanceof Admin)
 			 admin	= (Admin) object;
 
 		try {
-
 			em.persist( admin );
+			return true;
 		} catch ( Exception e ) {
-			throw new DAOException( e );
+			return false;
 		}
 	}
 

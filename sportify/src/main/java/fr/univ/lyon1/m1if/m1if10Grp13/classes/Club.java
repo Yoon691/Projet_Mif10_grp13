@@ -16,13 +16,13 @@ public class Club {
     private String nomresponsable;
     private int nbmaxadherent;
 
-//    public Club(String nomclub, String emailclub, String passwordclub, String nomresponsable, int nbmaxadherent) {
-//        this.nomclub = nomclub;
-//        this.emailclub = emailclub;
-//        this.passwordclub = passwordclub;
-//        this.nomresponsable = nomresponsable;
-//        this.nbmaxadherent = nbmaxadherent;
-//    }
+    public Club(String nomclub, String emailclub, String passwordclub, String nomresponsable, int nbmaxadherent) {
+        this.nomclub = nomclub;
+        this.emailclub = emailclub;
+        this.passwordclub = passwordclub;
+        this.nomresponsable = nomresponsable;
+        this.nbmaxadherent = nbmaxadherent;
+    }
     public Club(){}
 
     public Long getClubId() {

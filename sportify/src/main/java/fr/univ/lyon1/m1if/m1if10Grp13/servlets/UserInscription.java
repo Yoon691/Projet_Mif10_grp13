@@ -27,13 +27,13 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
  */
 @WebServlet(name = "UserInscription", urlPatterns="/UserInscription")
 public class UserInscription extends HttpServlet {
+
 	private DAOInscrit daoInscrit;
 	private ServletContext servletContext;
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		this.servletContext = config.getServletContext();
 		this.daoInscrit = (DAOInscrit) servletContext.getAttribute("daoInscrit");
-		System.out.println(daoInscrit);
 	}
 
 	/**
@@ -55,6 +55,7 @@ public class UserInscription extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Récupération des parametres
 		String nomInscrit = request.getParameter("nomInscrit");
 		String prenomInscrit = request.getParameter("prenomInscrit");
 		String password = request.getParameter("password");
@@ -65,25 +66,32 @@ public class UserInscription extends HttpServlet {
 			naissanceInscrit= new SimpleDateFormat("yyyy/MM/dd").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}  
+		} 
+		
+		// Date d'inscription (now)
 		Date dateInscription = new Date();
 		Inscrit inscrit;
 		System.out.println("Inscrit Instancier");
+
+		
+		// Creation d'une instance de l'inscrit
+		inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
 		try {
 			// check if email and password are not null
 			if(emailInscrit != null && password != null){
-				inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
-				daoInscrit.creer(inscrit);
-				Inscrit inscrit1 = (Inscrit) daoInscrit.afficher(emailInscrit);
-				System.out.println("Un iscrit créeé dans la BD: " + inscrit1.getNomInscrit() + "  " + inscrit1.getDateInscription()
-				+ inscrit1.getPassword() + "  " 
-				);
-				this.servletContext.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );		
+				// Ajouter l'inscrit à la BD
+				if(daoInscrit.creer(inscrit)) {
+					System.out.println("User created");
+				} else {
+					System.out.println("L'utilisateur existe déjà");
+				}
 			}
 		} catch ( DAOException e) {
-			    this.servletContext.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );		
 				e.printStackTrace();
 		}
+		// Redirection vers la page de connexion
+	    this.servletContext.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );		
+
 	}
 		
 

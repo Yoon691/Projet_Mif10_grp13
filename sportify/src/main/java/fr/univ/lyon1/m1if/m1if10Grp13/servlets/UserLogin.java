@@ -60,7 +60,6 @@ public class UserLogin extends HttpServlet {
 				if(inscrit.getPassword().equals(password)) {
 					session.setAttribute("user", inscrit);
 					this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
-					System.out.println("We have a session attribute: " + (Inscrit) session.getAttribute("user"));
 				}
 			} catch (Exception e ) {
 				System.out.println("Wrong email or password");

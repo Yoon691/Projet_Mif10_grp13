@@ -48,24 +48,24 @@
 }
 
 .burger-button {
-    background: url(/img/icone/burger-menu.png) no-repeat;
+    background: url(../img/icone/burger-menu.png) no-repeat;
     background-size: cover;
 }
 
 .deconnexion-button {
     margin-right: 2vh;
-    background: url(/img/icone/Quitter.png) no-repeat;
+    background: url(../img/icone/Quitter.png) no-repeat;
     background-size: cover;
 }
 
 .setting-button {
     margin-right: 7vh;
-	background: url(/img/icone/settings.png) no-repeat;
+	background: url(../img/icone/settings.png) no-repeat;
 }
 
 .identifiant-button {
     margin-right: 12vh;
-	background: url(/img/icone/tete.png) no-repeat;
+	background: url(../img/icone/tete.png) no-repeat;
 }
 
 /* ============ \HEADER ==============*/
@@ -80,7 +80,7 @@
 	font-family: Roboto-Light;
 }
 
-.user-info {
+.user-info, .club-info {
 	text-align: center;
 }
 .profil-picture {
@@ -88,7 +88,7 @@
     width: 8vw;
 }
 
-.user-name {
+.user-name, .club-name {
 	color: white;
 	margin-top: 2vh;
     font-size: 2vw;
@@ -124,19 +124,23 @@
 }
 
 .home-button {
-	background: url(/img/icone/home.png) no-repeat;
+	background: url(../img/icone/home.png) no-repeat;
+}
+
+.event-button {
+	background: url(../img/icone/event.png) no-repeat;
 }
 
 .calendrier-button {
-	background: url(/img/icone/calendrier.png) no-repeat;
+	background: url(../img/icone/calendrier.png) no-repeat;
 }
 
 .club-button {
-	background: url(/img/icone/club.png) no-repeat;
+	background: url(../img/icone/club.png) no-repeat;
 }
 
 .profil-button {
-	background: url(/img/icone/tete.png) no-repeat;
+	background: url(../img/icone/tete.png) no-repeat;
 }
 
 /* ============ \MENU ==============*/

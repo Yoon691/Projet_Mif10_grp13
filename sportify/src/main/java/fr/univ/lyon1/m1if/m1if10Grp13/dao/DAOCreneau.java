@@ -18,7 +18,7 @@ public class DAOCreneau implements DAOCrud{
 
 
 	@Override
-	public void creer(Object object) throws DAOException {
+	public boolean creer(Object object) throws DAOException {
 		Creneau creneau = null;
 		if (object instanceof Creneau)
 			creneau	= (Creneau) object;
@@ -26,8 +26,9 @@ public class DAOCreneau implements DAOCrud{
 		try {
 
 			em.persist(creneau);
+			return true;
 		} catch ( Exception e ) {
-			throw new DAOException( e );
+			return false;
 		}
 		
 	}

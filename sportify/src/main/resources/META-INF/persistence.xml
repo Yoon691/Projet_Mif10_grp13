@@ -9,6 +9,7 @@
             <property name="hibernate.connection.password" value="p1809163"/>
             <!-- Utiliser le fichier sp.sql pour créer les tables -->
             <property name="hibernate.hbm2ddl.auto" value="validate" />
+
         </properties>
     </persistence-unit>
 </persistence>
