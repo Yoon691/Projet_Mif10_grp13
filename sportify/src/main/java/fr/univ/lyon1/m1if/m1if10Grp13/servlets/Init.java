@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
 import java.io.IOException;
 
-@WebServlet(name = "Init", urlPatterns="/",loadOnStartup= 1)
+@WebServlet(name = "Init", urlPatterns="/Init",loadOnStartup=1)
 public class Init extends HttpServlet {
 	
-	
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,9 @@ public class Init extends HttpServlet {
     	this.factory = Persistence.createEntityManagerFactory("pu-sportify");
     	
     	DAOInscrit daoInscrit = new DAOInscrit(this.factory);
+    	DAOClub daoClub = new DAOClub(this.factory);
     	servletContext.setAttribute("daoInscrit", daoInscrit);
+    	servletContext.setAttribute("daoClub", daoClub);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,6 +41,6 @@ public class Init extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.servletContext.getRequestDispatcher("/index.jsp").forward(request, response);
+        this.servletContext.getRequestDispatcher("/index.jsp");
     }
 }

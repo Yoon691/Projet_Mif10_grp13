@@ -11,39 +11,36 @@ import javax.persistence.*;
 @Stateless
 public class DAOClub implements DAOCrud {
 	@PersistenceContext( unitName = "pu-sportify" )
-	private static EntityManagerFactory factory;
-	private EntityManager entitymanager;
+	private EntityManagerFactory factory;
 
-	public DAOClub() {
-		this.factory = Persistence.createEntityManagerFactory("pu-sportify");
-		this.entitymanager = factory.createEntityManager();
+	public DAOClub(EntityManagerFactory factory) {
+		this.factory = factory;
 	}
 
 
 	@Override
 	public boolean creer(Object objet) throws DAOException {
-		System.out.println("Factory is " + factory );
+		EntityManager entitymanager = factory.createEntityManager();
 		Club club = null;
 		if (objet instanceof Club) {
 			club = (Club) objet;
 		}
 		try {
-			System.out.println("Entity manager is " + entitymanager);
 			entitymanager.persist(club);
-//        	System.out.println("EM is" + entitymanager);
-//        	// Lancement d'une transaction
-//        	entitymanager.getTransaction( ).begin( );
-//
-//        	// Modification de la table
-//            entitymanager.persist( inscrit );
-//
-//            // Mise à jours de la table
-//            entitymanager.getTransaction( ).commit( );
-//
-//            // Femeture de l'objet ntityManager
-//            entitymanager.close( );
+        	// Lancement d'une transaction
+        	entitymanager.getTransaction( ).begin( );
+
+        	// Modification de la table
+            entitymanager.persist( club );
+
+            // Mise à jours de la table
+            entitymanager.getTransaction( ).commit( );
+
+            // Femeture de l'objet ntityManager
+            entitymanager.close( );
 			return true;
 		} catch ( Exception e ) {
+			e.printStackTrace();
 			return false;
 		}
 
@@ -51,6 +48,7 @@ public class DAOClub implements DAOCrud {
 
 	@Override
 	public Object afficher(Object object) throws DAOException {
+		EntityManager entitymanager = factory.createEntityManager();
 		String emailClub = null;
 		Club club = null;
 		if (object instanceof String) {
@@ -68,12 +66,14 @@ public class DAOClub implements DAOCrud {
 
 	@Override
 	public void update(Object object) throws DAOException {
+		EntityManager entitymanager = factory.createEntityManager();
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public int delete(Object object) throws DAOException {
+		EntityManager entitymanager = factory.createEntityManager();
 		String emailClub = null;
 		if (object instanceof String) {
 			emailClub = (String) object;
