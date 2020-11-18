@@ -62,12 +62,12 @@ public class UserInscription extends HttpServlet {
 		String telInscrit = request.getParameter("telInscrit");
 		Date naissanceInscrit = null;
 		try {
-			naissanceInscrit= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("naissanceInscrit"));
+			naissanceInscrit= new SimpleDateFormat("yyyy/MM/dd").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}  
 		Date dateInscription = new Date();
-		Inscrit inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+		Inscrit inscrit;
 		System.out.println("Inscrit Instancier");
 		try {
 			// check if email and password are not null

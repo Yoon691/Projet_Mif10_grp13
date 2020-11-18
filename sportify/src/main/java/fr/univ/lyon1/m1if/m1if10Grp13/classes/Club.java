@@ -1,16 +1,13 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.*;
+
+
 @Entity
 @Table(name = "club")
 public class Club {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "clubid")
     private Long clubId;
     private String nomclub;
@@ -19,13 +16,13 @@ public class Club {
     private String nomresponsable;
     private int nbmaxadherent;
 
-    public Club(String nomclub, String emailclub, String passwordclub, String nomresponsable, int nbmaxadherent) {
-        this.nomclub = nomclub;
-        this.emailclub = emailclub;
-        this.passwordclub = passwordclub;
-        this.nomresponsable = nomresponsable;
-        this.nbmaxadherent = nbmaxadherent;
-    }
+//    public Club(String nomclub, String emailclub, String passwordclub, String nomresponsable, int nbmaxadherent) {
+//        this.nomclub = nomclub;
+//        this.emailclub = emailclub;
+//        this.passwordclub = passwordclub;
+//        this.nomresponsable = nomresponsable;
+//        this.nbmaxadherent = nbmaxadherent;
+//    }
     public Club(){}
 
     public Long getClubId() {
