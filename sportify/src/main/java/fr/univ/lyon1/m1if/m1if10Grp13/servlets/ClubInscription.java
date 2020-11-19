@@ -75,7 +75,7 @@ public class ClubInscription extends HttpServlet {
 		/* Et enfin (ré)enregistrement de la map en session */
 		session.setAttribute( "clubs",club );
 
-		request.getRequestDispatcher( "/interface.jsp" ).forward( request, response );
+		request.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
 	}
 
 }

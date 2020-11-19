@@ -15,17 +15,17 @@ import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 public class DAOInscrit implements DAOCrud{
     @PersistenceContext( unitName = "pu-sportify" )
     private EntityManagerFactory factory;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
     
     public DAOInscrit(EntityManagerFactory factory) {
     	this.factory = factory;
     }
     
-    
-
+	/**
+	 * Ajouter un utilisateur à la table inscrit dans la BD.
+	 * @param objet une instance Inscrit
+	 * @return Un booléen qui est true si l'utilisateur est créé, false sinon
+	 */
 	@Override
 	public boolean creer(Object objet) throws DAOException {
 		// créer une instance de EntityManager pour lancer une transaction
@@ -52,7 +52,12 @@ public class DAOInscrit implements DAOCrud{
         	return false;
         }
 	}
-
+	
+	/**
+	 * Recherche un utilisateur par son Email (clé primaire), donc on utilise find à la place de createQuery.
+	 * @param Email sous forme d'une chaine de caractères 
+	 * @return Une instance de la classe inscrit s'il existe, null sinon
+	 */
 	@Override
 	public Object afficher(Object object) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
@@ -78,7 +83,12 @@ public class DAOInscrit implements DAOCrud{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	/**
+	 * Suppression d'un utilisateur de la table inscrit dans la BD.
+	 * @param Un email sous forme de chaine de caractère
+	 * @return 0 si la suppression est un un succès, -1 sinon
+	 */
 	@Override
 	public int delete(Object object) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
