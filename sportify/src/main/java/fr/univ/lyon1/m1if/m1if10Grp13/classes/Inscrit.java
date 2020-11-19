@@ -50,7 +50,6 @@ public class Inscrit {
 
     public Long getClubId() {
         return club.getClubId();
-
     }
 
     public String getNomInscrit() {

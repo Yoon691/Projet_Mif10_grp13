@@ -18,13 +18,14 @@ import java.io.IOException;
 @WebServlet(name = "Init", urlPatterns="/Init",loadOnStartup=1)
 public class Init extends HttpServlet {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
 	private EntityManagerFactory factory;
 
+	/**
+	 * Instanciation des DAO et du factory.
+	 */
 	@Override
 	public void init(ServletConfig config) throws ServletException {
     	this.servletContext = config.getServletContext();

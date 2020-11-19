@@ -4,6 +4,8 @@ import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
@@ -17,7 +19,11 @@ public class DAOClub implements DAOCrud {
 		this.factory = factory;
 	}
 
-
+	/**
+	 * Ajouter un club à la table club dans la BD.
+	 * @param objet une instance club
+	 * @return Un booléen qui est true si le club est créé, false sinon
+	 */
 	@Override
 	public boolean creer(Object objet) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
@@ -45,7 +51,13 @@ public class DAOClub implements DAOCrud {
 		}
 
 	}
-
+	
+	/**
+	 * Rechercher un club par son Email, sachant que l'email n'est pas la clé primaire de club,
+	 * donc on ne peut pas utiliser EntityManager.find() car elle prend une clé primaire comme param.
+	 * @param Email sous forme d'une chaine de caractères 
+	 * @return Une instance de Club s'il existe, null sinon
+	 */
 	@Override
 	public Object afficher(Object object) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
@@ -55,11 +67,22 @@ public class DAOClub implements DAOCrud {
 			emailClub = (String) object;
 		}
 		try {
-			club = (Club) entitymanager.find( Club.class, emailClub );
+			// faire une requete sql pour la récupération du club par email
+			List clubList = entitymanager.createQuery(
+			        "SELECT c FROM Club c WHERE c.emailclub LIKE :email")
+			        .setParameter("email", emailClub)
+			        .getResultList();
+			
+			// verifier si la requete retourne une val
+			if( !clubList.isEmpty() ) {
+				club = (Club) clubList.get(0);
+			}
 		} catch ( NoResultException e ) {
 			System.out.println("User not found");
 		} catch ( Exception e ) {
 			throw new DAOException( e );
+		} finally {
+			entitymanager.close();
 		}
 		return club;
 	}
@@ -70,7 +93,12 @@ public class DAOClub implements DAOCrud {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	/**
+	 * Suppression d'un club de la table club dans la BD.
+	 * @param Un email sous forme de chaine de caractère
+	 * @return 0 si la suppression est un un succès, -1 sinon
+	 */
 	@Override
 	public int delete(Object object) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
@@ -79,10 +107,19 @@ public class DAOClub implements DAOCrud {
 			emailClub = (String) object;
 		}
 		try {
+			// Démarer une transaction
 			entitymanager.getTransaction( ).begin( );
-			Club club = entitymanager.find( Club.class, emailClub );
+			
+			// Recherche le club par son email
+			Club club = (Club) this.afficher(emailClub);
+			
+			// Supprimer le club
 			entitymanager.remove( club );
+			
+			// mettre à jours la table club
 			entitymanager.getTransaction( ).commit( );
+			
+			// fermiture de l'EM
 			entitymanager.close( );
 		}catch (Exception e) {
 			System.out.println("Canno't delete user");
