@@ -4,12 +4,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,8 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
@@ -29,6 +23,7 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 public class UserInscription extends HttpServlet {
 
 	private DAOInscrit daoInscrit;
+
 	private ServletContext servletContext;
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -73,6 +68,7 @@ public class UserInscription extends HttpServlet {
 		
 		// Creation d'une instance de l'inscrit
 		Inscrit inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+
 		try {
 			// check if email and password are not null
 			if(emailInscrit != null && password != null){

@@ -128,5 +128,27 @@ public class DAOClub implements DAOCrud {
 		return 0;
 	}
 
-
+	/**
+	 * Afficher la liste de tous les adhérents d'un club donné.
+	 * @param Email du club sous forme d'une chaine de caractères 
+	 * @return Liste contenant tous les adhérents d'un club
+	 */
+	
+	public List<Inscrit> listerAdherents(String email) {
+		EntityManager entitymanager = factory.createEntityManager();
+		String query = "SELECT i"
+				+ " FROM Inscrit i JOIN i.club c WHERE c.emailclub LIKE :email";
+		List<Inscrit> adherents = null;
+		
+		try {
+			adherents = entitymanager.createQuery(
+			        query)
+			        .setParameter("email", email)
+			        .getResultList();
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		
+		return adherents;
+	}
 }
