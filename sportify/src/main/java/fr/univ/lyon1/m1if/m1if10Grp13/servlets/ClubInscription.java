@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +27,13 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ClubInscription", urlPatterns="/ClubInscription")
 public class ClubInscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private DAOClub daoClub;
+	private ServletContext servletContext;
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		this.servletContext = config.getServletContext();
+		this.daoClub = (DAOClub) servletContext.getAttribute("daoClub");
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,7 +55,6 @@ public class ClubInscription extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DAOClub daoClub = new DAOClub();
 		String nomclub = request.getParameter("nomClub");
 		String emaiclub = request.getParameter("emailClub");
 		String passwordclub = request.getParameter("passClub");
@@ -66,7 +75,7 @@ public class ClubInscription extends HttpServlet {
 		/* Et enfin (ré)enregistrement de la map en session */
 		session.setAttribute( "clubs",club );
 
-		request.getRequestDispatcher( "/interface.jsp" ).forward( request, response );
+		request.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
 	}
 
 }
