@@ -1,5 +1,7 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import org.postgresql.util.PSQLException;
 
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
@@ -49,13 +52,14 @@ public class DAOInscrit implements DAOCrud{
             
             return true;
         } catch(Exception e) {
+        	e.printStackTrace();
         	return false;
         }
 	}
 	
 	/**
 	 * Recherche un utilisateur par son Email (clé primaire), donc on utilise find à la place de createQuery.
-	 * @param Email sous forme d'une chaine de caractères 
+	 * @param object Email sous forme d'une chaine de caractères 
 	 * @return Une instance de la classe inscrit s'il existe, null sinon
 	 */
 	@Override
@@ -77,7 +81,7 @@ public class DAOInscrit implements DAOCrud{
         }
 		return inscrit;
 	}
-
+	
 	@Override
 	public void update(Object object) throws DAOException {
 		// TODO Auto-generated method stub
@@ -86,7 +90,7 @@ public class DAOInscrit implements DAOCrud{
 	
 	/**
 	 * Suppression d'un utilisateur de la table inscrit dans la BD.
-	 * @param Un email sous forme de chaine de caractère
+	 * @param object Un email sous forme de chaine de caractère
 	 * @return 0 si la suppression est un un succès, -1 sinon
 	 */
 	@Override
@@ -114,6 +118,49 @@ public class DAOInscrit implements DAOCrud{
 			return -1;
 		}
 		return 0;
+	}
+	/**
+	 * Afficher la liste de tous les utilisateur. 
+	 * @return Une liste contenant tous les utilisateurs dans la table Inscrit.
+	 */
+	
+	public List<Inscrit> afficherAll() {
+		EntityManager entitymanager = factory.createEntityManager();
+		String query = "SELECT i FROM Inscrit i";
+		List <Inscrit> userList = null;
+		try {
+		userList = entitymanager.createQuery(query).getResultList();
+		for(Inscrit user: userList) {
+			System.out.println(user.getEmailInscrit());
+		}
+		} catch (DAOException e) {
+			System.out.println("A error has occured");
+		}
+		return userList;
+	}
+	
+	/**
+	 * Adherer à un club et mettre la table inscrit à jours.
+	 * @param club une instance de club 
+	 * @param userEmail email de l'utilisateur
+ 	 */
+	public boolean adherer(Club club, Inscrit inscrit) {
+		EntityManager entitymanager = factory.createEntityManager();
+
+		try {
+			// Lancer une transaction
+			entitymanager.getTransaction().begin();
+			
+			// mettre à jours la colonne club
+			inscrit.setclub(club);
+			
+			// Mise à jours de la table
+			entitymanager.getTransaction().commit();
+		} catch (DAOException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

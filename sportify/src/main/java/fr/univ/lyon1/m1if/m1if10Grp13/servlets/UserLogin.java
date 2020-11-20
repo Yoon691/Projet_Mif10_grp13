@@ -90,6 +90,9 @@ public class UserLogin extends HttpServlet {
 						
 						// Redirection vers la page personnelle du club
 						this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
+					} else {
+						System.out.println("Wrong email or password");
+						this.servletContext.getRequestDispatcher("/connexion.jsp").forward(request, response);					
 					}
 				}
 			} catch (Exception e ) {
