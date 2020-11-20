@@ -173,6 +173,7 @@
 .tableau{
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
+	border-color:black;
 	width: 75%;
 }
 
@@ -184,6 +185,22 @@
 
 .tableau tr:nth-child(even) {
 	background-color: #dddddd;
+}
+
+.listeclubs .tableau{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+hr.line{
+	width:95%;
+	margin-left:10px;
+	border:1px solid grey;
+}
+
+.interface-contenu{
+	background-color:#F8F8FF;
+
 }
 
 /* Cacher les éléments*/
@@ -205,5 +222,22 @@
 }
 
 
+/* Liste des clubs */
+.titrelisteclub{
+	text-align: center;
+	color: grey;
 
+
+}
+
+/* Mon Profil*/
+.titreprofil{
+	text-align:center;
+	color: grey;
+}
+
+.profil h3{
+	color:grey;
+	text-align:left;
+}
 

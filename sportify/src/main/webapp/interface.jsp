@@ -44,7 +44,8 @@
 
 	<%--La liste des clubs--%>
 		<div id="listeclubs" class="listeclubs hidden">
-			Liste des clubs
+			<h2 class="titrelisteclub"> <b>Liste des clubs</b> </h2>
+			<hr class="line">
 			<table class="tableau table table-bordered">
 				<tr>
 					<th>Nom</th>
@@ -69,13 +70,47 @@
 					<td> <button onclick="rejoindre()"> Rejoindre </button></td>
 				</tr>
 
+				<%--recup une liste d'éléments on la parcourt
+				sessionRequest.....getelement(login).. login;
+				Club clubs[]...;
+				for(...){
+				<tr>
+					<td><%clubs.getNomClub()%></td>
+					<td><%clubs.getEmailClub()%></td>
+					<td><%clubs.getNomResponsable()%></td>
+					<td> 7/ <%clubs.getnbMaxAdherent()%></td>
+					<td> <button onclick="<%clubs.ajoutAdherant(login)"> Rejoindre </button></td>
+				</tr>
+				--%>
+
 			</table>
 		</div>
 
 
 	<%--Mon Compte--%>
 		<div id="profil" class="profil hidden">
-			Profil
+			<h2 class="titreprofil"><b>Mon Profil</b></h2>
+			<hr class="line">
+			<ul>
+				<h3> Club: Lyon </h3>
+				<h3> Nom: Jeff Jeff</h3>
+			</br>
+			<li> Date de naissance: 27/03/1990</li>
+			<li> Numero de telephone: 0649025614</li>
+			<li> Email: email@hotmail.com</li>
+			<li> Date inscription: 19/11/2020</li>
+			</ul>
+
+			<%--<%!Inscrit inscrit;--%>
+			<%--
+			<h3> Club: <% inscrit.getClubId() %> </h3>
+			<h3> Nom: <%inscrit.getNom()%></h3>
+			<li> Date de naissance: <%inscrit.getNaissanceInscrit%></li>
+			<li> Numero de telephone: <%inscrit.getTelInscrit(%></li>
+			<li> Email: <%inscrit.getEMailInscrit()%></li>
+			<li> Date inscription: <%inscrit.getDateInscription()%></li>
+
+		  --%>
 		</div>
 
 
@@ -98,10 +133,10 @@
 				<%-- --%>
 				<tr>
 					<td>Tonton</td>
-					<td>Floda</td>
+					<td>Benz</td>
 					<td>17/11/2020</td>
 					<td>0650595113</td>
-					<td> UncleFloda@gmail.com</td>
+					<td> UncleBenz@gmail.com</td>
 					<td> <button onclick="retirer()"> X </button></td>
 				</tr>
 				<tr>
