@@ -42,12 +42,14 @@ public class DAOClub implements DAOCrud {
             // Mise à jours de la table
             entitymanager.getTransaction( ).commit( );
 
-            // Femeture de l'objet ntityManager
-            entitymanager.close( );
+
 			return true;
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			return false;
+		} finally {
+            // Femeture de l'objet ntityManager
+            entitymanager.close( );
 		}
 
 	}
@@ -119,11 +121,13 @@ public class DAOClub implements DAOCrud {
 			// mettre à jours la table club
 			entitymanager.getTransaction( ).commit( );
 			
-			// fermiture de l'EM
-			entitymanager.close( );
+
 		}catch (Exception e) {
 			System.out.println("Canno't delete user");
 			return -1;
+		} finally {
+			// fermeture de l'EM
+			entitymanager.close( );
 		}
 		return 0;
 	}

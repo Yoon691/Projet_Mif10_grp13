@@ -6,6 +6,8 @@ import org.hibernate.annotations.LazyToOne;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 public class Terrain {
 	@Id
 	@Column(name = "terrainid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long terrainId;
 	private boolean dispo;
 

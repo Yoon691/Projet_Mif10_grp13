@@ -46,15 +46,16 @@ public class DAOInscrit implements DAOCrud{
 
             // Mise à jours de la table
             entitymanager.getTransaction( ).commit( );
-
-            //Femeture de l'objet ntityManager
-            entitymanager.close( );
             
-            return true;
+
         } catch(Exception e) {
         	e.printStackTrace();
         	return false;
+        } finally {
+            //Femeture de l'objet ntityManager
+            entitymanager.close( );
         }
+        return true;
 	}
 	
 	/**
@@ -112,10 +113,12 @@ public class DAOInscrit implements DAOCrud{
 			      entitymanager.remove( inscrit );
 			      entitymanager.getTransaction( ).commit( );  
 		      }
-		      entitymanager.close( );
+
 		}catch (Exception e) {
 			System.out.println("Canno't delete user");
 			return -1;
+		} finally {
+		    entitymanager.close( );
 		}
 		return 0;
 	}
