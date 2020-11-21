@@ -132,7 +132,6 @@
                 <!-- mvn test fails for any warning or error -->
                 <failsOnError>true</failsOnError>
                 <violationSeverity>warning</violationSeverity>
-                <!--              <linkXRef>false</linkXRef>-->
               </configuration>
               <goals>
                 <goal>check</goal>

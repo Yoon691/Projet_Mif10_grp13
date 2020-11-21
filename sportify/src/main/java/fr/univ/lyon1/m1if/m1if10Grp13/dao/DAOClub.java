@@ -143,7 +143,6 @@ public class DAOClub implements DAOCrud {
 		String query = "SELECT i"
 				+ " FROM Inscrit i JOIN i.club c WHERE c.emailclub LIKE :email";
 		List<Inscrit> adherents = null;
-		git
 		try {
 			adherents = entitymanager.createQuery(
 			        query)
