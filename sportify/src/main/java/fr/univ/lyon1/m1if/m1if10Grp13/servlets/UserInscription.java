@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
@@ -23,12 +24,12 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 public class UserInscription extends HttpServlet {
 
 	private DAOInscrit daoInscrit;
-
 	private ServletContext servletContext;
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		this.servletContext = config.getServletContext();
 		this.daoInscrit = (DAOInscrit) servletContext.getAttribute("daoInscrit");
+
 	}
 
 	/**
@@ -57,11 +58,14 @@ public class UserInscription extends HttpServlet {
 		String emailInscrit = request.getParameter("emailInscrit");
 		String telInscrit = request.getParameter("telInscrit");
 		Date naissanceInscrit = null;
+		
 		try {
 			naissanceInscrit= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
 			e.printStackTrace();
-		} 
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
 		
 		// Date d'inscription (now)
 		Date dateInscription = new Date();

@@ -33,7 +33,7 @@ public class DAOTerrain implements DAOCrud{
 	 */
 	@Override
 	public boolean creer(Object object) throws DAOException {
-		EntityManager entitymanager = this.factory.createEntityManager()
+		EntityManager entitymanager = this.factory.createEntityManager();
 		Terrain terrain = null;
 		if (object instanceof Terrain)
 			terrain	= (Terrain) object;

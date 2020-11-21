@@ -1,18 +1,22 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.print.attribute.standard.MediaSize;
 import java.util.Date;
 
 @Entity
 @Table(name = "creneau")
+@IdClass(CreneauCompositeKey.class)
+
 public class Creneau {
 	@Id
-	@Column(name = "creneauid")
-	private Long creneauID;
 	private Date datecreneau;
+	@Id
 	private Date heurecreneau;
 	private Date duree;
 
@@ -20,8 +24,7 @@ public class Creneau {
 
 
 
-	public Creneau(Long creneauID, Date dateCreneau, Date heureCreneau, Date duree) {
-		this.creneauID = creneauID;
+	public Creneau(Date dateCreneau, Date heureCreneau, Date duree) {
 		this.datecreneau = dateCreneau;
 		this.heurecreneau = heureCreneau;
 		this.duree = duree;
@@ -31,13 +34,6 @@ public class Creneau {
 
 	}
 
-
-	public Long getCreneauID() {
-		return creneauID;
-	}
-	public void setCreneauID(Long creneauID) {
-		this.creneauID = creneauID;
-	}
 	public Date getDateCreneau() {
 		return datecreneau;
 	}

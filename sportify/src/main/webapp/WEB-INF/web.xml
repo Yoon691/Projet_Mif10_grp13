@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>fr.univ.lyon1.m1if.m1if10Grp13.servlets.UserInscription</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CreneauGestion</servlet-name>
+  	<display-name>CreneauGestion</display-name>
+  	<description></description>
+  	<servlet-class>fr.univ.lyon1.m1if.m1if10Grp13.servlets.CreneauGestion</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ClubLogin</servlet-name>
   	<url-pattern>/ClubLogin</url-pattern>
@@ -49,5 +55,9 @@
   <servlet-mapping>
   	<servlet-name>UserInscription</servlet-name>
   	<url-pattern>/UserInscription</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CreneauGestion</servlet-name>
+  	<url-pattern>/CreneauGestion</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -70,9 +70,9 @@ CREATE TABLE terrain (
 );
 
 CREATE TABLE creneau (
-	creneauId INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	dateCreneau DATE NOT NULL,
 	heureCreneau TIME NOT NULL,
+	PRIMARY KEY (dateCreneau, heureCreneau),
 	duree TIME NOT NULL CHECK (
 		duree > '00:00'
 	)
@@ -81,10 +81,11 @@ CREATE TABLE creneau (
 -- Ternary relationship
 CREATE TABLE reservation_terrain (
 	terrainId INT REFERENCES terrain (terrainId),
-	creneauId INT REFERENCES creneau (creneauId),
+	dateCreneau DATE REFERENCES creneau (dateCreneau),
+	heureCreneau TIME REFERENCES creneau (heureCreneau),
 	clubId INT REFERENCES club (clubId),
 	emailInscrit VARCHAR(254) REFERENCES inscrit(emailInscrit),
-	PRIMARY KEY (terrainId, creneauId)
+	PRIMARY KEY (terrainId, dateCreneau, heureCreneau)
 );
 
 CREATE TABLE publication (
