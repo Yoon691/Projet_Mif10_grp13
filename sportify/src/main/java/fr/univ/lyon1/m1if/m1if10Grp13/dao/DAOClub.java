@@ -1,7 +1,6 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import java.util.List;
@@ -55,7 +54,7 @@ public class DAOClub implements DAOCrud {
 	/**
 	 * Rechercher un club par son Email, sachant que l'email n'est pas la clé primaire de club,
 	 * donc on ne peut pas utiliser EntityManager.find() car elle prend une clé primaire comme param.
-	 * @param Email sous forme d'une chaine de caractères 
+	 * @param object (email) sous forme d'une chaine de caractères
 	 * @return Une instance de Club s'il existe, null sinon
 	 */
 	@Override
@@ -96,7 +95,7 @@ public class DAOClub implements DAOCrud {
 	
 	/**
 	 * Suppression d'un club de la table club dans la BD.
-	 * @param Un email sous forme de chaine de caractère
+	 * @param object email sous forme de chaine de caractère
 	 * @return 0 si la suppression est un un succès, -1 sinon
 	 */
 	@Override

@@ -1,6 +1,6 @@
 package fr.univ.lyon1.m1if.m1if10Grp13;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

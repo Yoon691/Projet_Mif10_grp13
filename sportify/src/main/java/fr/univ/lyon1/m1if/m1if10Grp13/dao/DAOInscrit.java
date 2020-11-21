@@ -55,7 +55,7 @@ public class DAOInscrit implements DAOCrud{
 	
 	/**
 	 * Recherche un utilisateur par son Email (clé primaire), donc on utilise find à la place de createQuery.
-	 * @param Email sous forme d'une chaine de caractères 
+	 * @param object Email sous forme d'une chaine de caractères
 	 * @return Une instance de la classe inscrit s'il existe, null sinon
 	 */
 	@Override
@@ -86,7 +86,7 @@ public class DAOInscrit implements DAOCrud{
 	
 	/**
 	 * Suppression d'un utilisateur de la table inscrit dans la BD.
-	 * @param Un email sous forme de chaine de caractère
+	 * @param object email sous forme de chaine de caractère
 	 * @return 0 si la suppression est un un succès, -1 sinon
 	 */
 	@Override

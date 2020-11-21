@@ -19,10 +19,6 @@ public class Club {
     private String passwordclub;
     private String nomresponsable;
     private int nbmaxadherent;
-    
-    public Club() {
-    	
-    }
 
     public Club(String nomclub, String emailclub, String passwordclub, String nomresponsable, int nbmaxadherent) {
         this.nomclub = nomclub;
@@ -55,10 +51,6 @@ public class Club {
 
     public int getNbMaxAdherent() {
         return nbmaxadherent;
-    }
-
-    public void setClubId(Long clubId) {
-        this.clubId = clubId;
     }
 
     public void setNomClub(String nomClub) {
