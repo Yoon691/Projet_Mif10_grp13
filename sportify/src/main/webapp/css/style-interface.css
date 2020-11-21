@@ -125,22 +125,32 @@
 
 .home-button {
 	background: url(../img/icone/home.png) no-repeat;
+	background-size: 5vh;
+
 }
 
 .event-button {
 	background: url(../img/icone/event.png) no-repeat;
+
 }
 
 .calendrier-button {
 	background: url(../img/icone/calendrier.png) no-repeat;
+	background-size: 5vh;
+
 }
 
 .club-button {
 	background: url(../img/icone/club.png) no-repeat;
+
+	background-size: 5vh;
+
 }
 
 .profil-button {
 	background: url(../img/icone/tete.png) no-repeat;
+
+	background-size: 5vh;
 }
 
 /* ============ \MENU ==============*/
@@ -157,4 +167,77 @@
 
 /* ============ \CONTENU ==============*/
 
+
+/*Tableau des personnes*/
+
+.tableau{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	border-color:black;
+	width: 75%;
+}
+
+.tableau td, th{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+.tableau tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.listeclubs .tableau{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+hr.line{
+	width:95%;
+	margin-left:10px;
+	border:1px solid grey;
+}
+
+.interface-contenu{
+	background-color:#F8F8FF;
+
+}
+
+/* Cacher les éléments*/
+
+.membres.hidden {
+	display: none;
+}
+
+.reserver.hidden {
+	display: none;
+}
+
+.listeclubs.hidden {
+	display: none;
+}
+
+.profil.hidden {
+	display: none;
+}
+
+
+/* Liste des clubs */
+.titrelisteclub{
+	text-align: center;
+	color: grey;
+
+
+}
+
+/* Mon Profil*/
+.titreprofil{
+	text-align:center;
+	color: grey;
+}
+
+.profil h3{
+	color:grey;
+	text-align:left;
+}
 

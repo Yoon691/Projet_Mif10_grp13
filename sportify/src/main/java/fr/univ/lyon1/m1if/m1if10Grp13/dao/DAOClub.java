@@ -1,6 +1,7 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import java.util.List;
@@ -41,12 +42,14 @@ public class DAOClub implements DAOCrud {
             // Mise à jours de la table
             entitymanager.getTransaction( ).commit( );
 
-            // Femeture de l'objet ntityManager
-            entitymanager.close( );
+
 			return true;
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			return false;
+		} finally {
+            // Femeture de l'objet ntityManager
+            entitymanager.close( );
 		}
 
 	}
@@ -118,14 +121,38 @@ public class DAOClub implements DAOCrud {
 			// mettre à jours la table club
 			entitymanager.getTransaction( ).commit( );
 			
-			// fermiture de l'EM
-			entitymanager.close( );
+
 		}catch (Exception e) {
 			System.out.println("Canno't delete user");
 			return -1;
+		} finally {
+			// fermeture de l'EM
+			entitymanager.close( );
 		}
 		return 0;
 	}
 
-
+	/**
+	 * Afficher la liste de tous les adhérents d'un club donné.
+	 * @param email du club sous forme d'une chaine de caractères
+	 * @return Liste contenant tous les adhérents d'un club
+	 */
+	
+	public List<Inscrit> listerAdherents(String email) {
+		EntityManager entitymanager = factory.createEntityManager();
+		String query = "SELECT i"
+				+ " FROM Inscrit i JOIN i.club c WHERE c.emailclub LIKE :email";
+		List<Inscrit> adherents = null;
+		git
+		try {
+			adherents = entitymanager.createQuery(
+			        query)
+			        .setParameter("email", email)
+			        .getResultList();
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		
+		return adherents;
+	}
 }

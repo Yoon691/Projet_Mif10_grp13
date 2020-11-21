@@ -4,12 +4,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
@@ -34,6 +29,7 @@ public class UserInscription extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		this.servletContext = config.getServletContext();
 		this.daoInscrit = (DAOInscrit) servletContext.getAttribute("daoInscrit");
+
 	}
 
 	/**
@@ -62,11 +58,14 @@ public class UserInscription extends HttpServlet {
 		String emailInscrit = request.getParameter("emailInscrit");
 		String telInscrit = request.getParameter("telInscrit");
 		Date naissanceInscrit = null;
+		
 		try {
 			naissanceInscrit= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
 			e.printStackTrace();
-		} 
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
 		
 		// Date d'inscription (now)
 		Date dateInscription = new Date();
