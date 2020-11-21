@@ -60,7 +60,7 @@ public class DAOReservationTerrain implements DAOCrud{
 
 	@Override
 	public void update(Object object) throws DAOException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method
 		
 	}
 
@@ -69,7 +69,10 @@ public class DAOReservationTerrain implements DAOCrud{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+	/**
+	 * retourn la liste de toutes les reservation dans la table reservation
+	 * @return Liste d'objet ReservationTerrain
+	 */
 	@SuppressWarnings("unchecked")
 	public List<ReservationTerrain> afficherAll() {
 		EntityManager entitymanager = this.factory.createEntityManager();
