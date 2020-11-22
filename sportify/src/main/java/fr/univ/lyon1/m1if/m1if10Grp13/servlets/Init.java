@@ -38,12 +38,10 @@ public class Init extends HttpServlet {
     	DAOInscrit daoInscrit = new DAOInscrit(this.factory);
     	DAOClub daoClub = new DAOClub(this.factory);
     	DAOCreneau daoCreneau = new DAOCreneau(this.factory);
-    	System.
-
-
     	servletContext.setAttribute("daoInscrit", daoInscrit);
     	servletContext.setAttribute("daoClub", daoClub);
     	servletContext.setAttribute("daoCreneau", daoCreneau);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
