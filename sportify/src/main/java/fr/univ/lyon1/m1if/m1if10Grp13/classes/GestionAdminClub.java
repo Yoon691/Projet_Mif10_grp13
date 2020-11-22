@@ -1,27 +1,35 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import java.io.Serializable;
 import java.util.Date;
+
 @Entity
 @Table(name = "gestion_admin_club")
+@IdClass(GestionAdminClubCompositeKey.class)
 public class GestionAdminClub implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+    @ManyToOne @JoinColumn(name="clubId")
+    private Club club;
     @Id
-    @Column(name = "clubid")
-    private int clubId;
-    @Id
-    @Column(name = "adminid")
-    private int adminId;
+    @ManyToOne @JoinColumn(name="adminId")
+    private Admin admin;
     private Date dategestion;
     private AdminOperation operation;
 
-    public GestionAdminClub(int clubId, int adminId, Date dateGestion, AdminOperation operation) {
-        this.clubId = clubId;
-        this.adminId = adminId;
+    public GestionAdminClub(Club club, Admin admin, Date dateGestion, AdminOperation operation) {
+        this.club = club;
+        this.admin = admin;
         this.dategestion = dateGestion;
         this.operation = operation;
     }
@@ -30,20 +38,20 @@ public class GestionAdminClub implements Serializable{
 
     }
 
-    public int getClubId() {
-        return clubId;
+    public Club getClubId() {
+        return club;
     }
 
-    public void setClubId(int clubId) {
-        this.clubId = clubId;
+    public void setClubId(Club club) {
+        this.club = club;
     }
 
-    public int getAdminId() {
-        return adminId;
+    public Admin getAdminId() {
+        return admin;
     }
 
-    public void setAdminId(int adminId) {
-        this.adminId = adminId;
+    public void setAdminId(Admin admin) {
+        this.admin = admin;
     }
 
     public Date getDateGestion() {

@@ -95,11 +95,7 @@ public class DAOInscrit implements DAOCrud{
 	
 	/**
 	 * Suppression d'un utilisateur de la table inscrit dans la BD.
-<<<<<<< HEAD
-	 * @param object email sous forme de chaine de caractère
-=======
 	 * @param object Un email sous forme de chaine de caractère
->>>>>>> ad5ac39fe94ae63cd135cda9e347dbb5706b5643
 	 * @return 0 si la suppression est un un succès, -1 sinon
 	 */
 	@Override

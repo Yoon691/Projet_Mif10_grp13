@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import javax.servlet.ServletConfig;
@@ -14,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
+import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
 /**
@@ -60,7 +64,7 @@ public class UserInscription extends HttpServlet {
 		Date naissanceInscrit = null;
 		
 		try {
-			naissanceInscrit= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("naissanceInscrit"));
+			naissanceInscrit= new SimpleDateFormat("yyyy/MM/dd").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (DAOException e) {
@@ -71,7 +75,6 @@ public class UserInscription extends HttpServlet {
 		Date dateInscription = new Date();
 		Inscrit inscrit;
 		System.out.println("Inscrit Instancier");
-
 		
 		// Creation d'une instance de l'inscrit
 		inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);

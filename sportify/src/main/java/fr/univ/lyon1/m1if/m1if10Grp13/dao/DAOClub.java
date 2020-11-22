@@ -131,6 +131,25 @@ public class DAOClub implements DAOCrud {
 		}
 		return 0;
 	}
+	
+	/**
+	 * Afficher la liste de tous les clubs.
+	 * @return list contenant tous les clubs
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Club> afficherAll() {
+		EntityManager entitymanager = this.factory.createEntityManager();
+		List<Club> listClub = null;
+		String query = "SELECT c FROM Club c";
+		
+		try {
+			listClub = entitymanager.createQuery(query).getResultList();
+			return listClub;
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return listClub;
+	}
 
 	/**
 	 * Afficher la liste de tous les adhérents d'un club donné.

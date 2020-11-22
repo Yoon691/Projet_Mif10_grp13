@@ -1,8 +1,6 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.LazyToOne;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

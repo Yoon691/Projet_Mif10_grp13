@@ -1,6 +1,8 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Creneau;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.CreneauCompositeKey;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
@@ -55,21 +57,22 @@ public class DAOCreneau implements DAOCrud{
         return true;
 		
 	}
+
 	@Override
 	public Object afficher(Object object) throws DAOException {
-		EntityManager entitymanager = this.factory.createEntityManager();
+		EntityManager entitymanager = factory.createEntityManager();
+		CreneauCompositeKey creneauId = null;
 		Creneau creneau ;
-		Long creneauID = null;
-		if (object instanceof Creneau) {
+
+		if (object instanceof CreneauCompositeKey) {
+			creneauId = (CreneauCompositeKey) object;
+		}else if (object instanceof Creneau) {
 			creneau = (Creneau) object;
 		}
-		else if(object instanceof Long){
-			creneauID = (Long) object;
-		}
-		Query requete = entitymanager.createQuery( JPQL_SELECT_PAR_IDCRENEAU );
-		requete.setParameter( PARAM_IDCRENEAU, creneauID );
+	
+
 		try {
-			creneau = (Creneau) requete.getSingleResult();
+			creneau = (Creneau) entitymanager.find(Creneau.class, creneauId);
 		} catch ( NoResultException e ) {
 			return null;
 		} catch ( Exception e ) {
@@ -83,13 +86,43 @@ public class DAOCreneau implements DAOCrud{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	
 	@Override
 	public int delete(Object object) throws DAOException {
-		// TODO Auto-generated method stub
+
+		EntityManager entitymanager = factory.createEntityManager();
+		CreneauCompositeKey creneauId = null;
+		if (object instanceof CreneauCompositeKey) {
+			creneauId = (CreneauCompositeKey) object;
+		}
+		try {
+			  // Lancement d'une transaction
+		      entitymanager.getTransaction( ).begin( );
+		      
+		      // Chercher un creneau par son id
+		      Creneau creneau = entitymanager.find( Creneau.class, creneauId );
+		      
+		      if (creneau != null) {
+		    	  // suppression du creneau et mise à jours de la table
+			      entitymanager.remove( creneau );
+			      entitymanager.getTransaction( ).commit( );  
+		      }
+
+		}catch (Exception e) {
+			System.out.println("Canno't delete user");
+			return -1;
+		} finally {
+		    entitymanager.close( );
+		}
 		return 0;
 	}
 	
+	/**
+	 * Afficher la liste de tous les creneaux disponibles.
+	 * @return une liste de creneaux.
+	 */
+	@SuppressWarnings("unchecked")
 	public List<Creneau> afficherAll() {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		List<Creneau> creneauList = null;
@@ -104,12 +137,15 @@ public class DAOCreneau implements DAOCrud{
 		}
 		return creneauList;
 	}
+	
 	/**
-	 * Recherche l'id d'un creneau par son heure et date
-	 * @param heure
-	 * @param date
-	 * @return
+	 * Recherche l'id d'un creneau par son heure et date 
+	 * (différente d'afficher, car cella prend des chaine de caractèresen entrée)
+	 * @param heure chaine de caractère qui représente l'heure de debut
+	 * @param date chaine de caractère representant la date
+	 * @return un ojet creneau si le creneau cherché est disponible
 	 */
+	@SuppressWarnings("unchecked")
 	public Creneau trouverCrenauId(String heure, String date) {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		List<Creneau> creneau = null;
@@ -128,12 +164,14 @@ public class DAOCreneau implements DAOCrud{
 		}
 		return creneau.get(0);
 	}
+	
 	/**
-	 * Verifier si un creneau est reserver ou pas
-	 * @param heure
-	 * @param date
-	 * @return
+	 * Verifier si un creneau est reserver ou pas.
+	 * @param heure chaine de caractère qui représente l'heure de debut
+	 * @param date chaine de caractère representant la date
+	 * @return true si le creneau est dispo, false sinon
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean creneauDispo(String heure, String date) {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		List<ReservationTerrain> reservation;
