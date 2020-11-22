@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import javax.servlet.ServletConfig;
@@ -16,9 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
-import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
 /**
@@ -27,6 +23,10 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 @WebServlet(name = "UserInscription", urlPatterns="/UserInscription")
 public class UserInscription extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DAOInscrit daoInscrit;
 	private ServletContext servletContext;
 	@Override
