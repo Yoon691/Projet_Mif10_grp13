@@ -27,7 +27,7 @@ CREATE TABLE club (
 -- Can add constraints to naissanceInscrit (naissanceInscrit < CURRENT_DATE)
 CREATE TABLE inscrit (
 	emailInscrit VARCHAR (254) PRIMARY KEY NOT NULL,
-	emailClub VARCHAT(254),
+	emailClub VARCHAR(254),
 	nomInscrit VARCHAR (100) NOT NULL,
 	telInscrit VARCHAR(10) NOT NULL UNIQUE,
 	password VARCHAR(24) NOT NULL,
@@ -80,11 +80,12 @@ CREATE TABLE creneau (
 -- Ternary relationship
 CREATE TABLE reservation_terrain (
 	terrainId INT REFERENCES terrain (terrainId),
-	dateCreneau DATE REFERENCES creneau (dateCreneau),
-	heureCreneau TIME REFERENCES creneau (heureCreneau),
+	dateCreneau DATE NOT NULL,
+	heureCreneau TIME NOT NULL,
 	emailCLub VARCHAR(254) REFERENCES club (emailClub),
 	emailInscrit VARCHAR(254) REFERENCES inscrit(emailInscrit),
-	PRIMARY KEY (terrainId, dateCreneau, heureCreneau)
+	PRIMARY KEY (terrainId, dateCreneau, heureCreneau),
+	FOREIGN KEY (dateCreneau, heureCreneau) REFERENCES creneau (dateCreneau, heureCreneau)
 );
 
 CREATE TABLE publication (
