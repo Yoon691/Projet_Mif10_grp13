@@ -11,8 +11,9 @@ public class Inscrit {
     @Column(name = "emailinscrit")
     private String emailInscrit;
     
-    @ManyToOne @JoinColumn(name="clubId")
+    @ManyToOne @JoinColumn(name="emailclub")
     private Club club;
+    
     @Column(name="nomInscrit")
     private String nominscrit;
     
@@ -48,9 +49,6 @@ public class Inscrit {
         return emailInscrit;
     }
 
-    public Long getClubId() {
-        return club.getClubId();
-    }
 
     public String getNomInscrit() {
         return nominscrit;

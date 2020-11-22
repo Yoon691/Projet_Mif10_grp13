@@ -19,7 +19,7 @@ public class GestionAdminClub implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-    @ManyToOne @JoinColumn(name="clubId")
+    @ManyToOne @JoinColumn(name="emailclub")
     private Club club;
     @Id
     @ManyToOne @JoinColumn(name="adminId")

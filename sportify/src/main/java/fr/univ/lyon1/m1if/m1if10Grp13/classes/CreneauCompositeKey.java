@@ -12,7 +12,6 @@ public class CreneauCompositeKey implements Serializable{
 	private Date heurecreneau;
 
 	public CreneauCompositeKey() {
-		super();
 	}
 
 	@Override

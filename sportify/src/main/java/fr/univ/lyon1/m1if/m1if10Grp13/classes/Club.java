@@ -11,11 +11,10 @@ import javax.persistence.Table;
 @Table(name = "club")
 public class Club {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="clubId")
-    private Long clubId;
-    private String nomclub;
+    @Column(name="emailclub")
     private String emailclub;
+    
+    private String nomclub;
     private String passwordclub;
     private String nomresponsable;
     private int nbmaxadherent;
@@ -29,9 +28,6 @@ public class Club {
     }
     public Club(){}
 
-    public Long getClubId() {
-        return clubId;
-    }
 
     public String getNomClub() {
         return nomclub;

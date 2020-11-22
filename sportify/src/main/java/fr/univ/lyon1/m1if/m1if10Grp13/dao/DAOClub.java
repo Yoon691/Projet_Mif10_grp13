@@ -20,9 +20,8 @@ public class DAOClub implements DAOCrud {
 	}
 
 	/**
+	 * {@inheritDoc}
 	 * Ajouter un club à la table club dans la BD.
-	 * @param objet une instance club
-	 * @return Un booléen qui est true si le club est créé, false sinon
 	 */
 	@Override
 	public boolean creer(Object objet) throws DAOException {
@@ -55,10 +54,8 @@ public class DAOClub implements DAOCrud {
 	}
 	
 	/**
-	 * Rechercher un club par son Email, sachant que l'email n'est pas la clé primaire de club,
-	 * donc on ne peut pas utiliser EntityManager.find() car elle prend une clé primaire comme param.
-	 * @param object (email) sous forme d'une chaine de caractères
-	 * @return Une instance de Club s'il existe, null sinon
+	 * {@inheritDoc}
+	 * chercher un club par son Email.
 	 */
 	@Override
 	public Object afficher(Object object) throws DAOException {
@@ -69,16 +66,7 @@ public class DAOClub implements DAOCrud {
 			emailClub = (String) object;
 		}
 		try {
-			// faire une requete sql pour la récupération du club par email
-			List clubList = entitymanager.createQuery(
-			        "SELECT c FROM Club c WHERE c.emailclub LIKE :email")
-			        .setParameter("email", emailClub)
-			        .getResultList();
-			
-			// verifier si la requete retourne une val
-			if( !clubList.isEmpty() ) {
-				club = (Club) clubList.get(0);
-			}
+			club = entitymanager.find(Club.class, emailClub);
 		} catch ( NoResultException e ) {
 			System.out.println("User not found");
 		} catch ( Exception e ) {
@@ -89,10 +77,50 @@ public class DAOClub implements DAOCrud {
 		return club;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * Mise à jours d'un club.
+	 */
 	@Override
-	public void update(Object object) throws DAOException {
+	public void update(Object object, Object id) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
-		// TODO Auto-generated method stub
+		String query = "UPDATE Club "
+				+ "SET nomclub=:nomclub, emailclub=:emailclub,passwordclub=:passwordclub,"
+				+ "nomresponsable=:nomresponsable, nbmaxadherent=:nbmax "
+				+ " WHERE emailclub=:email";
+		Club club = null;
+		String idClub = null;
+		if (object instanceof Club) {
+			club = (Club) object;
+		}
+		if (id instanceof String) {
+			idClub = (String) id; 
+		}
+		try {
+			
+	    	// Lancement d'une transaction
+	    	entitymanager.getTransaction( ).begin( );
+	    	
+	    	// Modification de la table
+	        int updateContent = entitymanager.createQuery(query)
+	        		.setParameter("nomclub", club.getNomClub())
+	        		.setParameter("emailclub", club.getEmailClub())
+	        		.setParameter("passwordclub", club.getPasswordClub())
+	        		.setParameter("nomresponsable", club.getNomResponsable())
+	        		.setParameter("nbmax", club.getNbMaxAdherent())
+	        		.setParameter("email", idClub)
+	        		.executeUpdate();
+
+	        // Mise à jours de la table
+	        entitymanager.getTransaction( ).commit( );	
+	        System.out.println(updateContent);
+
+		} catch (DAOException e) {
+			e.printStackTrace();
+		} finally {
+			entitymanager.close();
+		}
+
 
 	}
 	
@@ -113,7 +141,10 @@ public class DAOClub implements DAOCrud {
 			entitymanager.getTransaction( ).begin( );
 			
 			// Recherche le club par son email
-			Club club = (Club) this.afficher(emailClub);
+			Club club = (Club) entitymanager.find(Club.class, emailClub);
+			
+			// Mergin the entity
+			entitymanager.merge(club);
 			
 			// Supprimer le club
 			entitymanager.remove( club );
@@ -124,7 +155,7 @@ public class DAOClub implements DAOCrud {
 
 		}catch (Exception e) {
 			System.out.println("Canno't delete user");
-			return -1;
+			e.printStackTrace();
 		} finally {
 			// fermeture de l'EM
 			entitymanager.close( );
@@ -160,7 +191,7 @@ public class DAOClub implements DAOCrud {
 	public List<Inscrit> listerAdherents(String email) {
 		EntityManager entitymanager = factory.createEntityManager();
 		String query = "SELECT i"
-				+ " FROM Inscrit i JOIN i.club c WHERE c.emailclub LIKE :email";
+				+ " FROM Inscrit i JOIN i.club c WHERE c.emailclub  =:email";
 		List<Inscrit> adherents = null;
 		try {
 			adherents = entitymanager.createQuery(
