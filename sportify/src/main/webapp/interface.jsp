@@ -32,13 +32,13 @@
 	<div class="interface-contenu">
 	<%--  Les différentes interfaces pour les inscrits--%>
 		<div id="accueil" class="accueil hidden">
-			Accueil
+			<%@ include file="composants/planning_day.jsp" %>
 		</div>
 
 
 	<%-- Réserver --%>
 		<div id="reserver" class="reserver hidden">
-			Reservation
+			<%@ include file="composants/planning_hebdo.jsp" %>
 		</div>
 
 
