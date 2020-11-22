@@ -19,8 +19,7 @@
 	    <a href="index.jsp">
 	    	<button class="deconnexion-button"></button>
 		</a>
-		<button class="setting-button"></button>
-		<button class="identifiant-button"></button>
+		<button class="identifiant-button" onclick="showProfil()"></button>
 	</div>
 	
 	<div class="interface-menu">
@@ -33,6 +32,7 @@
 	<%--  Les différentes interfaces pour les inscrits--%>
 		<div id="accueil" class="accueil hidden">
 			<%@ include file="composants/planning_day.jsp" %>
+			<%@ include file="composants/calendrier.jsp" %>
 		</div>
 
 

@@ -58,13 +58,8 @@
     background-size: cover;
 }
 
-.setting-button {
-    margin-right: 7vh;
-	background: url(../img/icone/settings.png) no-repeat;
-}
-
 .identifiant-button {
-    margin-right: 12vh;
+    margin-right: 3.5vw;
 	background: url(../img/icone/tete.png) no-repeat;
 }
 

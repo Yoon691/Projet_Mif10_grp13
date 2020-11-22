@@ -2,6 +2,9 @@
 	.container {
 		width :30vw;
 		text-align: center;
+		position: fixed;
+		left: 50%;
+		transform: translateX(-25%);
 	}
 	
 	.col-top, .col-content {
