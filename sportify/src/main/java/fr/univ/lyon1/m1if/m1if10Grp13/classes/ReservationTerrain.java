@@ -23,7 +23,7 @@ public class ReservationTerrain {
 	  })
 	private Creneau creneau;
 	
-	@ManyToOne @JoinColumn(name="clubId")
+	@ManyToOne @JoinColumn(name="emailclub")
 	private Club club;
 	
 	@ManyToOne @JoinColumn(name="emailinscrit")

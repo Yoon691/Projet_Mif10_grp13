@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOCreneau;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Init", urlPatterns="/Init",loadOnStartup=1)
 public class Init extends HttpServlet {
@@ -38,6 +41,7 @@ public class Init extends HttpServlet {
     	servletContext.setAttribute("daoInscrit", daoInscrit);
     	servletContext.setAttribute("daoClub", daoClub);
     	servletContext.setAttribute("daoCreneau", daoCreneau);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,6 +49,6 @@ public class Init extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.servletContext.getRequestDispatcher("/index.jsp");
+    	this.servletContext.getRequestDispatcher("/index.jsp");
     }
 }

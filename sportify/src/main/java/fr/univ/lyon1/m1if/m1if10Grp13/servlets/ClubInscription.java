@@ -70,10 +70,12 @@ public class ClubInscription extends HttpServlet {
 		} catch ( DAOException e) {
 			e.printStackTrace();
 		}
-
+		
+		// recupération de la session
 		HttpSession session = request.getSession();
-		/* Et enfin (ré)enregistrement de la map en session */
-		session.setAttribute( "clubs",club );
+		
+		// Ajout de club à la session
+		session.setAttribute( "club",club );
 
 		request.getRequestDispatcher( "/connexion.jsp" ).forward( request, response );
 	}

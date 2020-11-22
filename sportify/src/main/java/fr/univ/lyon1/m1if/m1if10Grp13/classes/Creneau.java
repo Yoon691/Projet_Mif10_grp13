@@ -18,17 +18,14 @@ public class Creneau {
 	private Date duree;
 
 
+	public Creneau() {
 
-
+	}
 
 	public Creneau(Date dateCreneau, Date heureCreneau, Date duree) {
 		this.datecreneau = dateCreneau;
 		this.heurecreneau = heureCreneau;
 		this.duree = duree;
-	}
-
-	public Creneau() {
-
 	}
 
 	public Date getDateCreneau() {

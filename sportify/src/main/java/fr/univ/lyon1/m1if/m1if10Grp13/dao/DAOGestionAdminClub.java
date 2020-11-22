@@ -19,7 +19,7 @@ public class DAOGestionAdminClub implements DAOCrud{
 	}
 
 	@Override
-	public void update(Object object) throws DAOException {
+	public void update(Object object, Object id) throws DAOException {
 		// TODO Auto-generated method stub
 		
 	}

@@ -17,9 +17,8 @@ CREATE TABLE admin (
 ); 
 
 CREATE TABLE club (
-	clubId INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	nomClub VARCHAR (100) NOT NULL,
-	emailClub VARCHAR (254) NOT NULL UNIQUE,
+	emailClub VARCHAR (254) PRIMARY KEY NOT NULL,
 	passwordClub VARCHAR (24) NOT NULL,
 	nomResponsable VARCHAR(100) NOT NULL,
 	nbMaxAdherent INT DEFAULT 24
@@ -28,7 +27,7 @@ CREATE TABLE club (
 -- Can add constraints to naissanceInscrit (naissanceInscrit < CURRENT_DATE)
 CREATE TABLE inscrit (
 	emailInscrit VARCHAR (254) PRIMARY KEY NOT NULL,
-	clubId INT,
+	emailClub VARCHAT(254),
 	nomInscrit VARCHAR (100) NOT NULL,
 	telInscrit VARCHAR(10) NOT NULL UNIQUE,
 	password VARCHAR(24) NOT NULL,
@@ -37,8 +36,8 @@ CREATE TABLE inscrit (
 	),
 	dateInscription  DATE DEFAULT CURRENT_DATE,
 	CONSTRAINT fk_club
-		FOREIGN KEY (clubId)
-			REFERENCES club (clubId)
+		FOREIGN KEY (emailClub)
+			REFERENCES club (emailClub)
 );
 
 CREATE TABLE coach (
@@ -47,8 +46,8 @@ CREATE TABLE coach (
 
 CREATE TABLE gestion_admin_club (
 	adminId INT REFERENCES admin (adminId),
-	clubId INT REFERENCES club (clubId),
-	PRIMARY KEY (adminId, clubId),
+	emailClub VARCHAR(254) REFERENCES club (emailclub),
+	PRIMARY KEY (adminId, emailClub),
 	dateGestion timestamp NOT NULL,
 	operation ADMIN_OPERATION NOT NULL
 );
@@ -83,7 +82,7 @@ CREATE TABLE reservation_terrain (
 	terrainId INT REFERENCES terrain (terrainId),
 	dateCreneau DATE REFERENCES creneau (dateCreneau),
 	heureCreneau TIME REFERENCES creneau (heureCreneau),
-	clubId INT REFERENCES club (clubId),
+	emailCLub VARCHAR(254) REFERENCES club (emailClub),
 	emailInscrit VARCHAR(254) REFERENCES inscrit(emailInscrit),
 	PRIMARY KEY (terrainId, dateCreneau, heureCreneau)
 );
