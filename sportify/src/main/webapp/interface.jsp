@@ -16,7 +16,7 @@
 	<div class="interface-header">
 		<div class="header-title">SPORTIFY</div>
 		
-	    <a href="index.jsp">
+	    <a href="${pageContext.request.contextPath}/Deco">
 	    	<button class="deconnexion-button"></button>
 		</a>
 		<button class="setting-button"></button>

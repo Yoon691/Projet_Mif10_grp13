@@ -64,7 +64,7 @@ public class UserInscription extends HttpServlet {
 		Date naissanceInscrit = null;
 		
 		try {
-			naissanceInscrit= new SimpleDateFormat("yyyy/MM/dd").parse(request.getParameter("naissanceInscrit"));
+			naissanceInscrit= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("naissanceInscrit"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (DAOException e) {
