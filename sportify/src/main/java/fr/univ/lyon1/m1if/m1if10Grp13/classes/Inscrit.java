@@ -21,6 +21,7 @@ public class Inscrit {
     private String telinscrit;
     
     @Column(name="password")
+    @Convert(converter= AESEncryption.class)
     private String password;
     
     @Column(name="naissanceInscrit")
