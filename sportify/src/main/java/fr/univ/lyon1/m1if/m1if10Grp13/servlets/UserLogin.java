@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.PasswordEncryption;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
