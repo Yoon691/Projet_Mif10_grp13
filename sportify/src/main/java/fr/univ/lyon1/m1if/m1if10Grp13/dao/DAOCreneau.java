@@ -164,38 +164,5 @@ public class DAOCreneau implements DAOCrud{
 		}
 		return creneau.get(0);
 	}
-	
-	/**
-	 * Verifier si un creneau est reserver ou pas.
-	 * @param heure chaine de caractère qui représente l'heure de debut
-	 * @param date chaine de caractère representant la date
-	 * @return true si le creneau est dispo, false sinon
-	 */
-	@SuppressWarnings("unchecked")
-	public boolean creneauDispo(String heure, String date) {
-		EntityManager entitymanager = this.factory.createEntityManager();
-		List<ReservationTerrain> reservation;
-		try {
-			Date heureCreneau = (Date) new SimpleDateFormat("hh:mm:ss").parse(heure);
-			Date dateCreneau = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(date);
-			String request = "SELECT r FROM ReservationTerrain r JOIN r.creneau c "
-					+ "WHERE c.datecreneau = :datecreneau AND c.heurecreneau =:heurecreneau";
-			reservation =  entitymanager.createQuery(request)
-			        .setParameter("datecreneau", dateCreneau)
-			        .setParameter("heurecreneau", heureCreneau)
-			        .getResultList();
-			if(reservation.isEmpty()) {
-				return true;
-			} else {
-				return false;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// verifier si cet ID existe dans la table de réservation
-		return false;
-		
-	}
 
 }

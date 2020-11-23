@@ -60,11 +60,7 @@ public class DAOInscrit implements DAOCrud{
 	
 	/**
 	 * Recherche un utilisateur par son Email (clé primaire), donc on utilise find à la place de createQuery.
-<<<<<<< HEAD
 	 * @param object Email sous forme d'une chaine de caractères
-=======
-	 * @param object Email sous forme d'une chaine de caractères 
->>>>>>> ad5ac39fe94ae63cd135cda9e347dbb5706b5643
 	 * @return Une instance de la classe inscrit s'il existe, null sinon
 	 */
 	@Override

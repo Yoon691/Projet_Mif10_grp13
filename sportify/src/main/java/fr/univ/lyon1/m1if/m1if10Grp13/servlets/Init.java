@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOCreneau;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
+import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOReservationTerrain;
+import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOTerrain;
 
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "Init", urlPatterns="/Init",loadOnStartup=1)
 public class Init extends HttpServlet {
@@ -38,10 +37,13 @@ public class Init extends HttpServlet {
     	DAOInscrit daoInscrit = new DAOInscrit(this.factory);
     	DAOClub daoClub = new DAOClub(this.factory);
     	DAOCreneau daoCreneau = new DAOCreneau(this.factory);
+    	DAOReservationTerrain daoReservation = new DAOReservationTerrain(this.factory);
+    	DAOTerrain daoTerrain = new DAOTerrain(this.factory);
     	servletContext.setAttribute("daoInscrit", daoInscrit);
     	servletContext.setAttribute("daoClub", daoClub);
     	servletContext.setAttribute("daoCreneau", daoCreneau);
-
+    	servletContext.setAttribute("daoReservation", daoReservation);
+    	servletContext.setAttribute("daoTerrain", daoTerrain);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

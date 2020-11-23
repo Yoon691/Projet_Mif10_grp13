@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "terrain")
 public class Terrain {
+	
 	@Id
 	@Column(name = "terrainid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

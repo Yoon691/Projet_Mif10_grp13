@@ -60,7 +60,7 @@ public class ReservationTerrain {
 		return club;
 	}
 
-	public void setClubId(Club clubId) {
+	public void setClubId(Club club) {
 		this.club = club;
 	}
 
