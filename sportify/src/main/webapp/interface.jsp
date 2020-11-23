@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +24,12 @@
 	</div>
 	
 	<div class="interface-menu">
+	<c:if test="${sessionScope.club != null}">
+		<%@ include file="composants/menus/menu_club.jsp" %>
+	</c:if>
+	<c:if test="${sessionScope.user != null}">
 		<%@ include file="composants/menus/menu_inscrit.jsp" %>
+	</c:if>
 	</div>
 
 	<%--Contenu--%>
