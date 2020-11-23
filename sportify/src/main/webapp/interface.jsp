@@ -23,7 +23,7 @@
 	</div>
 	
 	<div class="interface-menu">
-		<%@ include file="composants/menu_inscrit.jsp" %>
+		<%@ include file="composants/menus/menu_inscrit.jsp" %>
 	</div>
 
 	<%--Contenu--%>
@@ -44,7 +44,7 @@
 
 	<%--La liste des clubs--%>
 		<div id="listeclubs" class="listeclubs hidden">
-			<h2 class="titrelisteclub"> <b>Liste des clubs</b> </h2>
+			<h2 class="interface-titles"> <b>Liste des clubs</b> </h2>
 			<hr class="line">
 			<table class="tableau table table-bordered">
 				<tr>
@@ -89,28 +89,7 @@
 
 	<%--Mon Compte--%>
 		<div id="profil" class="profil hidden">
-			<h2 class="titreprofil"><b>Mon Profil</b></h2>
-			<hr class="line">
-			<ul>
-				<h3> Club: Lyon </h3>
-				<h3> Nom: Jeff Jeff</h3>
-			</br>
-			<li> Date de naissance: 27/03/1990</li>
-			<li> Numero de telephone: 0649025614</li>
-			<li> Email: email@hotmail.com</li>
-			<li> Date inscription: 19/11/2020</li>
-			</ul>
-
-			<%--<%!Inscrit inscrit;--%>
-			<%--
-			<h3> Club: <% inscrit.getClubId() %> </h3>
-			<h3> Nom: <%inscrit.getNom()%></h3>
-			<li> Date de naissance: <%inscrit.getNaissanceInscrit%></li>
-			<li> Numero de telephone: <%inscrit.getTelInscrit(%></li>
-			<li> Email: <%inscrit.getEMailInscrit()%></li>
-			<li> Date inscription: <%inscrit.getDateInscription()%></li>
-
-		  --%>
+			<%@ include file="composants/account_info.jsp" %>
 		</div>
 
 
