@@ -45,52 +45,13 @@
 
 	<%--La liste des clubs--%>
 		<div id="listeclubs" class="listeclubs hidden">
-			<h2 class="interface-titles"> <b>Liste des clubs</b> </h2>
-			<hr class="line">
-			<table class="tableau table table-bordered">
-				<tr>
-					<th>Nom</th>
-					<th>Email</th>
-					<th>Responsable</th>
-					<th>Nombre d'adhérants</th>
-					<th> </th>
-				</tr>
-				<%-- --%>
-				<tr>
-					<td>Lyon</td>
-					<td>Lyon@gmail.com</td>
-					<td>Aulas</td>
-					<td> 7/12</td>
-					<td> <button onclick="rejoindre()"> Rejoindre </button></td>
-				</tr>
-				<tr>
-					<td>Asvel</td>
-					<td>Parker@gmail.com</td>
-					<td>Parker</td>
-					<td>0/12</td>
-					<td> <button onclick="rejoindre()"> Rejoindre </button></td>
-				</tr>
-
-				<%--recup une liste d'éléments on la parcourt
-				sessionRequest.....getelement(login).. login;
-				Club clubs[]...;
-				for(...){
-				<tr>
-					<td><%clubs.getNomClub()%></td>
-					<td><%clubs.getEmailClub()%></td>
-					<td><%clubs.getNomResponsable()%></td>
-					<td> 7/ <%clubs.getnbMaxAdherent()%></td>
-					<td> <button onclick="<%clubs.ajoutAdherant(login)"> Rejoindre </button></td>
-				</tr>
-				--%>
-
-			</table>
+			<%@ include file="composants/liste_club.jsp" %>
 		</div>
 
 
 	<%--Mon Compte--%>
 		<div id="profil" class="profil hidden">
-			<%-- <%@ include file="composants/account_info.jsp" %> --%>
+			<%@ include file="composants/account_info.jsp" %> 
 		</div>
 
 
