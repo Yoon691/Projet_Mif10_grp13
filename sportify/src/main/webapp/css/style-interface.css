@@ -160,6 +160,11 @@
     left: 18vw;
 }
 
+.interface-titles {
+	text-align: center;
+	color: grey;
+}
+
 /* ============ \CONTENU ==============*/
 
 
@@ -218,18 +223,9 @@ hr.line{
 
 
 /* Liste des clubs */
-.titrelisteclub{
-	text-align: center;
-	color: grey;
-
-
-}
 
 /* Mon Profil*/
-.titreprofil{
-	text-align:center;
-	color: grey;
-}
+
 
 .profil h3{
 	color:grey;

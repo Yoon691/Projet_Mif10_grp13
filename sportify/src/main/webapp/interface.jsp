@@ -31,8 +31,9 @@
 	<div class="interface-contenu">
 	<%--  Les différentes interfaces pour les inscrits--%>
 		<div id="accueil" class="accueil hidden">
-			<%@ include file="composants/planning_day.jsp" %>
-			<%@ include file="composants/calendrier.jsp" %>
+			<%-- <%@ include file="composants/planning_day.jsp" %>
+			<%@ include file="composants/calendrier.jsp" %> --%>
+			Bienvenue
 		</div>
 
 
@@ -89,7 +90,7 @@
 
 	<%--Mon Compte--%>
 		<div id="profil" class="profil hidden">
-			<%@ include file="composants/account_info.jsp" %>
+			<%-- <%@ include file="composants/account_info.jsp" %> --%>
 		</div>
 
 
