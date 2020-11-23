@@ -1,8 +1,7 @@
 <div class="club-info">
-	<img class="profil-picture"
-     	src="../img/default-pic.png"
-     	alt="default profil picture">
+	<img class="profil-picture" src="../img/default-pic.png" alt="default profil picture">
      <div class="club-name">Oympique Lyonnais</div>
+     <div class="club-coach">Didier Deschamps</div>
 </div>
 
 <div class="btn-list">

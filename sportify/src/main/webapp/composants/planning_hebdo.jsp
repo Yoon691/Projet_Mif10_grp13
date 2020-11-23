@@ -113,7 +113,7 @@
 </div>
 
 <%
-   //Date dNow = new Date();
+   Date dNow = new Date();
    SimpleDateFormat n_semaine = new SimpleDateFormat ("w");
    String[][] tab;
    tab = new String[7][13];
