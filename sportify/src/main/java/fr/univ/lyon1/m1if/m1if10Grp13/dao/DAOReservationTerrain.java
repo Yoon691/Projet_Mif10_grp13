@@ -2,8 +2,6 @@ package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -104,10 +102,10 @@ public class DAOReservationTerrain implements DAOCrud{
 	 * Verifier si un creneau donné est reservé ou pas.
 	 * @param heure chaine de caractère qui représente l'heure de debut
 	 * @param date chaine de caractère representant la date
+	 * @param user instalce de la classe inscrit si l'utilisateur connecté est un adherent, club sinon
 	 * @return 1 si le creneau est reservé par la personne donnée en parametre, 0 si le creneau est disponible
 	 *  -1 si le creneau est reservé par une autre personne
 	 */
-	@SuppressWarnings("unchecked")
 	public int creneauDispo(String heure, String date, Object user) {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		ReservationTerrain reservation;

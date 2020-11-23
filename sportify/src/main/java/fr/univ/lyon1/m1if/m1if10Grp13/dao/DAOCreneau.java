@@ -2,8 +2,6 @@ package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Creneau;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.CreneauCompositeKey;
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
-import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import java.text.ParseException;
@@ -16,9 +14,6 @@ import javax.persistence.*;
 
 @Stateless
 public class DAOCreneau implements DAOCrud{
-
-	private static final String JPQL_SELECT_PAR_IDCRENEAU = "SELECT cr FROM Creneau cr WHERE cr.creneauID=:creneauID";
-	private static final String PARAM_IDCRENEAU = "creneauID";
 
 	// Injection du manager, qui s'occupe de la connexion avec la BDD
 	@PersistenceContext( unitName = "pu-sportify" )
