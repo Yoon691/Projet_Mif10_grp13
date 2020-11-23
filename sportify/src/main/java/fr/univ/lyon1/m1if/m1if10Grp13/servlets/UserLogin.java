@@ -56,6 +56,8 @@ public class UserLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String isclub = request.getParameter("adminbox");
+		
 		HttpSession session  = request.getSession(true);
 		Inscrit inscrit = null;
 		Club club = null;
@@ -63,30 +65,38 @@ public class UserLogin extends HttpServlet {
 		// verifier que le mot de passe et l'email sont dans les parametres du form
 		if(email != null && password != null) {
 			try {
-				// Rercher un inscrit par son email
-				inscrit = (Inscrit) daoInscrit.afficher(email);
 				
-				// verifier si l'utilisateur existe ou pas
-				if (inscrit != null) {
-					if(inscrit.getPassword().equals(password)) {
-						
-						// ajouter l'utilisateur à la session
-						session.setAttribute("user", inscrit);
-						
-						// Redirection vers la page personnelle
-						this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
+				if (isclub == null) {
+					// Rercher un inscrit par son email
+					inscrit = (Inscrit) daoInscrit.afficher(email);
+					
+					// verifier si l'utilisateur existe ou pas
+					if (inscrit != null) {
+						if (inscrit.getPassword().equals(password)) {
+							
+							// ajouter l'utilisateur à la session
+							session.setAttribute("user", inscrit);
+							
+							// Redirection vers la page personnelle
+							this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
+						}
+					} else {
+						System.out.println("Wrong email or password");
+						this.servletContext.getRequestDispatcher("/connexion.jsp").forward(request, response);	
 					}
-				// L'utilisateur n'existe pas, donc on cherche dans la table club s'il s'agit d'un club
+
+				// L'utilisateur veut se connecter autant que club
 				} else {
 					
-					// Rechercher un club par son email
+					// chercher un club par son email
 					club = (Club) daoClub.afficher(email);
 					
 					// Authentication
-					if(club!= null && club.getPasswordClub().equals(password)) {
+					if (club != null && club.getPasswordClub().equals(password)) {
 						
 						// Ajouter le club à la session
 						session.setAttribute("club", club);
+						session.setAttribute("isclub", true);
 						
 						// Redirection vers la page personnelle du club
 						this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
