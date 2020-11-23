@@ -64,9 +64,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
 
-<%-- <jsp:useBean id="creneaux" type="java.util.List<fr.univ.lyon1.m1if.m1if10Grp13.classes.Creneau>" scope="application"/> --%>
-
-<!-- <h1>Reservation</h1> -->
+<h2 class="interface-titles"><b>Reservation</b></h2>
+<hr class="line">
 
 <div class="reservation-form">
     <form method="POST" action="Reserve">

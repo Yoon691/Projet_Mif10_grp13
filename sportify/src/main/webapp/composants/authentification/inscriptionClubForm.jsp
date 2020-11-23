@@ -3,23 +3,23 @@
 	<div class="form-club">
 		<div class="user-box">
 			<input type="text" name="nomClub" required="">
-			<label>Nom du club</label>
+			<label>Nom du club*</label>
 		</div>
 		<div class="user-box">
 			<input type="text" name="emailClub" required="">
-			<label>Email</label>
+			<label>Email*</label>
 		</div>
 		<div class="user-box">
 			<input type="text" name="nomResponsable" required="">
-			<label>Nom responsable</label>
+			<label>Nom responsable*</label>
 		</div>
 		<div class="user-box">
-			<input type="password" name="passClub" required="">
-			<label>Mot de passe</label>
+			<input type="password" name="passClub" minlength="8" required="">
+			<label>Mot de passe*</label>
 		</div>
 		<div class="user-box">
 			<input type="number" name="nbMax" required="">
-			<label>Capacité (nb adhérent max)</label>
+			<label>Capacité* (nb adhérent max)</label>
 		</div>
 	</div>
 	<a>
