@@ -1,66 +1,3 @@
-<style>
-	
-	.planning {
-		width : 76vw;
-		margin-left: 3vw;
-		height: 76vh;
-		margin-top: 3vh;
-	}
-	
-	.planning-thead {
-		background-color: #FDC500;
-	}
-	
-	.table td, .table th {
-		text-align : center;
-		border-bottom: 1px solid #dee2e6 !important;
-		border-right: 1px solid #dee2e6 !important;
-	}
-
-    .th-line {
-		width: 7vw;
-		background-color: #373434;
-		color : #F8F8FF;
-	}
-    
-    .occupe {
-    	background-color: #ef9393;
-    }
-    
-   	.reserve {
-    	background-color: #59d9ff;
-    }
-    
-    /*=======FORM========*/
-    
-    .reservation-form {
-    	margin-top: 3vh;
-    }
-    
-    .form-row {
-		margin-left: 21vw;
-	    text-align: center;
-	    width: fit-content;
-    }
-    
-    .col-auto {
-		width: 10vw;
-	}
-    
-    .btn-primary {
-    	width: -webkit-fill-available;
-    	background-color : #FDC500;
-    	border: none;
-    }
-    .btn-primary:hover {
-    	background-color : #373434;
-    }
-    
-    /*=======\FORM========*/	
-    
-
-</style>
-
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
 
@@ -113,7 +50,7 @@
 </div>
 
 <%
-   //Date dNow = new Date();
+   Date dNow = new Date();
    SimpleDateFormat n_semaine = new SimpleDateFormat ("w");
    String[][] tab;
    tab = new String[7][13];
@@ -128,7 +65,6 @@
    tab[5][1] = "occupe";
    tab[1][0] = "reserve";
 %>
-
 
 <div class="table-responsive planning">
   <table class="table">
@@ -145,23 +81,23 @@
         </tr>
       </thead>
 	<tbody>
-		<% for(int i=8; i < 21; i++) { %>
+<%-- 		<% for(int i=8; i < 21; i++) { %>
 			<tr>
 	          <th class="th-line" scope="row"><c:out value ="<%=i %>"/>h - <c:out value="<%=i+1%>"/>h</th>
 	          <% for(int j=0; j < 7; j++) { %>
 	          	<td class="creneau <%=tab[j][i-8]%>">Cell <c:out value="<%=j%>"/></td>
-	          	<%-- <td class="creneau ${tab[0][0]}">Cell <c:out value = "<%=j%>"/></td> --%>
 	          <% } %>
 	         <tr>
-		<% } %>
-        <%-- <c:forEach var="i" begin="8" end="20" step="1">
+		<% } %> --%>
+		
+       <c:forEach var="i" begin="8" end="20" step="1">
 		   <tr>
-	          <th scope="row"><c:out value = "${i}"/>h - <c:out value = "${i+1}"/>h</th>
+	          <th class="th-line" scope="row">${i}h - ${i+1}h</th>
 	          <c:forEach var="j" begin="0" end="6" step ="1">
-	          	<td class="<%=getDispo(${i},j);%>">Cell <c:out value = "${j}"/></td>
+	          	<td class="creneau ${applicationScope['daoReservation'].creneauDispo(String.format('0%d:00:00',i), j, sessionScope.user)}">Cell <c:out value = "${j}"/></td>
 	          </c:forEach>
 	        </tr>
-		</c:forEach> --%>
+		</c:forEach> 
       </tbody>
   </table>
 </div>

@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
 	<title>Connexion SPORTIFY</title>
 	<link rel="stylesheet" href="css/style-connexion.css">
 </head>

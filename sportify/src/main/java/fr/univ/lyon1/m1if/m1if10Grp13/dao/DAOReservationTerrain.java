@@ -2,6 +2,9 @@ package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -101,18 +104,25 @@ public class DAOReservationTerrain implements DAOCrud{
 	/**
 	 * Verifier si un creneau donné est reservé ou pas.
 	 * @param heure chaine de caractère qui représente l'heure de debut
-	 * @param date chaine de caractère representant la date
-	 * @param user instalce de la classe inscrit si l'utilisateur connecté est un adherent, club sinon
-	 * @return 1 si le creneau est reservé par la personne donnée en parametre, 0 si le creneau est disponible
-	 *  -1 si le creneau est reservé par une autre personne
+	 * @param nJour le numéro du jour de la semaine actuelle pour lequel on veut les dispos.
+	 * @param user instance de la classe inscrit si l'utilisateur connecté est un adherent, club sinon.
+	 * @return "reserve" si le creneau est reservé par la personne donnée en parametre, "disponible" si le creneau est disponible
+	 *  "occupe" si le creneau est reservé par une autre personne
 	 */
-	public int creneauDispo(String heure, String date, Object user) {
+	public String creneauDispo(String heure, int nJour, Object user) {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		ReservationTerrain reservation;
-
+		final Calendar date = new GregorianCalendar();
+		
 		try {
+			while (date.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
+		         date.add(Calendar.DAY_OF_WEEK,-1);
+		    }
+			date.add(Calendar.DAY_OF_WEEK, nJour);
+			SimpleDateFormat fmtDate = new SimpleDateFormat ("yyyy-MM-dd");
+			//System.out.println(fmtDate.format(date.getTime()));
 			Time heureCreneau = (Time) Time.valueOf(heure);
-			Date dateCreneau = (Date) Date.valueOf(date);
+			Date dateCreneau = (Date) Date.valueOf(fmtDate.format(date.getTime()));
 			String request = "SELECT r FROM ReservationTerrain r JOIN r.creneau c "
 					+ "WHERE c.datecreneau = :datecreneau AND c.heurecreneau =:heurecreneau";
 			reservation =  (ReservationTerrain) entitymanager.createQuery(request)
@@ -122,18 +132,18 @@ public class DAOReservationTerrain implements DAOCrud{
 			if( user instanceof Inscrit) {
 				Inscrit utilisateur = (Inscrit) user;
 				if (reservation.getInscrit() != null && reservation.getInscrit().getEmailInscrit().equals(utilisateur.getEmailInscrit()))
-						return 1;
+						return "reserve";
 			} else if ( user instanceof Club) {
 				Club utilisateur = (Club) user;
 				if (reservation.getClub() != null && reservation.getClub().getEmailClub().equals(utilisateur.getEmailClub()))
-					return 1;
+					return "reserve";
 			}
 			
 		} catch (NoResultException e) {
-			System.out.println("No result found, creneau est dispo");
-			return 0;
+			//System.out.println("No result found, creneau est dispo");
+			return "disponible";
 		}
-		return -1;
+		return "occupe";
 		
 	}
 
