@@ -68,7 +68,7 @@
 <hr class="line">
 
 <div class="reservation-form">
-    <form method="POST" action="Reserve">
+    <form method="POST" action="Reservation">
 	  <div class="form-row align-items-center">
 	    <div class="col-auto">
 	      <div class="form-group">
@@ -86,7 +86,7 @@
 	    </div>
 	    <div class="col-auto">
 	      <div class="form-group">
-		    <label for="selectHeur">Heure :</label>
+		    <label for="selectHeure">Heure :</label>
 		    <select class="form-control" id="selectHeure" name="horaire">
 		     	<% for(int i=8; i < 21; i++ ) { %>
 		     		<option><%=i %>h</option>
