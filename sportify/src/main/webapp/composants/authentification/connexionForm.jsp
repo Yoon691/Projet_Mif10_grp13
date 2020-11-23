@@ -8,9 +8,9 @@
 		<input type="password" name="password" required="">
 		<label>Mot de passe</label>
 	</div>
-	<div>
+	<div class="adminbox">
 		<input type="checkbox" id="adminbox" name="adminbox" value="true">
-		<label for="adminbox">ÃŠtes-vous administrateur ?</label>
+		<label for="adminbox">EŠtes-vous un club ?</label>
 	</div>
 	<a>
 		<span></span>
@@ -21,7 +21,7 @@
 	</a>
 </form>
 <div class="inscrire">
-	<a class="aff-inscr-adh">Inscription Adhï¿½rent</a>
+	<a class="aff-inscr-adh">Inscription Adhérent</a>
 	-
 	<a class="aff-inscr-club">Inscription Club</a>
 </div>
