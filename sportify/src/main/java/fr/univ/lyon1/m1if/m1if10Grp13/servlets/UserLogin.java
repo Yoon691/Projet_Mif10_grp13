@@ -1,7 +1,9 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.servlets;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.PasswordEncryption;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 
@@ -57,10 +60,10 @@ public class UserLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String isclub = request.getParameter("adminbox");
-		
 		HttpSession session  = request.getSession(true);
 		Inscrit inscrit = null;
 		Club club = null;
+		
 		
 		// verifier que le mot de passe et l'email sont dans les parametres du form
 		if(email != null && password != null) {
@@ -90,6 +93,9 @@ public class UserLogin extends HttpServlet {
 					
 					// chercher un club par son email
 					club = (Club) daoClub.afficher(email);
+
+					System.out.println("Club password is " + club.getPasswordClub());
+					
 					
 					// Authentication
 					if (club != null && club.getPasswordClub().equals(password)) {
@@ -106,6 +112,7 @@ public class UserLogin extends HttpServlet {
 					}
 				}
 			} catch (Exception e ) {
+				e.printStackTrace();
 				System.out.println("Wrong email or password");
 				this.servletContext.getRequestDispatcher("/connexion.jsp").forward(request, response);
 

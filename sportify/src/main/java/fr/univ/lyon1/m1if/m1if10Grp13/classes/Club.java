@@ -1,6 +1,7 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Club {
     private String emailclub;
     
     private String nomclub;
+    @Convert(converter= AESEncryption.class)
     private String passwordclub;
     private String nomresponsable;
     private int nbmaxadherent;

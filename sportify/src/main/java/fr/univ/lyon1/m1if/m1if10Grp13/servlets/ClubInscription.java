@@ -2,15 +2,18 @@ package fr.univ.lyon1.m1if.m1if10Grp13.servlets;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Club;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.PasswordEncryption;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOClub;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -55,12 +58,18 @@ public class ClubInscription extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// Recupération des parametres
 		String nomclub = request.getParameter("nomClub");
 		String emaiclub = request.getParameter("emailClub");
 		String passwordclub = request.getParameter("passClub");
 		String nomresponsable = request.getParameter("nomResponsable");
 		int nbmaxadherent = Integer.parseInt(request.getParameter("nbMax"));
+		
+		
+		// Creation d'une instance de club
 		Club club = new Club(nomclub,emaiclub,passwordclub,nomresponsable,nbmaxadherent);
+		
 		try {
 			if(daoClub.creer( club )) {
 				System.out.println("Club created");
