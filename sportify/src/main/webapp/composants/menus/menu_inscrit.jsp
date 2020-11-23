@@ -1,8 +1,6 @@
 <div class="user-info">
-	<img class="profil-picture"
-     	src="img/default-pic.png"
-     	alt="default profil picture">
-     <div class="user-name">Bernard Hermite</div>
+	 <img class="profil-picture" src="img/default-pic.png" alt="default profil picture">
+     <div class="user-name">${sessionScope.user.getNomInscrit()}</div>
      <div class="user-club">club : Olympique Lyonnais</div>
 </div>
 
