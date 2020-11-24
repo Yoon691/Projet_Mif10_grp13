@@ -64,38 +64,13 @@
 <%--Coté admin--%>
 <%-- Pour les membres coté admin--%>
 
+		<div id="evenement" class="evenement hidden">
+			<%@ include file="composants/evenement.jsp" %>
+
+		</div>
 
 		<div id="membres" class="membres hidden">
-			Liste des membres
-
-			<table class="tableau table table-bordered">
-				<tr>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Date d'inscription</th>
-					<th>Numéro</th>
-					<th> Mail </th>
-					<th> </th>
-				</tr>
-				<%-- --%>
-				<tr>
-					<td>Tonton</td>
-					<td>Benz</td>
-					<td>17/11/2020</td>
-					<td>0650595113</td>
-					<td> UncleBenz@gmail.com</td>
-					<td> <button onclick="retirer()"> X </button></td>
-				</tr>
-				<tr>
-					<td>Tonton</td>
-					<td>Jeff</td>
-					<td>17/11/2020</td>
-					<td>0649025614</td>
-					<td> TontonJeff@gmail.com</td>
-					<td> <button onclick="retirer()"> X </button></td>
-				</tr>
-
-			</table>
+			<%@ include file="composants/liste_membres.jsp" %>
 		</div>
 
 	</div>

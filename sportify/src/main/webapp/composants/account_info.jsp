@@ -1,3 +1,4 @@
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit"%>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -13,15 +14,16 @@
 	    <div class="col-md-auto">
 			<img class="profil-picture-large" src="img/default-pic.png" alt="default profil picture">
 		</div>
-	    <div class="col">
+	    <div class
+					 ="col">
 	    	<div class="info-name">${sessionScope.user.getNomInscrit()}</div>
 	    	<hr class="subline">
-	    	<div class="info-userClub">Club : ${null!=null? "club":"Vous n'êtes pas encore adhérent d'un club."}</div>
+	    	<div class="info-userClub">Club : ${null!=null? "club":"Vous n'ï¿½tes pas encore adhï¿½rent d'un club."}</div>
 	    </div>
 	    <div class="w-100" style="margin:2vh;"></div>
 	    <div class="col"> 
 	    	<span class="infos-th" >Email :</span> ${sessionScope.user.getEmailInscrit()} <br> 
-	    	<span class="infos-th" >Téléphone : </span> ${sessionScope.user.getTelInscrit()}
+	    	<span class="infos-th" >Tï¿½lï¿½phone : </span> ${sessionScope.user.getTelInscrit()}
 		</div>
 	    <div class="col">
 	    	<span class="infos-th" >Date de naissance :</span> <fmt:formatDate pattern = "dd-MM-yyyy" value = "${sessionScope.user.getNaissanceInscrit()}" /><br> 
