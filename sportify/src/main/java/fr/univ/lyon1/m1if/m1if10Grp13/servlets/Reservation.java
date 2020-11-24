@@ -49,7 +49,7 @@ public class Reservation extends HttpServlet {
         String dateCreneauParam = request.getParameter("day");
         String heureCreneauParam = request.getParameter("horaire");
         String dureeParam = request.getParameter("duree");
-//        Date dateCreneau = null;
+        Date dateCreneau = null;
         Date heureCreneau = null;
         Date duree = null;
         if(heureCreneauParam.length() == 1) {
@@ -64,9 +64,7 @@ public class Reservation extends HttpServlet {
             dureeParam = dureeParam + ":00:00";
         }
 
-        SimpleDateFormat ymd = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateCreneau = ymd.format(dateCreneauParam);
-        System.out.println();
+
            try {
             // Conversion des string récupéré des parametres en objet Date
 
