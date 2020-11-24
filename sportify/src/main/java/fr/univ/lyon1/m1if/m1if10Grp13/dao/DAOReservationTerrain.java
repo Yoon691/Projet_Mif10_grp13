@@ -19,33 +19,39 @@ import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
-public class DAOReservationTerrain implements DAOCrud {
 
-    // Injection du manager, qui s'occupe de la connexion avec la BDD
-    @PersistenceContext(unitName = "pu-sportify")
-    private EntityManagerFactory factory;
+public class DAOReservationTerrain implements DAOCrud{
+	
+	// Injection du manager, qui s'occupe de la connexion avec la BDD
+	@PersistenceContext( unitName = "pu-sportify" )
+	private EntityManagerFactory factory
+	;
 
-    public DAOReservationTerrain(EntityManagerFactory factory) {
-        this.factory = factory;
-    }
 
-    @Override
-    public boolean creer(Object objet) throws DAOException {
-        System.out.println("Inside");
-        EntityManager entitymanager = this.factory.createEntityManager();
-        ReservationTerrain reservation = null;
-        if (objet instanceof ReservationTerrain) {
-            reservation = (ReservationTerrain) objet;
-            System.out.println(reservation);
-        }
+	public DAOReservationTerrain(EntityManagerFactory factory) {
+		this.factory = factory;
+	}
 
-        try {
-            // Lancement d'une transaction
-            entitymanager.getTransaction().begin();
-            System.out.println("Before reservation");
-            // Modification de la table
-            entitymanager.merge(reservation);
-            System.out.println("After reservation");
+	@Override
+	public boolean creer(Object objet) throws DAOException {
+		System.out.println("Inside");
+		// créer une instance de EntityManager pour lancer une transaction
+		EntityManager entitymanager = this.factory.createEntityManager();
+		ReservationTerrain reservation = null;
+		if (objet instanceof ReservationTerrain) {
+			reservation = (ReservationTerrain) objet;
+			System.out.println(reservation);
+		}
+		
+		try {
+//			entitymanager.persist(reservation);
+        	// Lancement d'une transaction
+        	entitymanager.getTransaction( ).begin( );
+        	System.out.println("Before reservation");
+        	// Modification de la table
+			entitymanager.merge( reservation );
+			///entitymanager.persist(reservation);
+			System.out.println("After reservation");
 
             // Mise à jours de la table
             entitymanager.getTransaction().commit();
