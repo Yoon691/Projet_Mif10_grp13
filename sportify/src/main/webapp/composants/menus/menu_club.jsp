@@ -9,7 +9,6 @@
 
 <div class="btn-list">
 	<button class="menu-button home-button" onclick="showAccueil()">Accueil</button>
-<<<<<<< HEAD
 	<button class="menu-button calendrier-button" onclick="showReservation()">Reserver</button>
 	<button class="menu-button event-button" onclick="showEvenement()">Creer un évenement</button>
 	<button class="menu-button club-button" onclick="showListe()">Liste des adhérents</button>
