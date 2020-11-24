@@ -18,8 +18,7 @@ public class Terrain {
 	private Long terrainId;
 	private boolean dispo;
 
-	public Terrain(Long terrainId, boolean dispo) {
-		this.terrainId = terrainId;
+	public Terrain( boolean dispo) {
 		this.dispo = dispo;
 	}
 

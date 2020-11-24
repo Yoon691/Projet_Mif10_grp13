@@ -5,6 +5,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -14,15 +18,17 @@ public class Creneau {
 	@Id
 	private Date datecreneau;
 	@Id
-	private Date heurecreneau;
-	private Date duree;
+	@Type(type="timestamp")
+	private Timestamp heurecreneau;
+	@Type(type="timestamp")
+	private Timestamp duree;
 
 
 	public Creneau() {
 
 	}
 
-	public Creneau(Date dateCreneau, Date heureCreneau, Date duree) {
+	public Creneau(Date dateCreneau, Timestamp heureCreneau, Timestamp duree) {
 		this.datecreneau = dateCreneau;
 		this.heurecreneau = heureCreneau;
 		this.duree = duree;
@@ -37,13 +43,13 @@ public class Creneau {
 	public Date getHeureCreneau() {
 		return heurecreneau;
 	}
-	public void setHeureCreneau(Date heureCreneau) {
+	public void setHeureCreneau(Timestamp heureCreneau) {
 		this.heurecreneau = heureCreneau;
 	}
 	public Date getDuree() {
 		return duree;
 	}
-	public void setDuree(Date duree) {
+	public void setDuree(Timestamp duree) {
 		this.duree = duree;
 	}
 

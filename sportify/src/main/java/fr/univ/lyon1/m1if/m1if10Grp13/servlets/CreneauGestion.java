@@ -1,6 +1,7 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.servlets;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,8 +56,8 @@ public class CreneauGestion extends HttpServlet {
 		try {
 			// Conversion des string récupéré des parametres en objet Date
 			Date dateCreneau = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateCreneauParam);
-			Date heureCreneau = (Date) new SimpleDateFormat("hh:mm").parse(heureCreneauParam);
-			Date duree = (Date) new SimpleDateFormat("hh:mm").parse(dureeParam);
+			Timestamp heureCreneau = (Timestamp) new SimpleDateFormat("hh:mm").parse(heureCreneauParam);
+			Timestamp duree = (Timestamp) new SimpleDateFormat("hh:mm").parse(dureeParam);
 			
 			// Creation d'une instance Creneau
 			creneau = new Creneau(dateCreneau, heureCreneau, duree);

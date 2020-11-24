@@ -2,10 +2,15 @@ package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -146,5 +151,77 @@ public class DAOReservationTerrain implements DAOCrud{
 		return "occupe";
 		
 	}
+	
+	public ArrayList listReservationJours(String date) {
+		EntityManager entitymanager = this.factory.createEntityManager();
+		ArrayList<ReservationTerrain> listReservation = null;
+		Date datecreneau = Date.valueOf(date);
+		String query = "SELECT r FROM ReservationTerrain r JOIN r.creneau c WHERE c.datecreneau =: datecreneau"
+				+ " ORDER BY c.heurecreneau ASC";
+		try {
+			listReservation = (ArrayList<ReservationTerrain>) entitymanager.createQuery(query)
+					.setParameter("datecreneau", datecreneau)
+					.getResultList();
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return listReservation;
+		
+	}
+	
+	public TreeMap getWeekReservations() {
+        // Convertir la format de date
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+        // Creation de deux instance de calendar, une pour incrementer et l'autre pour decrémenter
+		Calendar cal = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		
+		
+		// Indice qui va determiner si on est arrivé a la fin ou au debut de semaine 
+		int calIndex = 1;
+		
+		// TreeMap qui va stocker tous nos date
+        TreeMap<String, ArrayList> weekDatesMap = new TreeMap<String, ArrayList>();
+        
+        // Recupération de l'indice du jours courant
+        int current = cal.get(Calendar.DAY_OF_WEEK);
+    
+        // Ajout de la date du jours courant au Hashmap
+        String date = sdf.format(cal.getTime());
+        weekDatesMap.put(date, listReservationJours(date));
+        
+        
+
+        // Recupération des date de la semaine courante
+        while (current - calIndex > 0 ||  current + calIndex < 8) {
+        	// Récupération des date des jours suivants 
+            if (current - calIndex > 0) {
+                cal.add(Calendar.DATE, 1);
+                date = sdf.format(cal.getTime());
+                weekDatesMap.put(date, listReservationJours(date));
+            }
+            
+            // Récupération des dates des jours précédents
+            if (current + calIndex < 8) {
+                cal2.add(Calendar.DATE, -1);
+                date = sdf.format(cal2.getTime());
+                weekDatesMap.put(date, listReservationJours(date));
+            }
+            calIndex += 1;
+        }
+        System.out.println("Testing");
+        for (String i : weekDatesMap.keySet()) {
+            System.out.println("key: " + i + " value: " + weekDatesMap.get(i));
+            List<ReservationTerrain> values = weekDatesMap.get(i);
+            for(ReservationTerrain reservation : values) {
+            	System.out.println(reservation.getClub());
+            	System.out.println(reservation.getCreneauId().getDateCreneau());
+            	System.out.println(reservation.getCreneauId().getDuree().toString());
+            	System.out.println(reservation.getInscrit());
+            }
+        }
+        return weekDatesMap;
+    }
 
 }

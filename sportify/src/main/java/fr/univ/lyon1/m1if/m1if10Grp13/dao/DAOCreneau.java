@@ -4,6 +4,7 @@ import fr.univ.lyon1.m1if.m1if10Grp13.classes.Creneau;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.CreneauCompositeKey;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -145,7 +146,7 @@ public class DAOCreneau implements DAOCrud{
 		EntityManager entitymanager = this.factory.createEntityManager();
 		List<Creneau> creneau = null;
 		try {
-			Date heureCreneau = (Date) new SimpleDateFormat("hh:mm:ss").parse(heure);
+			Timestamp heureCreneau = (Timestamp) new SimpleDateFormat("hh:mm:ss").parse(heure);
 			Date dateCreneau = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(date);
 			// trouver l'id d'un terrain par son heure et date
 			creneau = entitymanager.createQuery(
