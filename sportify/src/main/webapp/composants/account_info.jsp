@@ -1,11 +1,8 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page import="fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit"%>
-<%@ page import="java.text.SimpleDateFormat"%>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%-- <%@page import="fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit"%> --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	SimpleDateFormat fr_date_format = new SimpleDateFormat("d-M-yyyy");
-%>
 <h2 class="interface-titles">
 	<b>Mon Profil</b>
 </h2>
@@ -23,13 +20,13 @@
 			<div class="col">
 				<div class="info-name">${sessionScope.user.getNomInscrit()}</div>
 				<hr class="subline">
-				<div class="info-userClub">Club : ${null!=null? "club":"Vous n'êtes pas encore adhérent d'un club."}</div>
+				<div class="info-userClub">Club : ${null!=null? "club":"Vous n'etes pas encore adhÃ©rent d'un club."}</div>
 			</div>
 			<div class="w-100" style="margin: 2vh;"></div>
 			<div class="col">
 				<span class="infos-th">Email :</span>
 				${sessionScope.user.getEmailInscrit()} <br> <span
-					class="infos-th">Téléphone : </span>
+					class="infos-th">TÃ©lÃ©phone : </span>
 				${sessionScope.user.getTelInscrit()}
 			</div>
 			<div class="col">
@@ -41,6 +38,7 @@
 					value="${sessionScope.user.getDateInscription() }" />
 			</div>
 		</div>
+
 	</div>
 </div>
 </c:if>
@@ -66,7 +64,7 @@
 				${sessionScope.club.getEmailClub()} <br> 
 			</div>
 			<div class="col">
-				<span class="infos-th">Nombre d'adhérents max :</span>
+				<span class="infos-th">Nombre d'adhÃ©rents max :</span>
 				${sessionScope.club.getNbMaxAdherent()} <br>
 			</div>
 		</div>

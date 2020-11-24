@@ -313,4 +313,10 @@ hr.line {
 	display: none;
 }
 
-/* Liste des clubs */
+
+.evenement.hidden {
+	display: none;
+}
+
+
+
