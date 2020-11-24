@@ -213,7 +213,7 @@ hr.line {
 		margin-top: 1vh;
 	}
 	
-	.planning-thead, .clubList-thead {
+	.planning-thead, .clubList-thead, .memberList-thead, .evenementList-thead{
 		background-color: #FDC500;
 	}
 
@@ -316,6 +316,12 @@ hr.line {
 
 .evenement.hidden {
 	display: none;
+}
+
+.evenementTitle{
+	left:50%;
+	top:50%;
+	color: #FDC500;
 }
 
 
