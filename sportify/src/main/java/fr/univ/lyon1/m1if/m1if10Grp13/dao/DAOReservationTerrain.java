@@ -2,15 +2,13 @@ package fr.univ.lyon1.m1if.m1if10Grp13.dao;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,7 +20,7 @@ import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
-public class DAOReservationTerrain implements DAOCrud{
+public class DAOReservationTerrain implements DAOCrud {
 	
 	// Injection du manager, qui s'occupe de la connexion avec la BDD
 	@PersistenceContext( unitName = "pu-sportify" )
@@ -136,12 +134,14 @@ public class DAOReservationTerrain implements DAOCrud{
 			        .getSingleResult();
 			if( user instanceof Inscrit) {
 				Inscrit utilisateur = (Inscrit) user;
-				if (reservation.getInscrit() != null && reservation.getInscrit().getEmailInscrit().equals(utilisateur.getEmailInscrit()))
-						return "reserve";
+				if (reservation.getInscrit() != null && reservation.getInscrit().getEmailInscrit().equals(utilisateur.getEmailInscrit())) {
+					return "reserve";
+				}
 			} else if ( user instanceof Club) {
 				Club utilisateur = (Club) user;
-				if (reservation.getClub() != null && reservation.getClub().getEmailClub().equals(utilisateur.getEmailClub()))
+				if (reservation.getClub() != null && reservation.getClub().getEmailClub().equals(utilisateur.getEmailClub())) {
 					return "reserve";
+				}
 			}
 			
 		} catch (NoResultException e) {

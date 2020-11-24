@@ -2,6 +2,8 @@ package fr.univ.lyon1.m1if.m1if10Grp13.servlets;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletConfig;
@@ -48,8 +50,7 @@ public class UserLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("A get request triggered");
 	}
 
 	/**
@@ -62,7 +63,6 @@ public class UserLogin extends HttpServlet {
 		HttpSession session  = request.getSession(true);
 		Inscrit inscrit = null;
 		Club club = null;
-		
 		
 		// verifier que le mot de passe et l'email sont dans les parametres du form
 		if(email != null && password != null) {
@@ -78,9 +78,13 @@ public class UserLogin extends HttpServlet {
 							
 							// ajouter l'utilisateur à la session
 							session.setAttribute("user", inscrit);
+							session.setAttribute("clubList", daoClub.afficherAll());
 							
 							// Redirection vers la page personnelle
 							this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
+						} else {
+							System.out.println("Wrong email or password");
+							this.servletContext.getRequestDispatcher("/connexion.jsp").forward(request, response);	
 						}
 					} else {
 						System.out.println("Wrong email or password");
