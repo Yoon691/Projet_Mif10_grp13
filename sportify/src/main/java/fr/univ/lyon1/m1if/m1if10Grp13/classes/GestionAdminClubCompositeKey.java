@@ -5,15 +5,18 @@ import java.io.Serializable;
 public class GestionAdminClubCompositeKey implements Serializable {
 	private Club club;
 	private Admin admin;
+
 	public GestionAdminClubCompositeKey() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public GestionAdminClubCompositeKey(Club club, Admin admin) {
 		super();
 		this.club = club;
 		this.admin = admin;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -22,6 +25,7 @@ public class GestionAdminClubCompositeKey implements Serializable {
 		result = prime * result + ((club == null) ? 0 : club.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -43,5 +47,5 @@ public class GestionAdminClubCompositeKey implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

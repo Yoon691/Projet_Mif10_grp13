@@ -1,6 +1,5 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -14,19 +13,21 @@ import javax.persistence.Table;
 @IdClass(ReservationTerrainCompositeKey.class)
 public class ReservationTerrain {
 	@Id
-	@ManyToOne @JoinColumn(name="terrainId")
+	@ManyToOne
+	@JoinColumn(name = "terrainId")
 	private Terrain terrain;
 	@Id
-	@ManyToOne   @JoinColumns({
-	    @JoinColumn(name="datecreneau", referencedColumnName="datecreneau"),
-	    @JoinColumn(name="heurecreneau", referencedColumnName="heurecreneau")
-	  })
+	@ManyToOne
+	@JoinColumns({ @JoinColumn(name = "datecreneau", referencedColumnName = "datecreneau"),
+			@JoinColumn(name = "heurecreneau", referencedColumnName = "heurecreneau") })
 	private Creneau creneau;
-	
-	@ManyToOne @JoinColumn(name="emailclub")
+
+	@ManyToOne
+	@JoinColumn(name = "emailclub")
 	private Club club;
-	
-	@ManyToOne @JoinColumn(name="emailinscrit")
+
+	@ManyToOne
+	@JoinColumn(name = "emailinscrit")
 	private Inscrit inscrit;
 
 	public ReservationTerrain(Terrain terrain, Creneau creneau, Club club, Inscrit inscrit) {
@@ -43,7 +44,7 @@ public class ReservationTerrain {
 	public Terrain getTerrainId() {
 		return terrain;
 	}
- 
+
 	public void setTerrainId(Terrain terrain) {
 		this.terrain = terrain;
 	}
@@ -71,9 +72,5 @@ public class ReservationTerrain {
 	public void setEmailInscrit(Inscrit inscrit) {
 		this.inscrit = inscrit;
 	}
-
-
-
-
 
 }

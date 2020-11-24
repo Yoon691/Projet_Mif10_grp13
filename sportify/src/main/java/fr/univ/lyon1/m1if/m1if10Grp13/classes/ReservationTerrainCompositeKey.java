@@ -9,9 +9,11 @@ public class ReservationTerrainCompositeKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Terrain terrain;
 	private Creneau creneau;
+
 	public ReservationTerrainCompositeKey() {
 
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -20,6 +22,7 @@ public class ReservationTerrainCompositeKey implements Serializable {
 		result = prime * result + ((terrain == null) ? 0 : terrain.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -42,5 +45,4 @@ public class ReservationTerrainCompositeKey implements Serializable {
 		return true;
 	}
 
-	
-}	
+}

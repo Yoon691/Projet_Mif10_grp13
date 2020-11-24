@@ -1,6 +1,6 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.daoException;
 
-public class DAOException extends RuntimeException{
+public class DAOException extends RuntimeException {
 
 	public DAOException() {
 		super();
@@ -21,5 +21,5 @@ public class DAOException extends RuntimeException{
 	public DAOException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }

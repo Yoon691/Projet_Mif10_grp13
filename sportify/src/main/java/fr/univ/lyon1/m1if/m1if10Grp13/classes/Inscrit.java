@@ -7,95 +7,94 @@ import java.util.Date;
 @Table(name = "inscrit")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Inscrit {
-    @Id
-    @Column(name = "emailinscrit")
-    private String emailInscrit;
-    
-    @ManyToOne @JoinColumn(name="emailclub")
-    private Club club;
-    
-    @Column(name="nomInscrit")
-    private String nominscrit;
-    
-    @Column(name="telInscrit")
-    private String telinscrit;
-    
-    @Column(name="password")
-    @Convert(converter= AESEncryption.class)
-    private String password;
-    
-    @Column(name="naissanceInscrit")
-    private Date naissanceinscrit;
-    
-    @Column(name="dateInscription")
-    private Date dateinscription;
-    
- 
+	@Id
+	@Column(name = "emailinscrit")
+	private String emailInscrit;
 
-	public Inscrit(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
-        this.emailInscrit = emailInscrit;
-        this.club = club;
-        this.nominscrit = nomInscrit;
-        this.telinscrit = telInscrit;
-        this.password = password;
-        this.naissanceinscrit = naissanceInscrit;
-        this.dateinscription = dateInscription;
-    }
+	@ManyToOne
+	@JoinColumn(name = "emailclub")
+	private Club club;
 
-    public Inscrit() {
+	@Column(name = "nomInscrit")
+	private String nominscrit;
 
-    }
+	@Column(name = "telInscrit")
+	private String telinscrit;
 
-    public String getEmailInscrit() {
-        return emailInscrit;
-    }
+	@Column(name = "password")
+	@Convert(converter = AESEncryption.class)
+	private String password;
 
+	@Column(name = "naissanceInscrit")
+	private Date naissanceinscrit;
 
-    public String getNomInscrit() {
-        return nominscrit;
-    }
+	@Column(name = "dateInscription")
+	private Date dateinscription;
 
-    public String getTelInscrit() {
-        return telinscrit;
-    }
+	public Inscrit(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password,
+			Date naissanceInscrit, Date dateInscription) {
+		this.emailInscrit = emailInscrit;
+		this.club = club;
+		this.nominscrit = nomInscrit;
+		this.telinscrit = telInscrit;
+		this.password = password;
+		this.naissanceinscrit = naissanceInscrit;
+		this.dateinscription = dateInscription;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public Inscrit() {
 
-    public Date getNaissanceInscrit() {
-        return naissanceinscrit;
-    }
+	}
 
-    public Date getDateInscription() {
-        return dateinscription;
-    }
+	public String getEmailInscrit() {
+		return emailInscrit;
+	}
 
-    public void setEmailInscrit(String emailInscrit) {
-        this.emailInscrit = emailInscrit;
-    }
+	public String getNomInscrit() {
+		return nominscrit;
+	}
 
-    public void setclub(Club club) {
-        this.club = club;
-    }
+	public String getTelInscrit() {
+		return telinscrit;
+	}
 
-    public void setNomInscrit(String nomInscrit) {
-        this.nominscrit = nomInscrit;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setTelInscrit(String telInscrit) {
-        this.telinscrit = telInscrit;
-    }
+	public Date getNaissanceInscrit() {
+		return naissanceinscrit;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public Date getDateInscription() {
+		return dateinscription;
+	}
 
-    public void setNaissanceInscrit(Date naissanceInscrit) {
-        this.naissanceinscrit = naissanceInscrit;
-    }
+	public void setEmailInscrit(String emailInscrit) {
+		this.emailInscrit = emailInscrit;
+	}
 
-    public void setDateInscription(Date dateInscription) {
-        this.dateinscription = dateInscription;
-    }
+	public void setclub(Club club) {
+		this.club = club;
+	}
+
+	public void setNomInscrit(String nomInscrit) {
+		this.nominscrit = nomInscrit;
+	}
+
+	public void setTelInscrit(String telInscrit) {
+		this.telinscrit = telInscrit;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setNaissanceInscrit(Date naissanceInscrit) {
+		this.naissanceinscrit = naissanceInscrit;
+	}
+
+	public void setDateInscription(Date dateInscription) {
+		this.dateinscription = dateInscription;
+	}
 }

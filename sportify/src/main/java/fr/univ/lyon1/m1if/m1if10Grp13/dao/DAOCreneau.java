@@ -14,65 +14,62 @@ import javax.ejb.Stateless;
 import javax.persistence.*;
 
 @Stateless
-public class DAOCreneau implements DAOCrud{
+public class DAOCreneau implements DAOCrud {
 
 	// Injection du manager, qui s'occupe de la connexion avec la BDD
-	@PersistenceContext( unitName = "pu-sportify" )
-	private EntityManagerFactory factory
-	;
-
+	@PersistenceContext(unitName = "pu-sportify")
+	private EntityManagerFactory factory;
 
 	public DAOCreneau(EntityManagerFactory factory) {
 		this.factory = factory;
 	}
+
 	@Override
 	public boolean creer(Object object) throws DAOException {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		Creneau creneau = null;
 		if (object instanceof Creneau)
-			creneau	= (Creneau) object;
+			creneau = (Creneau) object;
 
 		try {
-        	// Lancement d'une transaction
-        	entitymanager.getTransaction( ).begin( );
+			// Lancement d'une transaction
+			entitymanager.getTransaction().begin();
 
-        	// Modification de la table
-            entitymanager.persist( creneau );
+			// Modification de la table
+			entitymanager.persist(creneau);
 
-            // Mise à jours de la table
-            entitymanager.getTransaction( ).commit( );
-            
+			// Mise à jours de la table
+			entitymanager.getTransaction().commit();
 
-        } catch(Exception e) {
-        	e.printStackTrace();
-        	return false;
-        } finally {
-            //Femeture de l'objet ntityManager
-            entitymanager.close( );
-        }
-        return true;
-		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			// Femeture de l'objet ntityManager
+			entitymanager.close();
+		}
+		return true;
+
 	}
 
 	@Override
 	public Object afficher(Object object) throws DAOException {
 		EntityManager entitymanager = factory.createEntityManager();
 		CreneauCompositeKey creneauId = null;
-		Creneau creneau ;
+		Creneau creneau;
 
 		if (object instanceof CreneauCompositeKey) {
 			creneauId = (CreneauCompositeKey) object;
-		}else if (object instanceof Creneau) {
+		} else if (object instanceof Creneau) {
 			creneau = (Creneau) object;
 		}
-	
 
 		try {
 			creneau = (Creneau) entitymanager.find(Creneau.class, creneauId);
-		} catch ( NoResultException e ) {
+		} catch (NoResultException e) {
 			return null;
-		} catch ( Exception e ) {
-			throw new DAOException( e );
+		} catch (Exception e) {
+			throw new DAOException(e);
 		}
 		return creneau;
 	}
@@ -80,10 +77,9 @@ public class DAOCreneau implements DAOCrud{
 	@Override
 	public void update(Object object, Object id) throws DAOException {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
+
 	@Override
 	public int delete(Object object) throws DAOException {
 
@@ -93,29 +89,30 @@ public class DAOCreneau implements DAOCrud{
 			creneauId = (CreneauCompositeKey) object;
 		}
 		try {
-			  // Lancement d'une transaction
-		      entitymanager.getTransaction( ).begin( );
-		      
-		      // Chercher un creneau par son id
-		      Creneau creneau = entitymanager.find( Creneau.class, creneauId );
-		      
-		      if (creneau != null) {
-		    	  // suppression du creneau et mise à jours de la table
-			      entitymanager.remove( creneau );
-			      entitymanager.getTransaction( ).commit( );  
-		      }
+			// Lancement d'une transaction
+			entitymanager.getTransaction().begin();
 
-		}catch (Exception e) {
+			// Chercher un creneau par son id
+			Creneau creneau = entitymanager.find(Creneau.class, creneauId);
+
+			if (creneau != null) {
+				// suppression du creneau et mise à jours de la table
+				entitymanager.remove(creneau);
+				entitymanager.getTransaction().commit();
+			}
+
+		} catch (Exception e) {
 			System.out.println("Canno't delete user");
 			return -1;
 		} finally {
-		    entitymanager.close( );
+			entitymanager.close();
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * Afficher la liste de tous les creneaux disponibles.
+	 * 
 	 * @return une liste de creneaux.
 	 */
 	@SuppressWarnings("unchecked")
@@ -124,21 +121,22 @@ public class DAOCreneau implements DAOCrud{
 		List<Creneau> creneauList = null;
 		String request = "SELECT c FROM Creneau c";
 		try {
-			creneauList = (List<Creneau>) entitymanager.createQuery(request).getResultList();	
-			for(Creneau creneau : creneauList) {
+			creneauList = (List<Creneau>) entitymanager.createQuery(request).getResultList();
+			for (Creneau creneau : creneauList) {
 				System.out.println(creneau.getDateCreneau());
 			}
-		} catch(DAOException e) {
+		} catch (DAOException e) {
 			e.printStackTrace();
 		}
 		return creneauList;
 	}
-	
+
 	/**
-	 * Recherche l'id d'un creneau par son heure et date 
-	 * (différente d'afficher, car cella prend des chaine de caractèresen entrée)
+	 * Recherche l'id d'un creneau par son heure et date (différente d'afficher, car
+	 * cella prend des chaine de caractèresen entrée)
+	 * 
 	 * @param heure chaine de caractère qui représente l'heure de debut
-	 * @param date chaine de caractère representant la date
+	 * @param date  chaine de caractère representant la date
 	 * @return un ojet creneau si le creneau cherché est disponible
 	 */
 	@SuppressWarnings("unchecked")
@@ -150,10 +148,9 @@ public class DAOCreneau implements DAOCrud{
 			Date dateCreneau = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(date);
 			// trouver l'id d'un terrain par son heure et date
 			creneau = entitymanager.createQuery(
-			        "SELECT c FROM Creneau c WHERE c.datecreneau  =:datecreneau AND c.heurecreneau  =:heurecreneau")
-			        .setParameter("datecreneau", dateCreneau)
-			        .setParameter("heurecreneau", heureCreneau)
-			        .getResultList();
+					"SELECT c FROM Creneau c WHERE c.datecreneau  =:datecreneau AND c.heurecreneau  =:heurecreneau")
+					.setParameter("datecreneau", dateCreneau).setParameter("heurecreneau", heureCreneau)
+					.getResultList();
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return null;

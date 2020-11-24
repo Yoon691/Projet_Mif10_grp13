@@ -15,17 +15,18 @@ import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 @Stateless
-public class DAOInscrit implements DAOCrud{
-    @PersistenceContext( unitName = "pu-sportify" )
-    private EntityManagerFactory factory;
+public class DAOInscrit implements DAOCrud {
+	@PersistenceContext(unitName = "pu-sportify")
+	private EntityManagerFactory factory;
 	private static final long serialVersionUID = 1L;
-    
-    public DAOInscrit(EntityManagerFactory factory) {
-    	this.factory = factory;
-    }
-    
+
+	public DAOInscrit(EntityManagerFactory factory) {
+		this.factory = factory;
+	}
+
 	/**
 	 * Ajouter un utilisateur à la table inscrit dans la BD.
+	 * 
 	 * @param objet une instance Inscrit
 	 * @return Un booléen qui est true si l'utilisateur est créé, false sinon
 	 */
@@ -37,29 +38,30 @@ public class DAOInscrit implements DAOCrud{
 		if (objet instanceof Inscrit) {
 			inscrit = (Inscrit) objet;
 		}
-        try {
-        	// Lancement d'une transaction
-        	entitymanager.getTransaction( ).begin( );
+		try {
+			// Lancement d'une transaction
+			entitymanager.getTransaction().begin();
 
-        	// Modification de la table
-            entitymanager.persist( inscrit );
+			// Modification de la table
+			entitymanager.persist(inscrit);
 
-            // Mise à jours de la table
-            entitymanager.getTransaction( ).commit( );
-            
+			// Mise à jours de la table
+			entitymanager.getTransaction().commit();
 
-        } catch(Exception e) {
-        	e.printStackTrace();
-        	return false;
-        } finally {
-            //Femeture de l'objet ntityManager
-            entitymanager.close( );
-        }
-        return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			// Femeture de l'objet ntityManager
+			entitymanager.close();
+		}
+		return true;
 	}
-	
+
 	/**
-	 * Recherche un utilisateur par son Email (clé primaire), donc on utilise find à la place de createQuery.
+	 * Recherche un utilisateur par son Email (clé primaire), donc on utilise find à
+	 * la place de createQuery.
+	 * 
 	 * @param object Email sous forme d'une chaine de caractères
 	 * @return Une instance de la classe inscrit s'il existe, null sinon
 	 */
@@ -71,26 +73,27 @@ public class DAOInscrit implements DAOCrud{
 		if (object instanceof String) {
 			email = (String) object;
 		}
-        try {
-            inscrit = (Inscrit) entitymanager.find( Inscrit.class, email );
-        } catch ( NoResultException e ) {
-            System.out.println("User not found");
-        } catch ( Exception e ) {
-        	System.out.println("User not found");
-        } finally {
-        	entitymanager.close();
-        }
+		try {
+			inscrit = (Inscrit) entitymanager.find(Inscrit.class, email);
+		} catch (NoResultException e) {
+			System.out.println("User not found");
+		} catch (Exception e) {
+			System.out.println("User not found");
+		} finally {
+			entitymanager.close();
+		}
 		return inscrit;
 	}
-	
+
 	@Override
 	public void update(Object object, Object id) throws DAOException {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	/**
 	 * Suppression d'un utilisateur de la table inscrit dans la BD.
+	 * 
 	 * @param object Un email sous forme de chaine de caractère
 	 * @return 0 si la suppression est un un succès, -1 sinon
 	 */
@@ -102,61 +105,64 @@ public class DAOInscrit implements DAOCrud{
 			email = (String) object;
 		}
 		try {
-			  // Lancement d'une transaction
-		      entitymanager.getTransaction( ).begin( );
-		      
-		      // Chercher un utilisateur par son email
-		      Inscrit inscrit = entitymanager.find( Inscrit.class, email );
-		      
-		      if (inscrit != null) {
-		    	  // suppression de l'inscrit et mise à jours de la table
-			      entitymanager.remove( inscrit );
-			      entitymanager.getTransaction( ).commit( );  
-		      }
+			// Lancement d'une transaction
+			entitymanager.getTransaction().begin();
 
-		}catch (Exception e) {
+			// Chercher un utilisateur par son email
+			Inscrit inscrit = entitymanager.find(Inscrit.class, email);
+
+			if (inscrit != null) {
+				// suppression de l'inscrit et mise à jours de la table
+				entitymanager.remove(inscrit);
+				entitymanager.getTransaction().commit();
+			}
+
+		} catch (Exception e) {
 			System.out.println("Canno't delete user");
 			return -1;
 		} finally {
-		    entitymanager.close( );
+			entitymanager.close();
 		}
 		return 0;
 	}
+
 	/**
-	 * Afficher la liste de tous les utilisateur. 
+	 * Afficher la liste de tous les utilisateur.
+	 * 
 	 * @return Une liste contenant tous les utilisateurs dans la table Inscrit.
 	 */
-	
+
 	public List<Inscrit> afficherAll() {
 		EntityManager entitymanager = factory.createEntityManager();
 		String query = "SELECT i FROM Inscrit i";
-		List <Inscrit> userList = null;
+		List<Inscrit> userList = null;
 		try {
-		userList = entitymanager.createQuery(query).getResultList();
-		for(Inscrit user: userList) {
-			System.out.println(user.getEmailInscrit());
-		}
+			userList = entitymanager.createQuery(query).getResultList();
+			for (Inscrit user : userList) {
+				System.out.println(user.getEmailInscrit());
+			}
 		} catch (DAOException e) {
 			System.out.println("A error has occured");
 		}
 		return userList;
 	}
-	
+
 	/**
 	 * Adherer à un club et mettre la table inscrit à jours.
-	 * @param club une instance de club 
+	 * 
+	 * @param club    une instance de club
 	 * @param inscrit email de l'utilisateur
- 	 */
+	 */
 	public boolean adherer(Club club, Inscrit inscrit) {
 		EntityManager entitymanager = factory.createEntityManager();
 
 		try {
 			// Lancer une transaction
 			entitymanager.getTransaction().begin();
-			
+
 			// mettre à jours la colonne club
 			inscrit.setclub(club);
-			
+
 			// Mise à jours de la table
 			entitymanager.getTransaction().commit();
 		} catch (DAOException e) {

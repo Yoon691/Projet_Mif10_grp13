@@ -9,32 +9,33 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name="coach")
+@Table(name = "coach")
 public class Coach extends Inscrit {
-    private CoachPost coachPost;
+	private CoachPost coachPost;
 
-    public Coach(String emailInscrit, Club clubId, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
-        super(emailInscrit, clubId, nomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
-        this.coachPost = coachPost;
-    }
+	public Coach(String emailInscrit, Club clubId, String nomInscrit, String telInscrit, String password,
+			Date naissanceInscrit, Date dateInscription, CoachPost coachPost) {
+		super(emailInscrit, clubId, nomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+		this.coachPost = coachPost;
+	}
 
-    public Coach() {
+	public Coach() {
 
-    }
+	}
 
-    public CoachPost getCoachPost() {
-        return coachPost;
-    }
+	public CoachPost getCoachPost() {
+		return coachPost;
+	}
 
-    public void setCoachPost(CoachPost coachPost) {
-        this.coachPost = coachPost;
-    }
+	public void setCoachPost(CoachPost coachPost) {
+		this.coachPost = coachPost;
+	}
 
-    public void setEmailCoach(String emailCoach) {
-        super.setEmailInscrit(emailCoach);
-    }
+	public void setEmailCoach(String emailCoach) {
+		super.setEmailInscrit(emailCoach);
+	}
 
-    public String getEmailCOach() {
-        return super.getEmailInscrit();
-    }
+	public String getEmailCOach() {
+		return super.getEmailInscrit();
+	}
 }

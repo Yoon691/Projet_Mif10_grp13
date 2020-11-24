@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class CreneauCompositeKey implements Serializable{
+public class CreneauCompositeKey implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,6 +23,7 @@ public class CreneauCompositeKey implements Serializable{
 		result = prime * result + ((heurecreneau == null) ? 0 : heurecreneau.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -44,6 +45,5 @@ public class CreneauCompositeKey implements Serializable{
 			return false;
 		return true;
 	}
-	
 
 }

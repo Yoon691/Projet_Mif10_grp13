@@ -8,49 +8,48 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 @Stateless
-public class DAOAdmin implements DAOCrud{
+public class DAOAdmin implements DAOCrud {
 
 	private static final String JPQL_SELECT_PAR_NOMADMIN = "SELECT a FROM Admin a WHERE a.nomAdmin=:nomAdmin";
-	private static final String PARAM_NOMADMIN           = "nomAdmin";
+	private static final String PARAM_NOMADMIN = "nomAdmin";
 
 	// Injection du manager, qui s'occupe de la connexion avec la BDD
-	@PersistenceContext( unitName = "pu-sportify" )
+	@PersistenceContext(unitName = "pu-sportify")
 	private EntityManager em;
 
-
 	@Override
-	public boolean creer( Object object ) throws DAOException {
+	public boolean creer(Object object) throws DAOException {
 		Admin admin = null;
 		if (object instanceof Admin)
-			 admin	= (Admin) object;
+			admin = (Admin) object;
 
 		try {
-			em.persist( admin );
+			em.persist(admin);
 			return true;
-		} catch ( Exception e ) {
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	@Override
-	public Object afficher(Object object ) throws DAOException {
-		Admin admin ;
+	public Object afficher(Object object) throws DAOException {
+		Admin admin;
 		String nomAdmin = null;
 		if (object instanceof Admin) {
 			admin = (Admin) object;
-		}
-		else if(object instanceof String){
+		} else if (object instanceof String) {
 			nomAdmin = (String) object;
 		}
-		Query requete = em.createQuery( JPQL_SELECT_PAR_NOMADMIN );
-		requete.setParameter( PARAM_NOMADMIN, nomAdmin );
+		Query requete = em.createQuery(JPQL_SELECT_PAR_NOMADMIN);
+		requete.setParameter(PARAM_NOMADMIN, nomAdmin);
 		try {
 			admin = (Admin) requete.getSingleResult();
-		} catch ( NoResultException e ) {
+		} catch (NoResultException e) {
 			return null;
-		} catch ( Exception e ) {
-			throw new DAOException( e );
+		} catch (Exception e) {
+			throw new DAOException(e);
 		}
 		return admin;
 	}
