@@ -3,30 +3,39 @@
 <h2 class="interface-titles"> <b>Liste des membres</b> </h2>
 <hr class="line">
 
-<div class="table-responsive memberList">
-    <table class="table">
-        <thead class="memberList-thead">
+<div class="table-responsive adhList">
+  <table class="table">
+	<thead class="adhList-thead">
         <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Date d'inscription</th>
-            <th scope="col">Numéro</th>
-            <th scope="col">Email</th>
+          <th scope="col">Nom :</th>
+          <th scope="col">Email :</th>
+          <th scope="col">Telephone :</th>
+          <th scope="col">Date de naissance :</th>
         </tr>
-        </thead>
-        <tbody>
-        <%--<c:forEach var="club" items="${sessionScope.clubList}">--%>
-
-        <c:forEach var="i" begin="0" end="3" step="1">
-            <tr>
-                <td class="">Benzema</td>
-                <td class="">Karim</td>
-                <td class="">07/02/2020</td>
-                <td class="">0620356842</td>
-                <td class="">7/12</td>
-                <td> <button class="btn btn-primary mb-2" onclick="retirer()"> Retirer </button></td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+      </thead>
+	<tbody>
+		<c:set var="count2" value="0" scope="page" />
+		<c:forEach var="adh" items="${sessionScope.adhList}">
+		  	<tr>
+		          <td class="l-adh-name">${adh.getNomInscrit()}</td>
+		          <td class="l-adh-email">${adh.getEmailInscrit()}</td>
+		          <td class="l-adh-resp">${adh.getTelInscrit()}</td>
+		          <td class="l-adh-nb-adh">${club.getNbMaxAdherent()}</td>
+		          <td> <button id="adh${count2}" class="btn btn-primary mb-2" value="${adh.getEmailInscrit()}" > Exclure </button></td>
+	        </tr>
+	        <a id="call${count2}" href="Exclure?adh=${adh.getEmailInscrit()}"></a>
+	        <c:set var="count2" value="${count2 + 1}" scope="page"/>
+		</c:forEach>
+	</tbody>
+  </table>
 </div>
+
+<script>
+	var nb_adh = document.getElementsByClassName("l-adh-name").length;
+	for (let i=0; i<nb_adh; i++) {
+		$("#adh"+i).click(function() {
+			var callServlet = document.getElementById("call"+i);
+			callServlet.click()
+		});
+	}
+</script>
