@@ -38,7 +38,6 @@
 	<div class="landing-content">
 		<div class="soon-news">
 			<%@ include file="composants/soonNews.jsp" %>
-			<%-- <jsp:include page="composants/soonNews.jsp"/> --%>
 		</div>
 		<div class="landing-information">
 			<div class="information-text">
