@@ -36,20 +36,13 @@ public class Adherer extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("club");
-        System.out.println("mail club recuperer" + email);
         HttpSession session = request.getSession();
         Inscrit inscrit = (Inscrit) session.getAttribute("user");
-        System.out.println("le non de l'user" + inscrit.getNomInscrit());
         Club club = (Club) daoClub.afficher(email);
-        System.out.println("le mail de club adherrer" + club.getEmailClub());
-
         inscrit.setclub(club);
-        System.out.println("le mail de club ou l'inscrit est adhérer" + inscrit.getClub());
-        System.out.println("daoInscrit : " + daoInscrit);
+
         try {
                 daoInscrit.update(inscrit,club.getEmailClub());
-                System.out.println("Vous venez de d'adhérer un club");
-                System.out.println("le id de ce club est " + inscrit.getClub());
 
         }catch ( DAOException e){
             e.printStackTrace();

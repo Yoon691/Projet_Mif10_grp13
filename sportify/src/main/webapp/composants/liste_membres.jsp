@@ -20,7 +20,7 @@
 		          <td class="l-adh-name">${adh.getNomInscrit()}</td>
 		          <td class="l-adh-email">${adh.getEmailInscrit()}</td>
 		          <td class="l-adh-resp">${adh.getTelInscrit()}</td>
-		          <td class="l-adh-nb-adh">${club.getNbMaxAdherent()}</td>
+		          <td class="l-adh-nb-adh"><fmt:formatDate pattern="dd-MM-yyyy"value="${adh.getNaissanceInscrit()}" /></td>
 		          <td> <button id="adh${count2}" class="btn btn-primary mb-2" value="${adh.getEmailInscrit()}" > Exclure </button></td>
 	        </tr>
 	        <a id="call${count2}" href="Exclure?adh=${adh.getEmailInscrit()}"></a>
