@@ -94,7 +94,7 @@
     font-size: 2vw;
 }
 
-.user-club {
+.user-club, .club-coach {
 	color: grey;
     margin-top: -0.5vh;
 }
