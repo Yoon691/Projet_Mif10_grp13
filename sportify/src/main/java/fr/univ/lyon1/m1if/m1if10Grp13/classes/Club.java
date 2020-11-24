@@ -12,11 +12,11 @@ import javax.persistence.Table;
 @Table(name = "club")
 public class Club {
     @Id
-    @Column(name="emailclub")
+    @Column(name = "emailclub")
     private String emailclub;
-    
+
     private String nomclub;
-    @Convert(converter= AESEncryption.class)
+    @Convert(converter = AESEncryption.class)
     private String passwordclub;
     private String nomresponsable;
     private int nbmaxadherent;
@@ -28,8 +28,9 @@ public class Club {
         this.nomresponsable = nomresponsable;
         this.nbmaxadherent = nbmaxadherent;
     }
-    public Club(){}
 
+    public Club() {
+    }
 
     public String getNomClub() {
         return nomclub;

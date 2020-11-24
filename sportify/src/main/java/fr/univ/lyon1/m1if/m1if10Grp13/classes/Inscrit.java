@@ -10,29 +10,29 @@ public class Inscrit {
     @Id
     @Column(name = "emailinscrit")
     private String emailInscrit;
-    
-    @ManyToOne @JoinColumn(name="emailclub")
-    private Club club;
-    
-    @Column(name="nomInscrit")
-    private String nominscrit;
-    
-    @Column(name="telInscrit")
-    private String telinscrit;
-    
-    @Column(name="password")
-    @Convert(converter= AESEncryption.class)
-    private String password;
-    
-    @Column(name="naissanceInscrit")
-    private Date naissanceinscrit;
-    
-    @Column(name="dateInscription")
-    private Date dateinscription;
-    
- 
 
-	public Inscrit(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password, Date naissanceInscrit, Date dateInscription) {
+    @ManyToOne
+    @JoinColumn(name = "emailclub")
+    private Club club;
+
+    @Column(name = "nomInscrit")
+    private String nominscrit;
+
+    @Column(name = "telInscrit")
+    private String telinscrit;
+
+    @Column(name = "password")
+    @Convert(converter = AESEncryption.class)
+    private String password;
+
+    @Column(name = "naissanceInscrit")
+    private Date naissanceinscrit;
+
+    @Column(name = "dateInscription")
+    private Date dateinscription;
+
+    public Inscrit(String emailInscrit, Club club, String nomInscrit, String telInscrit, String password,
+            Date naissanceInscrit, Date dateInscription) {
         this.emailInscrit = emailInscrit;
         this.club = club;
         this.nominscrit = nomInscrit;
@@ -49,7 +49,6 @@ public class Inscrit {
     public String getEmailInscrit() {
         return emailInscrit;
     }
-
 
     public String getNomInscrit() {
         return nominscrit;

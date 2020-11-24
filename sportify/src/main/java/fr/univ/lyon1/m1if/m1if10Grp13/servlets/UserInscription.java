@@ -22,56 +22,61 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 /**
  * Servlet implementation class UserInscription
  */
-@WebServlet(name = "UserInscription", urlPatterns="/UserInscription")
+@WebServlet(name = "UserInscription", urlPatterns = "/UserInscription")
 public class UserInscription extends HttpServlet {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private DAOInscrit daoInscrit;
-	private ServletContext servletContext;
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		this.servletContext = config.getServletContext();
-		this.daoInscrit = (DAOInscrit) servletContext.getAttribute("daoInscrit");
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private DAOInscrit daoInscrit;
+    private ServletContext servletContext;
 
-	}
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        this.servletContext = config.getServletContext();
+        this.daoInscrit = (DAOInscrit) servletContext.getAttribute("daoInscrit");
 
-	/**
+    }
+
+    /**
      * @see HttpServlet#HttpServlet()
      */
     public UserInscription() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        response.getWriter().append("Served at: ").append(request.getContextPath());
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupération des parametres
-		String nomInscrit = request.getParameter("nomInscrit");
-		String prenomInscrit = request.getParameter("prenomInscrit");
-		String password = request.getParameter("password");
-		String emailInscrit = request.getParameter("emailInscrit");
-		String telInscrit = request.getParameter("telInscrit");
-		Date naissanceInscrit = null;
-		
-		try {
-			naissanceInscrit= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("naissanceInscrit"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} catch (DAOException e) {
-			e.printStackTrace();
-		}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Récupération des parametres
+        String nomInscrit = request.getParameter("nomInscrit");
+        String prenomInscrit = request.getParameter("prenomInscrit");
+        String password = request.getParameter("password");
+        String emailInscrit = request.getParameter("emailInscrit");
+        String telInscrit = request.getParameter("telInscrit");
+        Date naissanceInscrit = null;
+
+        try {
+            naissanceInscrit = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("naissanceInscrit"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
 		
 		// Date d'inscription (now)
 		Date dateInscription = new Date();
@@ -113,7 +118,6 @@ public class UserInscription extends HttpServlet {
 		RequestDispatcher rd =  request.getRequestDispatcher("./connexion.jsp");
 		rd.include(request, response);
 
-	}
-		
+    }
 
 }
