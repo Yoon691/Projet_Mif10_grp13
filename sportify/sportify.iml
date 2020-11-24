@@ -21,7 +21,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="pu-sonarqube" />
-          <factory-entry name="pu-sportify" value="fa007706-4573-4fea-bd7c-66497eee55b0" />
+          <factory-entry name="pu-sportify" value="3cc053f6-d65c-4061-89a7-eabe10d51b03" />
           <factory-entry name="sportify" />
         </datasource-mapping>
         <naming-strategy-map />

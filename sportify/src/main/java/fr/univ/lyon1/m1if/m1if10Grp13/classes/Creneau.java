@@ -20,15 +20,15 @@ public class Creneau {
     private Date datecreneau;
     @Id
     @Type(type = "timestamp")
-    private Timestamp heurecreneau;
+    private Date heurecreneau;
     @Type(type = "timestamp")
-    private Timestamp duree;
+    private Date duree;
 
     public Creneau() {
 
     }
 
-    public Creneau(Date dateCreneau, Timestamp heureCreneau, Timestamp duree) {
+    public Creneau(Date dateCreneau, Date heureCreneau, Date duree) {
         this.datecreneau = dateCreneau;
         this.heurecreneau = heureCreneau;
         this.duree = duree;
@@ -46,7 +46,7 @@ public class Creneau {
         return heurecreneau;
     }
 
-    public void setHeureCreneau(Timestamp heureCreneau) {
+    public void setHeureCreneau(Date heureCreneau) {
         this.heurecreneau = heureCreneau;
     }
 
@@ -54,7 +54,7 @@ public class Creneau {
         return duree;
     }
 
-    public void setDuree(Timestamp duree) {
+    public void setDuree(Date duree) {
         this.duree = duree;
     }
 
