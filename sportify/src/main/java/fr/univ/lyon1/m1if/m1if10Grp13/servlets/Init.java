@@ -18,8 +18,9 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOTerrain;
 
 import java.io.IOException;
 
-@WebServlet(name = "Init", urlPatterns="/Init",loadOnStartup=1)
+@WebServlet(name = "Init", urlPatterns = "/Init", loadOnStartup = 1)
 public class Init extends HttpServlet {
+
 	
 
 	private static final long serialVersionUID = 1L;
@@ -48,9 +49,11 @@ public class Init extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //TODO
+
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	this.servletContext.getRequestDispatcher("/index.jsp");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        this.servletContext.getRequestDispatcher("/index.jsp");
     }
 }

@@ -14,6 +14,19 @@
 <div class="reservation-form">
     <form method="POST" action="Reservation">
 	  <div class="form-row align-items-center">
+	  	<div class="col-auto">
+	  		<div class="form-group">
+	  			<label for="selectTerrain">Terrain : </label>
+	  			<select class="form-control" id="selectTerrain" onchange="refreshTerrain()" name="terrain">
+				  <option value="1">Terrain 1
+				  <option value="2">Terrain 2
+				  <option value="3">Terrain 3
+				  <option value="4">Terrain 4
+				  <option value="5">Terrain 5
+				  <option value="6">Terrain 6
+				</select>
+	  		</div>
+	  	</div>
 	    <div class="col-auto">
 	      <div class="form-group">
 		    <label for="selectJour">Jour :</label>
@@ -78,3 +91,19 @@
       </tbody>
   </table>
 </div>
+
+<a id="ter1" href="PlanningGestion?stade=1"></a>
+<a id="ter2" href="PlanningGestion?stade=2"></a>
+<a id="ter3" href="PlanningGestion?stade=3"></a>
+<a id="ter4" href="PlanningGestion?stade=4"></a>
+<a id="ter5" href="PlanningGestion?stade=5"></a>
+<a id="ter6" href="PlanningGestion?stade=6"></a>
+
+<script>
+	function refreshTerrain() {
+		var x = document.getElementById("selectTerrain").value;
+		console.log("refresh terrain "+x);
+		var but = document.getElementById("ter" + x);
+		but.click();
+	}
+</script>
