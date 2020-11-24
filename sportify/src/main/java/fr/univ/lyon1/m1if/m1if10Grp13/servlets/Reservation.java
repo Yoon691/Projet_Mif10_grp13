@@ -24,72 +24,72 @@ import java.text.SimpleDateFormat;
 
 @WebServlet(name = "Reservation", urlPatterns = "/Reservation")
 public class Reservation extends HttpServlet {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private DAOReservationTerrain daoReservationTerrain;
-	private DAOCreneau daoCreneau;
-	private ServletContext servletContext;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private DAOReservationTerrain daoReservationTerrain;
+    private DAOCreneau daoCreneau;
+    private ServletContext servletContext;
 
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		this.servletContext = config.getServletContext();
-		this.daoReservationTerrain = (DAOReservationTerrain) servletContext.getAttribute("daoReservationTerrain");
-		this.daoCreneau = (DAOCreneau) servletContext.getAttribute("daoCreneau");
-		this.daoReservationTerrain = (DAOReservationTerrain) servletContext.getAttribute("daoReservation");
-	}
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        this.servletContext = config.getServletContext();
+        this.daoReservationTerrain = (DAOReservationTerrain) servletContext.getAttribute("daoReservationTerrain");
+        this.daoCreneau = (DAOCreneau) servletContext.getAttribute("daoCreneau");
+        this.daoReservationTerrain = (DAOReservationTerrain) servletContext.getAttribute("daoReservation");
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
 
-		// Recupération des parametres de Creneau
-		String dateCreneauParam = request.getParameter("day");
-		String heureCreneauParam = request.getParameter("horaire");
-		String dureeParam = request.getParameter("duree");
-		Long idTerrain = Long.valueOf(request.getParameter("terrain"));
-		Inscrit user = (Inscrit) session.getAttribute("user");
-		Club club = (Club) session.getAttribute("club");
+        // Recupération des parametres de Creneau
+        String dateCreneauParam = request.getParameter("day");
+        String heureCreneauParam = request.getParameter("horaire");
+        String dureeParam = request.getParameter("duree");
+        Long idTerrain = Long.valueOf(request.getParameter("terrain"));
+        Inscrit user = (Inscrit) session.getAttribute("user");
+        Club club = (Club) session.getAttribute("club");
 
-		// format de la date
-		SimpleDateFormat formatDuree = new SimpleDateFormat("hh:mm:ss");
+        // format de la date
+        SimpleDateFormat formatDuree = new SimpleDateFormat("hh:mm:ss");
 
-		if (heureCreneauParam.length() == 1) {
-			heureCreneauParam = "0" + heureCreneauParam + ":00:00";
-		} else {
-			heureCreneauParam = heureCreneauParam + ":00:00";
-		}
+        if (heureCreneauParam.length() == 1) {
+            heureCreneauParam = "0" + heureCreneauParam + ":00:00";
+        } else {
+            heureCreneauParam = heureCreneauParam + ":00:00";
+        }
 
-		if (dureeParam.length() == 1) {
-			dureeParam = "0" + dureeParam + ":00:00";
-		} else {
-			dureeParam = dureeParam + ":00:00";
-		}
+        if (dureeParam.length() == 1) {
+            dureeParam = "0" + dureeParam + ":00:00";
+        } else {
+            dureeParam = dureeParam + ":00:00";
+        }
 
-		// chercher un cereneau
-		Creneau creneau = null;
-		creneau = (Creneau) daoCreneau.trouverCrenauId(heureCreneauParam, dateCreneauParam);
+        // chercher un cereneau
+        Creneau creneau = null;
+        creneau = (Creneau) daoCreneau.trouverCrenauId(heureCreneauParam, dateCreneauParam);
 
-		if (formatDuree.format(creneau.getDuree()).equals(dureeParam)) {
-			try {
-				Terrain terrain = (Terrain) new Terrain(idTerrain);
-				if (user != null) {
-					this.daoReservationTerrain.creer(new ReservationTerrain(terrain, creneau, null, user));
-				} else {
-					this.daoReservationTerrain.creer(new ReservationTerrain(terrain, creneau, club, null));
-				}
-			} catch (DAOException e) {
-				e.printStackTrace();
-				System.out.println("ne peut pas reserver le terrain");
-			}
-		}
-		request.getRequestDispatcher("/interface.jsp").forward(request, response);
+        if (formatDuree.format(creneau.getDuree()).equals(dureeParam)) {
+            try {
+                Terrain terrain = (Terrain) new Terrain(idTerrain);
+                if (user != null) {
+                    this.daoReservationTerrain.creer(new ReservationTerrain(terrain, creneau, null, user));
+                } else {
+                    this.daoReservationTerrain.creer(new ReservationTerrain(terrain, creneau, club, null));
+                }
+            } catch (DAOException e) {
+                e.printStackTrace();
+                System.out.println("ne peut pas reserver le terrain");
+            }
+        }
+        request.getRequestDispatcher("/interface.jsp").forward(request, response);
 
-	}
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	}
+    }
 }

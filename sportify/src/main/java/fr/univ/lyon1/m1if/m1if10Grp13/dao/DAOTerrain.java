@@ -27,17 +27,17 @@ public class DAOTerrain implements DAOCrud {
     }
 
 
-	/**
-	 * Creer et ajouter un terrain à la BD.
-	 * @param object Une instance d'un terrain
-	 * @return booléen qui indique si la création est un succés
-	 */
-	@Override
-	public boolean creer(Object object) throws DAOException {
-		EntityManager entitymanager = this.factory.createEntityManager();
-		Terrain terrain = null;
-		if (object instanceof Terrain)
-			terrain	= (Terrain) object;
+    /**
+     * Creer et ajouter un terrain à la BD.
+     * @param object Une instance d'un terrain
+     * @return booléen qui indique si la création est un succés
+     */
+    @Override
+    public boolean creer(Object object) throws DAOException {
+        EntityManager entitymanager = this.factory.createEntityManager();
+        Terrain terrain = null;
+        if (object instanceof Terrain)
+            terrain    = (Terrain) object;
 
 
         try {

@@ -77,46 +77,46 @@ public class UserInscription extends HttpServlet {
         } catch (DAOException e) {
             e.printStackTrace();
         }
-		
-		// Date d'inscription (now)
-		Date dateInscription = new Date();
-		Inscrit inscrit;
-		//System.out.println("Inscrit Instancier");
-		
-		// Creation d'une instance de l'inscrit
-		inscrit = new Inscrit(emailInscrit, null, nomInscrit + " " + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
-		try {
-			// check if email and password are not null
-			if(emailInscrit != null && password != null){
-				// Ajouter l'inscrit à la BD
-				if(daoInscrit.creer(inscrit)) {
-					/* Utilisateur à bien été créé */
-					PrintWriter out = response.getWriter();
-					out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-					out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-					out.println("<script>");
-					out.println("$(document).ready(function() {");
-					out.println("swal(\"WELCOME\", \"Votre compte à bien été créé !\", \"success\");");
-					out.println("});");
-					out.println("</script>");
-				} else {
-					/* Utilisateur existe déjà */
-					PrintWriter out = response.getWriter();
-					out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-					out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-					out.println("<script>");
-					out.println("$(document).ready(function() {");
-					out.println("swal(\"Oops...\", \"L'utilisateur existe déjà. Cette adresse mail est déjà utilisé sur un autre compte.\", \"error\");");
-					out.println("});");
-					out.println("</script>");
-				}
-			}
-		} catch ( DAOException e) {
-				e.printStackTrace();
-		}
-		// Redirection vers la page de connexion
-		RequestDispatcher rd =  request.getRequestDispatcher("./connexion.jsp");
-		rd.include(request, response);
+        
+        // Date d'inscription (now)
+        Date dateInscription = new Date();
+        Inscrit inscrit;
+        //System.out.println("Inscrit Instancier");
+        
+        // Creation d'une instance de l'inscrit
+        inscrit = new Inscrit(emailInscrit, null, nomInscrit + " " + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+        try {
+            // check if email and password are not null
+            if(emailInscrit != null && password != null){
+                // Ajouter l'inscrit à la BD
+                if(daoInscrit.creer(inscrit)) {
+                    /* Utilisateur à bien été créé */
+                    PrintWriter out = response.getWriter();
+                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                    out.println("<script>");
+                    out.println("$(document).ready(function() {");
+                    out.println("swal(\"WELCOME\", \"Votre compte à bien été créé !\", \"success\");");
+                    out.println("});");
+                    out.println("</script>");
+                } else {
+                    /* Utilisateur existe déjà */
+                    PrintWriter out = response.getWriter();
+                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                    out.println("<script>");
+                    out.println("$(document).ready(function() {");
+                    out.println("swal(\"Oops...\", \"L'utilisateur existe déjà. Cette adresse mail est déjà utilisé sur un autre compte.\", \"error\");");
+                    out.println("});");
+                    out.println("</script>");
+                }
+            }
+        } catch ( DAOException e) {
+                e.printStackTrace();
+        }
+        // Redirection vers la page de connexion
+        RequestDispatcher rd =  request.getRequestDispatcher("./connexion.jsp");
+        rd.include(request, response);
 
     }
 
