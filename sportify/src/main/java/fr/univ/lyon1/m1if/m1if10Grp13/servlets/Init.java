@@ -22,6 +22,10 @@ import java.io.IOException;
 @WebServlet(name = "Init", urlPatterns = "/Init", loadOnStartup = 1)
 public class Init extends HttpServlet {
 
+
+	
+
+
 	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
 	private EntityManagerFactory factory;
@@ -31,6 +35,7 @@ public class Init extends HttpServlet {
 	 */
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+
 		this.servletContext = config.getServletContext();
 		this.factory = Persistence.createEntityManagerFactory("pu-sportify");
 		DAOInscrit daoInscrit = new DAOInscrit(this.factory);
@@ -45,7 +50,6 @@ public class Init extends HttpServlet {
 		servletContext.setAttribute("daoCreneau", daoCreneau);
 		servletContext.setAttribute("daoReservation", daoReservation);
 		servletContext.setAttribute("daoTerrain", daoTerrain);
-
 	}
 
 	@Override

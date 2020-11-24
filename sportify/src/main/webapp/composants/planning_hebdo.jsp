@@ -12,7 +12,7 @@
 <hr class="line">
 
 <div class="reservation-form">
-    <form method="POST" action="Reserve">
+    <form method="POST" action="Reservation">
 	  <div class="form-row align-items-center">
 	  	<div class="col-auto">
 	  		<div class="form-group">
@@ -37,7 +37,7 @@
 	    </div>
 	    <div class="col-auto">
 	      <div class="form-group">
-		    <label for="selectHeur">Heure :</label>
+		    <label for="selectHeure">Heure :</label>
 		    <select class="form-control" id="selectHeure" name="horaire">
 		     	<c:forEach var="i" begin="8" end="20" step="1">
 		     		<option value="${i}">${i}h</option>
