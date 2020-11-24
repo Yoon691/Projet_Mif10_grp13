@@ -152,6 +152,12 @@ public class DAOReservationTerrain implements DAOCrud{
 		
 	}
 	
+	/**
+	 * Recuperer la liste des reservation d'une date données.
+	 * @param date La date cherchée.
+	 * @return une liste contenant toutes les instances de la classe ReservationTerrain correspondante à la date donnée,
+	 * En ordre ascendant
+	 */
 	public ArrayList listReservationJours(String date) {
 		EntityManager entitymanager = this.factory.createEntityManager();
 		ArrayList<ReservationTerrain> listReservation = null;
@@ -169,6 +175,12 @@ public class DAOReservationTerrain implements DAOCrud{
 		
 	}
 	
+	/**
+	 * Recupérer la date de chaque jours de la semaine courante, puis effectuer une recherche dans la BD
+	 * En utilisant la méthode listReservationJours pour chaque date afin de trouver les créneaux reservés.
+	 * @return une TreeMap contenat des pairs <Date, ListReservations> qui associe à chaque date la liste 
+	 * des créneaux reservés.
+	 */
 	public TreeMap getWeekReservations() {
         // Convertir la format de date
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -209,17 +221,6 @@ public class DAOReservationTerrain implements DAOCrud{
                 weekDatesMap.put(date, listReservationJours(date));
             }
             calIndex += 1;
-        }
-        System.out.println("Testing");
-        for (String i : weekDatesMap.keySet()) {
-            System.out.println("key: " + i + " value: " + weekDatesMap.get(i));
-            List<ReservationTerrain> values = weekDatesMap.get(i);
-            for(ReservationTerrain reservation : values) {
-            	System.out.println(reservation.getClub());
-            	System.out.println(reservation.getCreneauId().getDateCreneau());
-            	System.out.println(reservation.getCreneauId().getDuree().toString());
-            	System.out.println(reservation.getInscrit());
-            }
         }
         return weekDatesMap;
     }
