@@ -15,6 +15,8 @@
         </tr>
         </thead>
         <tbody>
+        <%--<c:forEach var="club" items="${sessionScope.clubList}">--%>
+
         <c:forEach var="i" begin="0" end="3" step="1">
             <tr>
                 <td class="">Benzema</td>

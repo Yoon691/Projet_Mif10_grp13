@@ -4,9 +4,7 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	SimpleDateFormat fr_date_format = new SimpleDateFormat("d-M-yyyy");
-%>
+
 <h2 class="interface-titles">
 	<b>Mon Profil</b>
 </h2>
@@ -30,7 +28,7 @@
 			<div class="col">
 				<span class="infos-th">Email :</span>
 				${sessionScope.user.getEmailInscrit()} <br> <span
-					class="infos-th">T�l�phone : </span>
+					class="infos-th">Téléphone : </span>
 				${sessionScope.user.getTelInscrit()}
 			</div>
 			<div class="col">
