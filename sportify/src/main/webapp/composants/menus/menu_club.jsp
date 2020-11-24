@@ -1,13 +1,15 @@
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 
 <div class="club-info">
+
 	<img class="profil-picture" src="img/default-pic.png" alt="default profil picture">
-     <div class="club-name">Oympique Lyonnais</div>
-     <div class="club-coach">Didier Deschamps</div>
+     <div class="club-name">${sessionScope.club.getNomClub()}</div>
+     <div class="club-coach">coach : ${sessionScope.club.getNomResponsable()}</div>
 </div>
 
 <div class="btn-list">
 	<button class="menu-button home-button" onclick="showAccueil()">Accueil</button>
+<<<<<<< HEAD
 	<button class="menu-button calendrier-button" onclick="showReservation()">Reserver</button>
 	<button class="menu-button event-button" onclick="showEvenement()">Creer un évenement</button>
 	<button class="menu-button club-button" onclick="showListe()">Liste des adhérents</button>

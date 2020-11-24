@@ -94,7 +94,7 @@
     font-size: 2vw;
 }
 
-.user-club {
+.user-club, .club-coach {
 	color: grey;
     margin-top: -0.5vh;
 }
@@ -221,6 +221,10 @@ hr.line{
     .reservation-form {
     	margin-top: 4vh;
     	margin-bottom: 4vh;
+    }
+    
+    #day {
+    	 width: -webkit-fill-available;
     }
     
     .form-row {
