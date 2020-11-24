@@ -37,12 +37,12 @@ public class Init extends HttpServlet {
     	DAOInscrit daoInscrit = new DAOInscrit(this.factory);
     	DAOClub daoClub = new DAOClub(this.factory);
     	DAOCreneau daoCreneau = new DAOCreneau(this.factory);
-    	DAOReservationTerrain daoReservation = new DAOReservationTerrain(this.factory);
+    	DAOReservationTerrain daoReservationTerrain = new DAOReservationTerrain(this.factory);
     	DAOTerrain daoTerrain = new DAOTerrain(this.factory);
     	servletContext.setAttribute("daoInscrit", daoInscrit);
     	servletContext.setAttribute("daoClub", daoClub);
     	servletContext.setAttribute("daoCreneau", daoCreneau);
-    	servletContext.setAttribute("daoReservation", daoReservation);
+    	servletContext.setAttribute("daoReservationTerrain", daoReservationTerrain);
     	servletContext.setAttribute("daoTerrain", daoTerrain);
 	}
 

@@ -28,7 +28,7 @@ public class DAOTerrain implements DAOCrud{
 
 	/**
 	 * Creer et ajouter un terrain à la BD.
-	 * @param bject Une instance d'un terrain
+	 * @param object Une instance d'un terrain
 	 * @return booléen qui indique si la création est un succés
 	 */
 	@Override

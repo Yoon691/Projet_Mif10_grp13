@@ -32,6 +32,7 @@ public class DAOReservationTerrain implements DAOCrud{
 	@Override
 	public boolean creer(Object objet) throws DAOException {
 		System.out.println("Inside");
+		// créer une instance de EntityManager pour lancer une transaction
 		EntityManager entitymanager = this.factory.createEntityManager();
 		ReservationTerrain reservation = null;
 		if (objet instanceof ReservationTerrain) {
@@ -40,12 +41,14 @@ public class DAOReservationTerrain implements DAOCrud{
 		}
 		
 		try {
+//			entitymanager.persist(reservation);
         	// Lancement d'une transaction
         	entitymanager.getTransaction( ).begin( );
         	System.out.println("Before reservation");
         	// Modification de la table
-            entitymanager.merge( reservation );
-            System.out.println("After reservation");
+			entitymanager.merge( reservation );
+			///entitymanager.persist(reservation);
+			System.out.println("After reservation");
 
             // Mise à jours de la table
             entitymanager.getTransaction( ).commit( );
