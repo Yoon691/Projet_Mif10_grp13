@@ -70,6 +70,10 @@ public class Inscrit {
         return dateinscription;
     }
 
+    public Club getClub() {
+        return club;
+    }
+
     public void setEmailInscrit(String emailInscrit) {
         this.emailInscrit = emailInscrit;
     }
@@ -97,4 +101,5 @@ public class Inscrit {
     public void setDateInscription(Date dateInscription) {
         this.dateinscription = dateInscription;
     }
+
 }

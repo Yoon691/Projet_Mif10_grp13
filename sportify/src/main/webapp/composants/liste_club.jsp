@@ -11,7 +11,7 @@
           <th scope="col">Nom</th>
           <th scope="col">Email</th>
           <th scope="col">Responsable</th>
-          <th scope="col">Nombre d'adhérants</th>
+          <th scope="col">Nombre d'adhï¿½rants</th>
         </tr>
       </thead>
 	<tbody>
@@ -24,7 +24,8 @@
 		          <td class="l-club-nb-adh">${club.getNbMaxAdherent()}</td>
 		          <td> <button id="club${count}" class="btn btn-primary mb-2" value="${club.getEmailClub()}" > Rejoindre </button></td>
 	        </tr>
-	        <a id="call${count}" href="Adherer?club=${club.getEmailClub()}"></a>
+<%--	        <a id="call${count}" href="Adherer?club=${club.getEmailClub()}"></a>--%>
+			<a id="call${count}" href="<c:url value="/Adherer?club=${club.getEmailClub()}"/>"></a>
 	        <c:set var="count" value="${count + 1}" scope="page"/>
 		</c:forEach>
 	</tbody>
