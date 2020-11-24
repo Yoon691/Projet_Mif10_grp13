@@ -13,16 +13,18 @@ import java.util.Date;
 @Entity
 @Table(name = "gestion_admin_club")
 @IdClass(GestionAdminClubCompositeKey.class)
-public class GestionAdminClub implements Serializable{
+public class GestionAdminClub implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-    @ManyToOne @JoinColumn(name="emailclub")
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "emailclub")
     private Club club;
     @Id
-    @ManyToOne @JoinColumn(name="adminId")
+    @ManyToOne
+    @JoinColumn(name = "adminId")
     private Admin admin;
     private Date dategestion;
     private AdminOperation operation;

@@ -5,8 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
+
 @Entity
-@Table(name="evenements")
+@Table(name = "evenements")
 public class Evenement {
     @Id
     @Column(name = "evenementid")
