@@ -17,8 +17,8 @@ public class Terrain {
     private Long terrainId;
     private boolean dispo;
 
-    public Terrain(boolean dispo) {
-        this.dispo = dispo;
+    public Terrain(Long i) {
+        this.terrainId = i;
     }
 
     public Terrain() {

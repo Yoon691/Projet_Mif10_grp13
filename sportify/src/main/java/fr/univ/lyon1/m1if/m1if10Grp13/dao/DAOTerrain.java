@@ -75,7 +75,7 @@ public class DAOTerrain implements DAOCrud {
         Long terrainId = null;
 
         // verifier si l'objet passé est de type Long
-        if (object instanceof Long) {
+        if (object instanceof Integer) {
             terrainId = (Long) object;
         }
 
