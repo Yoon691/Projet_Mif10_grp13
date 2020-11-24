@@ -16,6 +16,7 @@ public class Deco extends HttpServlet {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
         session.removeAttribute("club");
+        session.invalidate();
         response.sendRedirect("./");
     }
 }

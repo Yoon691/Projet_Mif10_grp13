@@ -84,7 +84,7 @@ public class UserInscription extends HttpServlet {
 		//System.out.println("Inscrit Instancier");
 		
 		// Creation d'une instance de l'inscrit
-		inscrit = new Inscrit(emailInscrit, null, nomInscrit + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
+		inscrit = new Inscrit(emailInscrit, null, nomInscrit + " " + prenomInscrit, telInscrit, password, naissanceInscrit, dateInscription);
 		try {
 			// check if email and password are not null
 			if(emailInscrit != null && password != null){
