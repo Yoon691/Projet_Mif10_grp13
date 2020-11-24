@@ -19,39 +19,36 @@ import fr.univ.lyon1.m1if.m1if10Grp13.classes.Inscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
+public class DAOReservationTerrain implements DAOCrud {
 
-public class DAOReservationTerrain implements DAOCrud{
-	
-	// Injection du manager, qui s'occupe de la connexion avec la BDD
-	@PersistenceContext( unitName = "pu-sportify" )
-	private EntityManagerFactory factory
-	;
+    // Injection du manager, qui s'occupe de la connexion avec la BDD
+    @PersistenceContext(unitName = "pu-sportify")
+    private EntityManagerFactory factory;
 
+    public DAOReservationTerrain(EntityManagerFactory factory) {
+        this.factory = factory;
+    }
 
-	public DAOReservationTerrain(EntityManagerFactory factory) {
-		this.factory = factory;
-	}
+    @Override
+    public boolean creer(Object objet) throws DAOException {
+        System.out.println("Inside");
+        // créer une instance de EntityManager pour lancer une transaction
+        EntityManager entitymanager = this.factory.createEntityManager();
+        ReservationTerrain reservation = null;
+        if (objet instanceof ReservationTerrain) {
+            reservation = (ReservationTerrain) objet;
+            System.out.println(reservation);
+        }
 
-	@Override
-	public boolean creer(Object objet) throws DAOException {
-		System.out.println("Inside");
-		// créer une instance de EntityManager pour lancer une transaction
-		EntityManager entitymanager = this.factory.createEntityManager();
-		ReservationTerrain reservation = null;
-		if (objet instanceof ReservationTerrain) {
-			reservation = (ReservationTerrain) objet;
-			System.out.println(reservation);
-		}
-		
-		try {
-//			entitymanager.persist(reservation);
-        	// Lancement d'une transaction
-        	entitymanager.getTransaction( ).begin( );
-        	System.out.println("Before reservation");
-        	// Modification de la table
-			entitymanager.merge( reservation );
-			///entitymanager.persist(reservation);
-			System.out.println("After reservation");
+        try {
+//            entitymanager.persist(reservation);
+            // Lancement d'une transaction
+            entitymanager.getTransaction().begin();
+            System.out.println("Before reservation");
+            // Modification de la table
+            entitymanager.merge(reservation);
+            /// entitymanager.persist(reservation);
+            System.out.println("After reservation");
 
             // Mise à jours de la table
             entitymanager.getTransaction().commit();
@@ -169,15 +166,15 @@ public class DAOReservationTerrain implements DAOCrud{
      *         ReservationTerrain correspondante à la date donnée, En ordre
      *         ascendant
      */
-    public ArrayList listReservationJours(String date) {
+    public ArrayList listReservationJours(String date, Long terrainId) {
         EntityManager entitymanager = this.factory.createEntityManager();
         ArrayList<ReservationTerrain> listReservation = null;
         Date datecreneau = Date.valueOf(date);
-        String query = "SELECT r FROM ReservationTerrain r JOIN r.creneau c WHERE c.datecreneau =: datecreneau"
-                + " ORDER BY c.heurecreneau ASC";
+        String query = "SELECT r FROM ReservationTerrain r JOIN r.creneau c JOIN r.terrain t  "
+                + "WHERE c.datecreneau =: datecreneau AND t.terrainId =: terrainid" + " ORDER BY c.heurecreneau ASC";
         try {
             listReservation = (ArrayList<ReservationTerrain>) entitymanager.createQuery(query)
-                    .setParameter("datecreneau", datecreneau).getResultList();
+                    .setParameter("datecreneau", datecreneau).setParameter("terrainid", terrainId).getResultList();
         } catch (DAOException e) {
             e.printStackTrace();
         }
@@ -193,7 +190,7 @@ public class DAOReservationTerrain implements DAOCrud{
      * @return une TreeMap contenat des pairs <Date, ListReservations> qui associe à
      *         chaque date la liste des créneaux reservés.
      */
-    public TreeMap getWeekReservations() {
+    public TreeMap getWeekReservations(Long terrainId) {
         // Convertir la format de date
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -213,7 +210,7 @@ public class DAOReservationTerrain implements DAOCrud{
 
         // Ajout de la date du jours courant au Hashmap
         String date = sdf.format(cal.getTime());
-        weekDatesMap.put(date, listReservationJours(date));
+        weekDatesMap.put(date, listReservationJours(date, terrainId));
 
         // Recupération des date de la semaine courante
         while (current - calIndex > 0 || current + calIndex < 8) {
@@ -221,14 +218,14 @@ public class DAOReservationTerrain implements DAOCrud{
             if (current - calIndex > 0) {
                 cal.add(Calendar.DATE, 1);
                 date = sdf.format(cal.getTime());
-                weekDatesMap.put(date, listReservationJours(date));
+                weekDatesMap.put(date, listReservationJours(date, terrainId));
             }
 
             // Récupération des dates des jours précédents
             if (current + calIndex < 8) {
                 cal2.add(Calendar.DATE, -1);
                 date = sdf.format(cal2.getTime());
-                weekDatesMap.put(date, listReservationJours(date));
+                weekDatesMap.put(date, listReservationJours(date, terrainId));
             }
             calIndex += 1;
         }

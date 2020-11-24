@@ -25,66 +25,66 @@ import javax.servlet.http.HttpSession;
 @WebFilter("/*")
 public class AuthFilter extends HttpFilter {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Default constructor.
-	 */
-	public AuthFilter() {
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Default constructor.
+     */
+    public AuthFilter() {
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+    /**
+     * @see Filter#destroy()
+     */
+    public void destroy() {
+        // TODO Auto-generated method stub
+    }
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
-	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		// liste des pages permises
-		List permissionList = new ArrayList();
-		permissionList.addAll(Arrays.asList("/connexion.jsp", "/index.jsp"));
+    /**
+     * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+     */
+    public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        // liste des pages permises
+        List permissionList = new ArrayList();
+        permissionList.addAll(Arrays.asList("/connexion.jsp", "/index.jsp"));
 
-		// recupération de la session
-		HttpSession session = request.getSession(false);
+        // recupération de la session
+        HttpSession session = request.getSession(false);
 
-		boolean isLoggedIn = (session != null && session.getAttribute("user") != null);
+        boolean isLoggedIn = (session != null && session.getAttribute("user") != null);
 
-		// Permettre css de charger
-		Pattern pattern = Pattern.compile("jsp$", Pattern.CASE_INSENSITIVE);
-		Matcher matcher = pattern.matcher(request.getServletPath());
-		boolean isJsp = matcher.find();
+        // Permettre css de charger
+        Pattern pattern = Pattern.compile("jsp$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(request.getServletPath());
+        boolean isJsp = matcher.find();
 
-		if (isLoggedIn && request.getServletPath().equals("/connexion.jsp")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("interface.jsp");
-			dispatcher.forward(request, response);
-		} else if (isLoggedIn || permissionList.contains(request.getServletPath()) || !isJsp) {
-			// passer la requete normalement
+        if (isLoggedIn && request.getServletPath().equals("/connexion.jsp")) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("interface.jsp");
+            dispatcher.forward(request, response);
+        } else if (isLoggedIn || permissionList.contains(request.getServletPath()) || !isJsp) {
+            // passer la requete normalement
 
-			chain.doFilter(request, response);
+            chain.doFilter(request, response);
 
-		} else {
-			// Redirection vers la page de connexion
-			RequestDispatcher dispatcher = request.getRequestDispatcher("connexion.jsp");
-			dispatcher.forward(request, response);
+        } else {
+            // Redirection vers la page de connexion
+            RequestDispatcher dispatcher = request.getRequestDispatcher("connexion.jsp");
+            dispatcher.forward(request, response);
 
-		}
+        }
 
-	}
+    }
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
-	}
+    /**
+     * @see Filter#init(FilterConfig)
+     */
+    public void init(FilterConfig fConfig) throws ServletException {
+        // TODO Auto-generated method stub
+    }
 
 }

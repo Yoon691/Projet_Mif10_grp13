@@ -73,11 +73,11 @@ public class Inscrit {
     }
     
     public String getClubOfUserName() {
-    	try {
-    		return club.getNomClub();
-    	} catch (Exception e) {
-    		return null;
-    	}
+        try {
+            return club.getNomClub();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Club getClub() {

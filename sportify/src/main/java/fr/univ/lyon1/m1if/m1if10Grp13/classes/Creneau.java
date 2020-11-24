@@ -1,15 +1,12 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -19,19 +16,17 @@ public class Creneau {
     @Id
     private Date datecreneau;
     @Id
-    @Type(type = "timestamp")
     private Date heurecreneau;
-    @Type(type = "timestamp")
     private Date duree;
-
-    public Creneau() {
-
-    }
 
     public Creneau(Date dateCreneau, Date heureCreneau, Date duree) {
         this.datecreneau = dateCreneau;
         this.heurecreneau = heureCreneau;
         this.duree = duree;
+    }
+
+    public Creneau() {
+
     }
 
     public Date getDateCreneau() {

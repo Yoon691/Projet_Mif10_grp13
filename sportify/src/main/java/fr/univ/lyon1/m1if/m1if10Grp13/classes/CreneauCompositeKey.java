@@ -1,8 +1,8 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
+
 
 public class CreneauCompositeKey implements Serializable {
     /**
@@ -10,8 +10,12 @@ public class CreneauCompositeKey implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     private Date datecreneau;
-    private Timestamp heurecreneau;
+    private Date heurecreneau;
 
+    public CreneauCompositeKey(Date dateCreneau, Date heureCreneau) {
+        this.datecreneau = dateCreneau;
+        this.heurecreneau = heureCreneau;
+    }
     public CreneauCompositeKey() {
     }
 

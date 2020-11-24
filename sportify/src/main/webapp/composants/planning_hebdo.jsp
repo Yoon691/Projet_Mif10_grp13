@@ -78,16 +78,6 @@
         </tr>
       </thead>
 	<tbody>
-       <c:forEach var="i" begin="8" end="20" step="1">
-		   <tr>
-	          <th class="th-line" scope="row">${i}h - ${i+1}h</th>
-	          <c:forEach var="j" begin="0" end="6" step ="1">
-	          	<td class="creneau ${applicationScope['daoReservation'].creneauDispo(String.format('0%d:00:00',i), j, sessionScope.user)}">
-	          		Cell <c:out value = "${j}"/>
-	          	</td>
-	          </c:forEach>
-	        </tr>
-		</c:forEach> 
       </tbody>
   </table>
 </div>

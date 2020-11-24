@@ -23,42 +23,49 @@ import java.io.IOException;
 public class Init extends HttpServlet {
 
 
-	
+    
 
 
-	private static final long serialVersionUID = 1L;
-	private ServletContext servletContext;
-	private EntityManagerFactory factory;
+    private static final long serialVersionUID = 1L;
+    private ServletContext servletContext;
+    private EntityManagerFactory factory;
 
-	/**
-	 * Instanciation des DAO et du factory.
-	 */
-	@Override
-	public void init(ServletConfig config) throws ServletException {
+    /**
+     * Instanciation des DAO et du factory.
+     */
+    @Override
+    public void init(ServletConfig config) throws ServletException {
 
-    	this.servletContext = config.getServletContext();
-    	this.factory = Persistence.createEntityManagerFactory("pu-sportify");
-    	
-    	DAOInscrit daoInscrit = new DAOInscrit(this.factory);
-    	DAOClub daoClub = new DAOClub(this.factory);
-    	DAOCreneau daoCreneau = new DAOCreneau(this.factory);
-    	DAOReservationTerrain daoReservationTerrain = new DAOReservationTerrain(this.factory);
-    	DAOTerrain daoTerrain = new DAOTerrain(this.factory);
-    	servletContext.setAttribute("daoInscrit", daoInscrit);
-    	servletContext.setAttribute("daoClub", daoClub);
-    	servletContext.setAttribute("daoCreneau", daoCreneau);
-    	servletContext.setAttribute("daoTerrain", daoTerrain);
-		servletContext.setAttribute("daoReservationTerrain", daoReservationTerrain);
-	}
+        this.servletContext = config.getServletContext();
+        this.factory = Persistence.createEntityManagerFactory("pu-sportify");
+        DAOInscrit daoInscrit = new DAOInscrit(this.factory);
+        DAOClub daoClub = new DAOClub(this.factory);
+        DAOCreneau daoCreneau = new DAOCreneau(this.factory);
+        DAOReservationTerrain daoReservation = new DAOReservationTerrain(this.factory);
+        DAOTerrain daoTerrain = new DAOTerrain(this.factory);
+        
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO
-
+        servletContext.setAttribute("daoInscrit", daoInscrit);
+        servletContext.setAttribute("daoClub", daoClub);
+        servletContext.setAttribute("daoCreneau", daoCreneau);
+        servletContext.setAttribute("daoReservation", daoReservation);
+        servletContext.setAttribute("daoTerrain", daoTerrain);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        this.servletContext.getRequestDispatcher("/index.jsp");
+        // Do nothing because no post requests are redirected to init
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("interface.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+            System.out.print("Error has Occured while requesting page");
+        }
+    }
 }
