@@ -38,6 +38,7 @@ public class Init extends HttpServlet {
 		DAOCreneau daoCreneau = new DAOCreneau(this.factory);
 		DAOReservationTerrain daoReservation = new DAOReservationTerrain(this.factory);
 		DAOTerrain daoTerrain = new DAOTerrain(this.factory);
+		
 
 		servletContext.setAttribute("daoInscrit", daoInscrit);
 		servletContext.setAttribute("daoClub", daoClub);
@@ -47,14 +48,20 @@ public class Init extends HttpServlet {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// Do nothing because no post requests are redirected to init
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("interface.jsp");
-		dispatcher.forward(request, response);
+		try {
+			dispatcher.forward(request, response);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+			System.out.print("Error has Occured while requesting page");
+		}
 	}
 }
