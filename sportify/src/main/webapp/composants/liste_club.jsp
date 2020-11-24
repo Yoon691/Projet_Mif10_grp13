@@ -18,13 +18,13 @@
 		<c:set var="count" value="0" scope="page" />
 		<c:forEach var="club" items="${sessionScope.clubList}">
 		  	<tr>
-		          <td class="l-club-name">${club.getNomClub()}</td>
-		          <td class="l-club-email">${club.getEmailClub()}</td>
-		          <td class="l-club-resp">${club.getNomResponsable()}</td>
-		          <td class="l-club-nb-adh">${club.getNbMaxAdherent()}</td>
+		          <td class="club-name">${club.getNomClub()}</td>
+		          <td class="">${club.getEmailClub()}</td>
+		          <td class="">${club.getNomResponsable()}</td>
+		          <td class="">${club.getNbMaxAdherent()}</td>
 		          <td> <button id="club${count}" class="btn btn-primary mb-2" value="${club.getEmailClub()}" > Rejoindre </button></td>
 	        </tr>
-	        <a id="call${count}" href="Adherer?club=${club.getEmailClub()}"></a>
+	        <a id="call${count}" href="Adherer?club="></a>
 	        <c:set var="count" value="${count + 1}" scope="page"/>
 		</c:forEach>
 	</tbody>
@@ -32,14 +32,11 @@
 </div>
 	
 <script>
-	var nb_club = document.getElementsByClassName("l-club-name").length;
-	for (let i=0; i<nb_club; i++) {
+	for (let i=0; i<3; i++) {
 		$("#club"+i).click(function() {
-			//var email = document.getElementById("club"+i).value;
-			//console.log(email);
-			var callServlet = document.getElementById("call"+i);
-			callServlet.click()
-			
+			console.log("club"+i);
+			var email = document.getElementById("club"+i).value;
+			console.log(email);
 		});
 	}
 </script>
