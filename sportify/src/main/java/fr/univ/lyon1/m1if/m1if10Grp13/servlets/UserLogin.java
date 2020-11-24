@@ -107,6 +107,7 @@ public class UserLogin extends HttpServlet {
                         // Ajouter le club à la session
                         session.setAttribute("club", club);
                         session.setAttribute("isclub", true);
+                        session.setAttribute("adhList", daoClub.listerAdherents(email));
 
                         // Redirection vers la page personnelle du club
                         this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);

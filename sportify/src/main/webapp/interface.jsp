@@ -65,16 +65,23 @@
 				<%@ include file="composants/account_info.jsp"%>
 			</div>
 
-<%--Coté admin--%>
-<%-- Pour les membres coté admin--%>
+			<%--Coté admin--%>
+			<%-- Pour les membres coté admin--%>
 
-		<div id="evenement" class="evenement hidden">
-			<%@ include file="composants/evenement.jsp" %>
 
-		</div>
+			<div id="membres" class="membres hidden">
+				<%@ include file="composants/liste_membres.jsp"%>
+			</div>
+			
+				<%--Mon Compte--%>
+			<div id="profil" class="profil hidden">
+				<%@ include file="composants/account_info.jsp" %> 
+			</div>
+	
+			<div id="evenement" class="evenement hidden">
+				<%@ include file="composants/evenement.jsp" %>
+			</div>
 
-		<div id="membres" class="membres hidden">
-			<%@ include file="composants/liste_membres.jsp" %>
 		</div>
 
 	</div>
