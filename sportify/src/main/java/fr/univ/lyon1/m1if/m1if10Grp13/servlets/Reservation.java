@@ -39,33 +39,51 @@ public class Reservation extends HttpServlet {
         HttpSession session = request.getSession();
         // Recupération des parametres de Creneau
         String dateCreneauParam = request.getParameter("day");
-        String heureCreneauParam = request.getParameter("horaire");
+//        String heureCreneauParam = request.getParameter("horaire");
         String dureeParam = request.getParameter("duree");
         Date dateCreneau = null;
         Date heureCreneau = null;
         Date duree = null;
-//           try {
-////            // Conversion des string récupéré des parametres en objet Date
-//               //  dateCreneau =  new SimpleDateFormat("yyyy-MM-dd").parse(dateCreneauParam);
-////             //heureCreneau = (Date) new SimpleDateFormat("hh:mm").parse(heureCreneauParam);
-////             //duree = (Date) new SimpleDateFormat("hh:mm").parse(dureeParam);
-//        } catch (DAOException | ParseException e) {
-//            e.printStackTrace();
-//        }
+           try {
+            // Conversion des string récupéré des parametres en objet Date
+
+                dateCreneau =  new SimpleDateFormat("yyyy-MM-dd").parse(dateCreneauParam);
+                heureCreneau = new SimpleDateFormat("hh").parse(request.getParameter("horaire"));
+                duree = (Date) new SimpleDateFormat("hh").parse(dureeParam);
+        } catch (DAOException | ParseException e) {
+            e.printStackTrace();
+        }
         Date dateReservation = new Date();
-        Creneau creneau = new Creneau(dateReservation, dateReservation, dateReservation);
+        Creneau creneau = new Creneau(dateCreneau, heureCreneau, duree);
         Club club = (Club) session.getAttribute("club");
         Inscrit inscrit = (Inscrit) session.getAttribute("user");
         Terrain terrain = new Terrain();
-        ReservationTerrain reservationTerrain ;
-        if (inscrit != null) {
-             reservationTerrain = new ReservationTerrain(terrain,creneau, null, inscrit);
-        }else {
-             reservationTerrain = new ReservationTerrain(terrain ,creneau, club, null);
+        terrain.setDispo(true);
+        try {
+            if (daoTerrain.creer(terrain)){
+                System.out.println("Vous venez de reserver un terrain");
+                System.out.println("le id de ce terrain est " + terrain.getTerrainId());
+            } else{
+                System.out.println("le créneau n'est pas reserver");
+            }
+
+        }catch ( DAOException e){
+            e.printStackTrace();
         }
 
+
+        ReservationTerrain reservationTerrain = new ReservationTerrain();
+//        reservationTerrain.setTerrainId(terrain);
+//        if (inscrit != null) {
+//             reservationTerrain = new ReservationTerrain(terrain,creneau, null, inscrit);
+//        }else {
+//             reservationTerrain = new ReservationTerrain(terrain ,creneau, club, null);
+//        }
+//        reservationTerrain.setTerrainId(terrain);
+//        reservationTerrain.setCreneauId(creneau);
+//        reservationTerrain.setEmailInscrit(inscrit);
         try {
-            if (daoReservationTerrain.creer(reservationTerrain)){
+            if (daoReservationTerrain.create(terrain, creneau, inscrit)){
                 System.out.println("Vous venez de reserver un creneaux");
             } else{
                 System.out.println("le créneau n'est pas reserver");

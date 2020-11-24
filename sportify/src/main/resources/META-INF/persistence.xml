@@ -8,7 +8,7 @@
             <property name="hibernate.connection.user" value="sportify" />
             <property name="hibernate.connection.password" value="p1809208"/>
             <!-- Utiliser le fichier sp.sql pour créer les tables -->
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
     </persistence-unit>
 </persistence>

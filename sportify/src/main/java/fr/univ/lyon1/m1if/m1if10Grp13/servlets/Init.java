@@ -42,8 +42,8 @@ public class Init extends HttpServlet {
     	servletContext.setAttribute("daoInscrit", daoInscrit);
     	servletContext.setAttribute("daoClub", daoClub);
     	servletContext.setAttribute("daoCreneau", daoCreneau);
-    	servletContext.setAttribute("daoReservationTerrain", daoReservationTerrain);
     	servletContext.setAttribute("daoTerrain", daoTerrain);
+		servletContext.setAttribute("daoReservationTerrain", daoReservationTerrain);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
