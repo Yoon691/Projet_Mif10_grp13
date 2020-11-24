@@ -1,11 +1,21 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Map.Entry;
+import java.util.TreeMap;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
+import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOReservationTerrain;
 
 /**
  * Servlet implementation class PlanningGestion
@@ -13,26 +23,51 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PlanningGestion", urlPatterns = "/PlanningGestion")
 public class PlanningGestion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PlanningGestion() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private ServletContext servletContext;
+	private DAOReservationTerrain daoReservation;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public PlanningGestion() {
+
+	}
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+
+		this.servletContext = config.getServletContext();
+		this.daoReservation = (DAOReservationTerrain) this.servletContext.getAttribute("daoReservation");
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String stade = (String) request.getParameter("stade");
+		Long stadeId = Long.valueOf(stade);
+		TreeMap<String, ArrayList> planning = daoReservation.getWeekReservations(stadeId);
+		request.setAttribute("planning", planning);
+
+		for (Entry<String, ArrayList> entry : planning.entrySet()) {
+			String key = entry.getKey();
+			ArrayList<ReservationTerrain> value = entry.getValue();
+			for (ReservationTerrain r : value) {
+				System.out.println(new SimpleDateFormat("hh:mm:ss").format(r.getCreneauId().getHeureCreneau()));
+			}
+		}
+		request.getRequestDispatcher("interface.jsp").include(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// Not implemented because no post requests will be sent
 	}
 
