@@ -206,14 +206,14 @@ hr.line {
 }
 
 	/*=======PLANNING & LISTES========*/
-	.planning, .clubList {
+	.planning, .clubList, .adhList {
 		width : 76vw;
 		margin-left: 3vw;
 		height: 76vh;
 		margin-top: 1vh;
 	}
 	
-	.planning-thead, .clubList-thead {
+	.planning-thead, .clubList-thead, .adhList-thead {
 		background-color: #FDC500;
 	}
 
