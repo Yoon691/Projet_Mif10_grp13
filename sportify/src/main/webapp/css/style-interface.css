@@ -205,93 +205,94 @@ hr.line {
 	padding: 7px;
 }
 
-/*=======PLANNING & LISTES========*/
-.planning, .clubList {
-	width: 76vw;
-	margin-left: 3vw;
-	height: 76vh;
-	margin-top: 1vh;
-}
+	/*=======PLANNING & LISTES========*/
+	.planning, .clubList {
+		width : 76vw;
+		margin-left: 3vw;
+		height: 76vh;
+		margin-top: 1vh;
+	}
+	
+	.planning-thead, .clubList-thead {
+		background-color: #FDC500;
+	}
 
-.planning-thead, .clubList-thead {
-	background-color: #FDC500;
-}
+    .th-line {
+		width: 7vw;
+		background-color: #373434;
+		color : #F8F8FF;
+	}
+    
+    .occupe {
+    	background-color: #ef9393;
+    }
+    
+   	.reserve {
+    	background-color: #59d9ff;
+    }
+    
+    /*=======\PLANNING & LISTES========*/
+    
+    /*=======FORM========*/
+    
+    .reservation-form {
+    	margin-top: 4vh;
+    	margin-bottom: 4vh;
+    }
+    
+    #day {
+    	 width: -webkit-fill-available;
+    }
+    
+    .form-row {
+		margin-left: 16vw;
+	    text-align: center;
+	    width: 50vw;
+    }
+    
+    .col-auto {
+		width: 10vw;
+	}
+    
+    .btn-primary {
+    	width: -webkit-fill-available;
+    	background-color : #FDC500;
+    	border: none;
+    }
+    .btn-primary:hover {
+    	background-color : #373434;
+    }
+    
+    /*=======\FORM========*/
+    
+    /*=======ACCOUNT INFOS========*/
+    
+    .user-infos {
+		font-size: 1.2rem;
+		text-align: center;
+		line-height: 2rem;
+		margin-top: 4vh;
+	}
+	
+	.subline {
+		margin-bottom: 0;
+	}
+	
+	.info-userClub {
+		font-size: 1.4rem;
+		color: grey;
+	}
+	
+	.info-name {
+		font-size: 3rem;
+    	font-weight: 600;
+	}
 
-.th-line {
-	width: 7vw;
-	background-color: #373434;
-	color: #F8F8FF;
-}
-
-.occupe {
-	background-color: #ef9393;
-}
-
-.reserve {
-	background-color: #59d9ff;
-}
-
-/*=======\PLANNING & LISTES========*/
-
-/*=======FORM========*/
-.reservation-form {
-	margin-top: 4vh;
-	margin-bottom: 4vh;
-}
-
-#day {
-	width: -webkit-fill-available;
-}
-
-.form-row {
-	margin-left: 21vw;
-	text-align: center;
-	width: fit-content;
-}
-
-.col-auto {
-	width: 10vw;
-}
-
-.btn-primary {
-	width: -webkit-fill-available;
-	background-color: #FDC500;
-	border: none;
-}
-
-.btn-primary:hover {
-	background-color: #373434;
-}
-
-/*=======\FORM========*/
-
-/*=======ACCOUNT INFOS========*/
-.user-infos {
-	font-size: 1.2rem;
-	text-align: center;
-	line-height: 2rem;
-	margin-top: 4vh;
-}
-
-.subline {
-	margin-bottom: 0;
-}
-
-.info-userClub {
-	font-size: 1.4rem;
-	color: grey;
-}
-
-.info-name {
-	font-size: 3rem;
-	font-weight: 600;
-}
-
-.infos-th {
-	font-weight: bold;
-}
-
-/*=======\ACCOUNT INFOS========*/
+	.infos-th{
+		font-weight: bold;
+	}
+	
+	/*=======\ACCOUNT INFOS========*/
 
 /* ============ \CONTENU ==============*/
 
