@@ -2,6 +2,7 @@ package fr.univ.lyon1.m1if.m1if10Grp13.servlets;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,7 +22,9 @@ import java.io.IOException;
 @WebServlet(name = "Init", urlPatterns = "/Init", loadOnStartup = 1)
 public class Init extends HttpServlet {
 
+
 	
+
 
 	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
@@ -32,6 +35,7 @@ public class Init extends HttpServlet {
 	 */
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+
     	this.servletContext = config.getServletContext();
     	this.factory = Persistence.createEntityManagerFactory("pu-sportify");
     	
@@ -56,4 +60,5 @@ public class Init extends HttpServlet {
             throws ServletException, IOException {
         this.servletContext.getRequestDispatcher("/index.jsp");
     }
+
 }
