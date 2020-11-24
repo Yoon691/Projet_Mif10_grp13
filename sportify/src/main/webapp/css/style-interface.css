@@ -43,11 +43,6 @@
 	background-size: cover !important;
 }
 
-.burger-button {
-	background: url(../img/icone/burger-menu.png) no-repeat;
-	background-size: cover;
-}
-
 .deconnexion-button {
 	margin-right: 2vh;
 	background: url(../img/icone/Quitter.png) no-repeat;
