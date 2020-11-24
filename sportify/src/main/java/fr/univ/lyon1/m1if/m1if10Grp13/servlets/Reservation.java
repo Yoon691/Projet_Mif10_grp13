@@ -49,6 +49,7 @@ public class Reservation extends HttpServlet {
 		String dateCreneauParam = request.getParameter("day");
 		String heureCreneauParam = request.getParameter("horaire");
 		String dureeParam = request.getParameter("duree");
+		Long idTerrain = Long.valueOf(request.getParameter("terrain"));
 		Inscrit user = (Inscrit) session.getAttribute("user");
 		Club club = (Club) session.getAttribute("club");
 		
@@ -73,7 +74,7 @@ public class Reservation extends HttpServlet {
 
 		if(formatDuree.format(creneau.getDuree()).equals(dureeParam)) {
 			try {
-				Terrain terrain = (Terrain)new Terrain(Long.valueOf(3));
+				Terrain terrain = (Terrain)new Terrain(idTerrain);
 				if (user != null) {
 					this.daoReservationTerrain.creer(new ReservationTerrain(terrain, creneau, null, user));
 				} else {
