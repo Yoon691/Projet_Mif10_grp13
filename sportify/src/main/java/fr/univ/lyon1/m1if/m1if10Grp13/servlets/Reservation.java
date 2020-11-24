@@ -5,7 +5,6 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOCreneau;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
-//import jdk.jfr.Timestamp;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -17,9 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Servlet implementation class ClubInscription
@@ -27,8 +24,11 @@ import java.util.Date;
 
 @WebServlet(name = "Reservation", urlPatterns = "/Reservation")
 public class Reservation extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DAOReservationTerrain daoReservationTerrain;
-	private DAOTerrain daoTerrain;
 	private DAOCreneau daoCreneau;
 	private ServletContext servletContext;
 
@@ -36,7 +36,6 @@ public class Reservation extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		this.servletContext = config.getServletContext();
 		this.daoReservationTerrain = (DAOReservationTerrain) servletContext.getAttribute("daoReservationTerrain");
-		this.daoTerrain = (DAOTerrain) servletContext.getAttribute("daoTerrain");
 		this.daoCreneau = (DAOCreneau) servletContext.getAttribute("daoCreneau");
 		this.daoReservationTerrain = (DAOReservationTerrain) servletContext.getAttribute("daoReservation");
 	}
@@ -44,7 +43,7 @@ public class Reservation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
+
 		// Recupération des parametres de Creneau
 		String dateCreneauParam = request.getParameter("day");
 		String heureCreneauParam = request.getParameter("horaire");
@@ -52,8 +51,8 @@ public class Reservation extends HttpServlet {
 		Long idTerrain = Long.valueOf(request.getParameter("terrain"));
 		Inscrit user = (Inscrit) session.getAttribute("user");
 		Club club = (Club) session.getAttribute("club");
-		
-		// format de la date 
+
+		// format de la date
 		SimpleDateFormat formatDuree = new SimpleDateFormat("hh:mm:ss");
 
 		if (heureCreneauParam.length() == 1) {
@@ -67,14 +66,14 @@ public class Reservation extends HttpServlet {
 		} else {
 			dureeParam = dureeParam + ":00:00";
 		}
-		
-		// chercher un cereneau 
-		Creneau creneau = null;
-		creneau  = (Creneau) daoCreneau.trouverCrenauId(heureCreneauParam, dateCreneauParam);
 
-		if(formatDuree.format(creneau.getDuree()).equals(dureeParam)) {
+		// chercher un cereneau
+		Creneau creneau = null;
+		creneau = (Creneau) daoCreneau.trouverCrenauId(heureCreneauParam, dateCreneauParam);
+
+		if (formatDuree.format(creneau.getDuree()).equals(dureeParam)) {
 			try {
-				Terrain terrain = (Terrain)new Terrain(idTerrain);
+				Terrain terrain = (Terrain) new Terrain(idTerrain);
 				if (user != null) {
 					this.daoReservationTerrain.creer(new ReservationTerrain(terrain, creneau, null, user));
 				} else {
