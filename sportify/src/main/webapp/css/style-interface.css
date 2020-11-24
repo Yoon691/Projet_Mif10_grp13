@@ -228,9 +228,9 @@ hr.line{
     }
     
     .form-row {
-		margin-left: 21vw;
+		margin-left: 16vw;
 	    text-align: center;
-	    width: fit-content;
+	    width: 50vw;
     }
     
     .col-auto {
