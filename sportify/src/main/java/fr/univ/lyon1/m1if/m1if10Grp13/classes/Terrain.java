@@ -11,34 +11,34 @@ import javax.persistence.Table;
 @Table(name = "terrain")
 public class Terrain {
 
-	@Id
-	@Column(name = "terrainid")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long terrainId;
-	private boolean dispo;
+    @Id
+    @Column(name = "terrainid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long terrainId;
+    private boolean dispo;
 
-	public Terrain(boolean dispo) {
-		this.dispo = dispo;
-	}
+    public Terrain(boolean dispo) {
+        this.dispo = dispo;
+    }
 
-	public Terrain() {
+    public Terrain() {
 
-	}
+    }
 
-	public Long getTerrainId() {
-		return terrainId;
-	}
+    public Long getTerrainId() {
+        return terrainId;
+    }
 
-	public void setTerrainId(Long terrainId) {
-		this.terrainId = terrainId;
-	}
+    public void setTerrainId(Long terrainId) {
+        this.terrainId = terrainId;
+    }
 
-	public boolean isDispo() {
-		return dispo;
-	}
+    public boolean isDispo() {
+        return dispo;
+    }
 
-	public void setDispo(boolean dispo) {
-		this.dispo = dispo;
-	}
+    public void setDispo(boolean dispo) {
+        this.dispo = dispo;
+    }
 
 }

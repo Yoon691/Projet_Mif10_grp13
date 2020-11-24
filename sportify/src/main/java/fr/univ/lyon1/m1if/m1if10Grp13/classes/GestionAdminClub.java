@@ -14,61 +14,61 @@ import java.util.Date;
 @Table(name = "gestion_admin_club")
 @IdClass(GestionAdminClubCompositeKey.class)
 public class GestionAdminClub implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "emailclub")
-	private Club club;
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "adminId")
-	private Admin admin;
-	private Date dategestion;
-	private AdminOperation operation;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "emailclub")
+    private Club club;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "adminId")
+    private Admin admin;
+    private Date dategestion;
+    private AdminOperation operation;
 
-	public GestionAdminClub(Club club, Admin admin, Date dateGestion, AdminOperation operation) {
-		this.club = club;
-		this.admin = admin;
-		this.dategestion = dateGestion;
-		this.operation = operation;
-	}
+    public GestionAdminClub(Club club, Admin admin, Date dateGestion, AdminOperation operation) {
+        this.club = club;
+        this.admin = admin;
+        this.dategestion = dateGestion;
+        this.operation = operation;
+    }
 
-	public GestionAdminClub() {
+    public GestionAdminClub() {
 
-	}
+    }
 
-	public Club getClubId() {
-		return club;
-	}
+    public Club getClubId() {
+        return club;
+    }
 
-	public void setClubId(Club club) {
-		this.club = club;
-	}
+    public void setClubId(Club club) {
+        this.club = club;
+    }
 
-	public Admin getAdminId() {
-		return admin;
-	}
+    public Admin getAdminId() {
+        return admin;
+    }
 
-	public void setAdminId(Admin admin) {
-		this.admin = admin;
-	}
+    public void setAdminId(Admin admin) {
+        this.admin = admin;
+    }
 
-	public Date getDateGestion() {
-		return dategestion;
-	}
+    public Date getDateGestion() {
+        return dategestion;
+    }
 
-	public void setDateGestion(Date dateGestion) {
-		this.dategestion = dateGestion;
-	}
+    public void setDateGestion(Date dateGestion) {
+        this.dategestion = dateGestion;
+    }
 
-	public AdminOperation getOperation() {
-		return operation;
-	}
+    public AdminOperation getOperation() {
+        return operation;
+    }
 
-	public void setOperation(AdminOperation operation) {
-		this.operation = operation;
-	}
+    public void setOperation(AdminOperation operation) {
+        this.operation = operation;
+    }
 }

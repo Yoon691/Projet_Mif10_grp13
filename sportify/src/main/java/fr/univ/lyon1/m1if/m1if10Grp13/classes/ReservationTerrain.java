@@ -12,65 +12,65 @@ import javax.persistence.Table;
 @Table(name = "reservation_terrain")
 @IdClass(ReservationTerrainCompositeKey.class)
 public class ReservationTerrain {
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "terrainId")
-	private Terrain terrain;
-	@Id
-	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "datecreneau", referencedColumnName = "datecreneau"),
-			@JoinColumn(name = "heurecreneau", referencedColumnName = "heurecreneau") })
-	private Creneau creneau;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "terrainId")
+    private Terrain terrain;
+    @Id
+    @ManyToOne
+    @JoinColumns({ @JoinColumn(name = "datecreneau", referencedColumnName = "datecreneau"),
+            @JoinColumn(name = "heurecreneau", referencedColumnName = "heurecreneau") })
+    private Creneau creneau;
 
-	@ManyToOne
-	@JoinColumn(name = "emailclub")
-	private Club club;
+    @ManyToOne
+    @JoinColumn(name = "emailclub")
+    private Club club;
 
-	@ManyToOne
-	@JoinColumn(name = "emailinscrit")
-	private Inscrit inscrit;
+    @ManyToOne
+    @JoinColumn(name = "emailinscrit")
+    private Inscrit inscrit;
 
-	public ReservationTerrain(Terrain terrain, Creneau creneau, Club club, Inscrit inscrit) {
-		this.terrain = terrain;
-		this.creneau = creneau;
-		this.club = club;
-		this.inscrit = inscrit;
-	}
+    public ReservationTerrain(Terrain terrain, Creneau creneau, Club club, Inscrit inscrit) {
+        this.terrain = terrain;
+        this.creneau = creneau;
+        this.club = club;
+        this.inscrit = inscrit;
+    }
 
-	public ReservationTerrain() {
+    public ReservationTerrain() {
 
-	}
+    }
 
-	public Terrain getTerrainId() {
-		return terrain;
-	}
+    public Terrain getTerrainId() {
+        return terrain;
+    }
 
-	public void setTerrainId(Terrain terrain) {
-		this.terrain = terrain;
-	}
+    public void setTerrainId(Terrain terrain) {
+        this.terrain = terrain;
+    }
 
-	public Creneau getCreneauId() {
-		return this.creneau;
-	}
+    public Creneau getCreneauId() {
+        return this.creneau;
+    }
 
-	public void setCreneauId(Creneau creneau) {
-		this.creneau = creneau;
-	}
+    public void setCreneauId(Creneau creneau) {
+        this.creneau = creneau;
+    }
 
-	public Club getClub() {
-		return club;
-	}
+    public Club getClub() {
+        return club;
+    }
 
-	public void setClubId(Club club) {
-		this.club = club;
-	}
+    public void setClubId(Club club) {
+        this.club = club;
+    }
 
-	public Inscrit getInscrit() {
-		return inscrit;
-	}
+    public Inscrit getInscrit() {
+        return inscrit;
+    }
 
-	public void setEmailInscrit(Inscrit inscrit) {
-		this.inscrit = inscrit;
-	}
+    public void setEmailInscrit(Inscrit inscrit) {
+        this.inscrit = inscrit;
+    }
 
 }

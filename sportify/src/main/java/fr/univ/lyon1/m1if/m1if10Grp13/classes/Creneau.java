@@ -16,46 +16,46 @@ import java.util.Date;
 @Table(name = "creneau")
 @IdClass(CreneauCompositeKey.class)
 public class Creneau {
-	@Id
-	private Date datecreneau;
-	@Id
-	@Type(type = "timestamp")
-	private Timestamp heurecreneau;
-	@Type(type = "timestamp")
-	private Timestamp duree;
+    @Id
+    private Date datecreneau;
+    @Id
+    @Type(type = "timestamp")
+    private Timestamp heurecreneau;
+    @Type(type = "timestamp")
+    private Timestamp duree;
 
-	public Creneau() {
+    public Creneau() {
 
-	}
+    }
 
-	public Creneau(Date dateCreneau, Timestamp heureCreneau, Timestamp duree) {
-		this.datecreneau = dateCreneau;
-		this.heurecreneau = heureCreneau;
-		this.duree = duree;
-	}
+    public Creneau(Date dateCreneau, Timestamp heureCreneau, Timestamp duree) {
+        this.datecreneau = dateCreneau;
+        this.heurecreneau = heureCreneau;
+        this.duree = duree;
+    }
 
-	public Date getDateCreneau() {
-		return datecreneau;
-	}
+    public Date getDateCreneau() {
+        return datecreneau;
+    }
 
-	public void setDateCreneau(Date dateCreneau) {
-		this.datecreneau = dateCreneau;
-	}
+    public void setDateCreneau(Date dateCreneau) {
+        this.datecreneau = dateCreneau;
+    }
 
-	public Date getHeureCreneau() {
-		return heurecreneau;
-	}
+    public Date getHeureCreneau() {
+        return heurecreneau;
+    }
 
-	public void setHeureCreneau(Timestamp heureCreneau) {
-		this.heurecreneau = heureCreneau;
-	}
+    public void setHeureCreneau(Timestamp heureCreneau) {
+        this.heurecreneau = heureCreneau;
+    }
 
-	public Date getDuree() {
-		return duree;
-	}
+    public Date getDuree() {
+        return duree;
+    }
 
-	public void setDuree(Timestamp duree) {
-		this.duree = duree;
-	}
+    public void setDuree(Timestamp duree) {
+        this.duree = duree;
+    }
 
 }
