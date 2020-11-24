@@ -20,10 +20,10 @@
 		          <td class="l-adh-name">${adh.getNomInscrit()}</td>
 		          <td class="l-adh-email">${adh.getEmailInscrit()}</td>
 		          <td class="l-adh-resp">${adh.getTelInscrit()}</td>
-		          <td class="l-adh-nb-adh"><fmt:formatDate pattern="dd-MM-yyyy"value="${adh.getNaissanceInscrit()}" /></td>
+		          <td class="l-adh-nb-adh"><fmt:formatDate pattern="dd-MM-yyyy" value="${adh.getNaissanceInscrit()}" /></td>
 		          <td> <button id="adh${count2}" class="btn btn-primary mb-2" value="${adh.getEmailInscrit()}" > Exclure </button></td>
 	        </tr>
-	        <a id="call${count2}" href="Exclure?adh=${adh.getEmailInscrit()}"></a>
+	        <a id="call${count2}" href="<c:url value="/Exclure?adh=${adh.getEmailInscrit()}"/>"></a>
 	        <c:set var="count2" value="${count2 + 1}" scope="page"/>
 		</c:forEach>
 	</tbody>

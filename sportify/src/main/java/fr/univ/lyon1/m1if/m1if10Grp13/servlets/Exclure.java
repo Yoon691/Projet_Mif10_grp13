@@ -16,10 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "Adherer", urlPatterns = "/Adherer")
-public class Adherer extends HttpServlet {
+@WebServlet(name = "Exclure", urlPatterns = "/Exclure")
+public class Exclure extends HttpServlet {
     private DAOInscrit daoInscrit;
     private DAOClub daoClub;
     private ServletContext servletContext;
@@ -36,23 +35,19 @@ public class Adherer extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("club");
+        String email = request.getParameter("adh");
         HttpSession session = request.getSession();
-        Inscrit inscrit = (Inscrit) session.getAttribute("user");
-        Club club = (Club) daoClub.afficher(email);
-       
-        List<Inscrit> l_adh = daoClub.listerAdherents(club.getEmailClub());
-        
-        if(club.getNbMaxAdherent() > l_adh.size())
-        {
-	        inscrit.setclub(club);
-	        try {
-	                daoInscrit.update(inscrit,club.getEmailClub());
-	
-	        }catch ( DAOException e){
-	            e.printStackTrace();
-	        }
-        } 
+        Club club = (Club) session.getAttribute("club");
+        Inscrit inscrit = (Inscrit) daoInscrit.afficher(email);
+        inscrit.setclub(null);
+
+        try {
+                daoInscrit.update(inscrit,null);
+
+        }catch ( DAOException e){
+            e.printStackTrace();
+        }
+        session.setAttribute("adhList", daoClub.listerAdherents(email));
         request.getRequestDispatcher("/interface.jsp").forward(request, response);
     }
 }
