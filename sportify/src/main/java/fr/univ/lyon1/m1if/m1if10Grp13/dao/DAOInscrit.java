@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
 
 import org.postgresql.util.PSQLException;
 
@@ -87,7 +88,41 @@ public class DAOInscrit implements DAOCrud {
 
     @Override
     public void update(Object object, Object id) throws DAOException {
-        // TODO Auto-generated method stub
+        EntityManager entitymanager = factory.createEntityManager();
+        String query = "UPDATE Inscrit " + "SET nominscrit=:nominscrit, emailInscrit=:emailinscrit,password=:password,"
+                + "telinscrit=:telinscrit, naissanceinscrit=:naissanceinscrit, dateinscription =: dateinscription, club.emailclub =: emailclub " + " WHERE emailInscrit=:emailinscrit";
+        Inscrit inscrit = null;
+        String mailclub = null;
+        if (object instanceof Inscrit) {
+            inscrit = (Inscrit) object;
+        }
+        if (id instanceof String) {
+            mailclub = (String) id;
+        }
+        try {
+
+            // Lancement d'une transaction
+            entitymanager.getTransaction().begin();
+
+            // Modification de la table
+             entitymanager.createQuery(query).setParameter("nominscrit", inscrit.getNomInscrit())
+                    .setParameter("emailinscrit", inscrit.getEmailInscrit())
+                    .setParameter("password", inscrit.getPassword())
+                    .setParameter("telinscrit", inscrit.getTelInscrit())
+                    .setParameter("naissanceinscrit", inscrit.getNaissanceInscrit())
+                    .setParameter("dateinscription", inscrit.getDateInscription())
+                    .setParameter("emailclub", mailclub).executeUpdate();
+
+            // Mise à jours de la table
+            entitymanager.getTransaction().commit();
+//            System.out.println(updateContent);
+
+        } catch (DAOException e) {
+            e.printStackTrace();
+        } finally {
+            entitymanager.close();
+        }
+
 
     }
 

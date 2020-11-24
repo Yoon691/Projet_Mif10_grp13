@@ -6,7 +6,7 @@
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/sportify_db" />
             <property name="hibernate.connection.user" value="sportify" />
-            <property name="hibernate.connection.password" value="p1809208"/>
+            <property name="hibernate.connection.password" value="p2020623"/>
             <!-- Utiliser le fichier sp.sql pour créer les tables -->
             <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>

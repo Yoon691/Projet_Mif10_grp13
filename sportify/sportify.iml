@@ -18,11 +18,8 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="pu-sonarqube" />
-          <factory-entry name="pu-sportify" value="3cc053f6-d65c-4061-89a7-eabe10d51b03" />
-          <factory-entry name="sportify" />
+          <factory-entry name="pu-sportify" value="dbce299a-531c-420c-b6c9-7e98a7be70b6" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />

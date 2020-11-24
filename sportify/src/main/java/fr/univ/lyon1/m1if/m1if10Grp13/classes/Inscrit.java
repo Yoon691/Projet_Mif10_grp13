@@ -1,6 +1,8 @@
 package fr.univ.lyon1.m1if.m1if10Grp13.classes;
 
 import javax.persistence.*;
+
+import java.text.ParseException;
 import java.util.Date;
 
 @Entity
@@ -69,6 +71,18 @@ public class Inscrit {
     public Date getDateInscription() {
         return dateinscription;
     }
+    
+    public String getClubOfUserName() {
+    	try {
+    		return club.getNomClub();
+    	} catch (Exception e) {
+    		return null;
+    	}
+    }
+
+    public Club getClub() {
+        return club;
+    }
 
     public void setEmailInscrit(String emailInscrit) {
         this.emailInscrit = emailInscrit;
@@ -97,4 +111,5 @@ public class Inscrit {
     public void setDateInscription(Date dateInscription) {
         this.dateinscription = dateInscription;
     }
+
 }
