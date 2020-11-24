@@ -20,7 +20,9 @@
 			<div class="col">
 				<div class="info-name">${sessionScope.user.getNomInscrit()}</div>
 				<hr class="subline">
-				<div class="info-userClub">Club : ${null!=null? "club":"Vous n'etes pas encore adhérent d'un club."}</div>
+				<div class="info-userClub">Club : ${sessionScope.user.getClubOfUserName()!=null? 
+															sessionScope.user.getClubOfUserName() 
+															:"Vous n'etes pas encore adhérent d'un club."}</div>
 			</div>
 			<div class="w-100" style="margin: 2vh;"></div>
 			<div class="col">
