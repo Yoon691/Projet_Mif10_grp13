@@ -63,9 +63,12 @@
 	</form>
 </div>
 
+
+
 <div class="table-responsive planning">
   <table class="table">
 	<thead class="planning-thead">
+
         <tr>
           <th scope="col">Sem. <%=n_semaine.format(dNow)%></th>
           <th scope="col">Lundi</th>
@@ -76,8 +79,21 @@
           <th scope="col">Samedi</th>
           <th scope="col">Dimanche</th>
         </tr>
+
+
       </thead>
 	<tbody>
+	<c:forEach var="plan" items="${sessionScope.planning}">
+		<tr>
+			<td class="">${plan.getValue()}</td>
+			<td class="">${plan.getValue()}</td>
+			<td class="">${plan.getclubId()}</td>
+			<td class="">${plan.getclubId()}</td>
+			<td class="">${plan.getclubId()}</td>
+			<td class="">${plan.getclubId()}</td>
+			<td class="">${plan.getclubId()}</td>
+		</tr>
+	</c:forEach>
       </tbody>
   </table>
 </div>
