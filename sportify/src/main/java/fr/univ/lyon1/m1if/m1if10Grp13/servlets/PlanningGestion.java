@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.univ.lyon1.m1if.m1if10Grp13.classes.ReservationTerrain;
 import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOReservationTerrain;
@@ -49,16 +50,10 @@ public class PlanningGestion extends HttpServlet {
 		String stade = (String) request.getParameter("stade");
 		Long stadeId = Long.valueOf(stade);
 		TreeMap<String, ArrayList> planning = daoReservation.getWeekReservations(stadeId);
-		request.setAttribute("planning", planning);
+		HttpSession session = request.getSession();
+		session.setAttribute("planning", planning);
 
-		for (Entry<String, ArrayList> entry : planning.entrySet()) {
-			String key = entry.getKey();
-			ArrayList<ReservationTerrain> value = entry.getValue();
-			for (ReservationTerrain r : value) {
-				System.out.println(new SimpleDateFormat("hh:mm:ss").format(r.getCreneauId().getHeureCreneau()));
-			}
-		}
-		request.getRequestDispatcher("interface.jsp").include(request, response);
+		request.getRequestDispatcher("/planning_hebdo.jsp").forward(request, response);
 
 	}
 
