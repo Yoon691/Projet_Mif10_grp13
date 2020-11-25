@@ -106,12 +106,18 @@ public class UserLogin extends HttpServlet {
                                 // Redirection vers la page personnelle
                                 this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
                             } else {
-                                System.out.println("Wrong email or password");
-                                this.servletContext.getRequestDispatcher(url).forward(request, response);
+                                //System.out.println("Wrong email or password");
+                                error_msg(response);
+                                //this.servletContext.getRequestDispatcher(url).forward(request, response);
+                                RequestDispatcher rd =  request.getRequestDispatcher(url);
+                                rd.include(request, response);
                             }
                         } else {
-                            System.out.println("Wrong email or password");
-                            this.servletContext.getRequestDispatcher(url).forward(request, response);
+                            //System.out.println("Wrong email or password");
+                        	error_msg(response);
+                            //this.servletContext.getRequestDispatcher(url).forward(request, response);
+                            RequestDispatcher rd =  request.getRequestDispatcher(url);
+                            rd.include(request, response);
                         }
 
                         // L'utilisateur veut se connecter autant que club
@@ -131,19 +137,39 @@ public class UserLogin extends HttpServlet {
                             session.setAttribute("adhList", daoClub.listerAdherents(email));
 
                             // Redirection vers la page personnelle du club
-                            this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
+                            //this.servletContext.getRequestDispatcher("/interface.jsp").forward(request, response);
+                            RequestDispatcher rd =  request.getRequestDispatcher("/interface.jsp");
+                            rd.include(request, response);
                         } else {
-                            System.out.println("Wrong email or password");
-                            this.servletContext.getRequestDispatcher(url).forward(request, response);
+                            //System.out.println("Wrong email or password");
+                            error_msg(response);
+                            //this.servletContext.getRequestDispatcher(url).forward(request, response);
+                            RequestDispatcher rd =  request.getRequestDispatcher(url);
+                            rd.include(request, response);
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.out.println("Wrong email or password");
-                    this.servletContext.getRequestDispatcher(url).forward(request, response);
+                    //System.out.println("Wrong email or password");
+                    error_msg(response);
+                    //this.servletContext.getRequestDispatcher(url).forward(request, response);
+                    RequestDispatcher rd =  request.getRequestDispatcher(url);
+                    rd.include(request, response);
 
                 }
             }
         }
     }
+    
+    private void error_msg(HttpServletResponse response) throws IOException {
+    	PrintWriter out = response.getWriter();
+        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+        out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+        out.println("<script>");
+        out.println("$(document).ready(function() {");
+        out.println("swal(\"Ooops...\", \"Impossible de se connecter.\", \"error\");");
+        out.println("});");
+        out.println("</script>");
+    }
+    
 }

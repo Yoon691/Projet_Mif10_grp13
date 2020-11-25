@@ -7,12 +7,14 @@ import fr.univ.lyon1.m1if.m1if10Grp13.dao.DAOInscrit;
 import fr.univ.lyon1.m1if.m1if10Grp13.daoException.DAOException;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.crypto.NoSuchPaddingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -75,9 +77,23 @@ public class ClubInscription extends HttpServlet {
 
         try {
             if (daoClub.creer(club)) {
-                System.out.println("Club created");
+            	PrintWriter out = response.getWriter();
+                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function() {");
+                out.println("swal(\"WELCOME\", \"Votre compte club à bien été créé !\", \"success\");");
+                out.println("});");
+                out.println("</script>");
             } else {
-                System.out.println("Cannot create club");
+            	PrintWriter out = response.getWriter();
+                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                out.println("<script>");
+                out.println("$(document).ready(function() {");
+                out.println("swal(\"Oops...\", \"Nous avons rencontré un souci lors de la création de votre compte club.\", \"error\");");
+                out.println("});");
+                out.println("</script>");
             }
         } catch (DAOException e) {
             e.printStackTrace();
@@ -89,7 +105,8 @@ public class ClubInscription extends HttpServlet {
         // Ajout de club à la session
         session.setAttribute("club", club);
 
-        request.getRequestDispatcher("/connexion.jsp").forward(request, response);
+        RequestDispatcher rd =  request.getRequestDispatcher("./connexion.jsp");
+        rd.include(request, response);
     }
 
 }
