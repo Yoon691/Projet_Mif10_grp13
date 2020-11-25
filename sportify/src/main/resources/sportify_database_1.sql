@@ -19,7 +19,7 @@ CREATE TABLE admin (
 CREATE TABLE club (
 	nomClub VARCHAR (100) NOT NULL,
 	emailClub VARCHAR (254) PRIMARY KEY NOT NULL,
-	passwordClub VARCHAR (24) NOT NULL,
+	passwordClub VARCHAR(256) NOT NULL,
 	nomResponsable VARCHAR(100) NOT NULL,
 	nbMaxAdherent INT DEFAULT 24
 );
@@ -29,8 +29,8 @@ CREATE TABLE inscrit (
 	emailInscrit VARCHAR (254) PRIMARY KEY NOT NULL,
 	emailClub VARCHAR(254),
 	nomInscrit VARCHAR (100) NOT NULL,
-	telInscrit VARCHAR(10) NOT NULL UNIQUE,
-	password VARCHAR(24) NOT NULL,
+	telInscrit VARCHAR (10) NOT NULL UNIQUE,
+	password VARCHAR (256) NOT NULL,
 	naissanceInscrit DATE CHECK (
 		naissanceInscrit < CURRENT_DATE - INTERVAL '6 years'
 	),
@@ -38,6 +38,8 @@ CREATE TABLE inscrit (
 	CONSTRAINT fk_club
 		FOREIGN KEY (emailClub)
 			REFERENCES club (emailClub)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
 );
 
 CREATE TABLE coach (
@@ -46,7 +48,7 @@ CREATE TABLE coach (
 
 CREATE TABLE gestion_admin_club (
 	adminId INT REFERENCES admin (adminId),
-	emailClub VARCHAR(254) REFERENCES club (emailclub),
+	emailClub VARCHAR(254) REFERENCES club (emailclub) ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY (adminId, emailClub),
 	dateGestion timestamp NOT NULL,
 	operation ADMIN_OPERATION NOT NULL
@@ -82,7 +84,7 @@ CREATE TABLE reservation_terrain (
 	terrainId INT REFERENCES terrain (terrainId),
 	dateCreneau DATE NOT NULL,
 	heureCreneau TIME NOT NULL,
-	emailCLub VARCHAR(254) REFERENCES club (emailClub),
+	emailCLub VARCHAR(254) REFERENCES club (emailClub) ON DELETE CASCADE ON UPDATE CASCADE,
 	emailInscrit VARCHAR(254) REFERENCES inscrit(emailInscrit),
 	PRIMARY KEY (terrainId, dateCreneau, heureCreneau),
 	FOREIGN KEY (dateCreneau, heureCreneau) REFERENCES creneau (dateCreneau, heureCreneau)
